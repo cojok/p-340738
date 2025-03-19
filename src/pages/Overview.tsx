@@ -98,55 +98,6 @@ const Overview = () => {
             <div className="flex items-center justify-between">
               <h1 className="text-3xl font-bold text-[#1D1B20]">Course Overview</h1>
             </div>
-            
-            {/* Dark Banner */}
-            <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="bg-[#E5DEFF] p-4 rounded-full">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
-              </div>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button 
-                    className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
-                  >
-                    <PenLine className="w-4 h-4" />
-                    <span>edit</span>
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
-                  <DialogHeader>
-                    <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
-                  </DialogHeader>
-                  <div className="py-4">
-                    <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                        <input type="radio" id="increase" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                        <label htmlFor="increase" className="flex-1 cursor-pointer">Increase my daily workload</label>
-                      </div>
-                      <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                        <input type="radio" id="decrease" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                        <label htmlFor="decrease" className="flex-1 cursor-pointer">Decrease my daily workload</label>
-                      </div>
-                      <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                        <input type="radio" id="specific" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                        <label htmlFor="specific" className="flex-1 cursor-pointer">Set a specific completion date</label>
-                      </div>
-                    </div>
-                    <div className="mt-6 flex justify-end gap-2">
-                      <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
-                      <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
           </div>
         </div>
         
@@ -173,6 +124,55 @@ const Overview = () => {
                     <Calendar className="w-4 h-4" />
                     <span>current week plan</span>
                   </Button>
+                </div>
+                
+                {/* Dark Banner - now positioned between title and course content */}
+                <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-[#E5DEFF] p-4 rounded-full">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
+                  </div>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button 
+                        className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
+                      >
+                        <PenLine className="w-4 h-4" />
+                        <span>edit</span>
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
+                      <DialogHeader>
+                        <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
+                      </DialogHeader>
+                      <div className="py-4">
+                        <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                            <input type="radio" id="increase" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                            <label htmlFor="increase" className="flex-1 cursor-pointer">Increase my daily workload</label>
+                          </div>
+                          <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                            <input type="radio" id="decrease" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                            <label htmlFor="decrease" className="flex-1 cursor-pointer">Decrease my daily workload</label>
+                          </div>
+                          <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                            <input type="radio" id="specific" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                            <label htmlFor="specific" className="flex-1 cursor-pointer">Set a specific completion date</label>
+                          </div>
+                        </div>
+                        <div className="mt-6 flex justify-end gap-2">
+                          <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
+                          <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 
                 <div className="flex flex-col gap-4">
@@ -259,6 +259,55 @@ const Overview = () => {
                       <Calendar className="w-4 h-4" />
                       <span>current week plan</span>
                     </Button>
+                  </div>
+                  
+                  {/* Dark Banner - now positioned between title and course content */}
+                  <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-4">
+                      <div className="bg-[#E5DEFF] p-4 rounded-full">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
+                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
+                        >
+                          <PenLine className="w-4 h-4" />
+                          <span>edit</span>
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
+                        </DialogHeader>
+                        <div className="py-4">
+                          <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
+                          <div className="space-y-4">
+                            <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                              <input type="radio" id="increase-desktop" name="schedule-desktop" className="h-4 w-4 accent-[#626293]" />
+                              <label htmlFor="increase-desktop" className="flex-1 cursor-pointer">Increase my daily workload</label>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                              <input type="radio" id="decrease-desktop" name="schedule-desktop" className="h-4 w-4 accent-[#626293]" />
+                              <label htmlFor="decrease-desktop" className="flex-1 cursor-pointer">Decrease my daily workload</label>
+                            </div>
+                            <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                              <input type="radio" id="specific-desktop" name="schedule-desktop" className="h-4 w-4 accent-[#626293]" />
+                              <label htmlFor="specific-desktop" className="flex-1 cursor-pointer">Set a specific completion date</label>
+                            </div>
+                          </div>
+                          <div className="mt-6 flex justify-end gap-2">
+                            <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
+                            <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                   
                   <div className="flex flex-col gap-4">
