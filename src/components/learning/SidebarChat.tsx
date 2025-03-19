@@ -3,13 +3,13 @@ import React from "react";
 
 export const SidebarChat: React.FC = () => {
   return (
-    <div className="flex min-w-60 w-1/3 items-stretch flex-wrap h-full max-md:w-full max-md:mt-6">
+    <div className="flex w-full items-start flex-wrap h-full max-md:w-full max-md:mt-6">
       <div className="flex items-top overflow-hidden justify-center h-full w-8 max-md:hidden">
         <div className="self-stretch w-1 my-auto">
           <div className="bg-[rgba(218,218,231,1)] flex shrink-0 h-12 rounded-[48px]" />
         </div>
       </div>
-      <div className="bg-white flex min-w-[260px] flex-col items-start justify-start w-[512px] p-6 rounded-[32px] max-md:max-w-full max-md:px-5">
+      <div className="bg-white flex min-w-[260px] flex-col items-start justify-start w-full p-6 rounded-[32px] max-md:max-w-full max-md:px-5">
         <div className="w-full max-md:max-w-full">
           <div className="flex w-full gap-[40px_100px] justify-between max-md:max-w-full">
             <div className="text-[rgba(16,16,25,1)] text-base font-normal leading-[1.3] tracking-[0.1px] text-center">
