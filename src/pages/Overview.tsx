@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
-import { ArrowRight, ChevronDown, ChevronUp, Calendar, PenLine, BookOpen } from "lucide-react";
+import { ArrowRight, Calendar, PenLine } from "lucide-react";
 import { SidebarChat } from "@/components/learning/SidebarChat";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
@@ -13,6 +13,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Badge } from "@/components/ui/badge";
 import { calculateEstimatedCompletionDate } from "@/hooks/use-learning-plan";
 import { addWeeks, format, addDays } from "date-fns";
+import { LearningPlan } from "@/types/api.types";
 
 const Overview = () => {
   const isMobile = useIsMobile();
@@ -23,14 +24,15 @@ const Overview = () => {
   
   const today = new Date();
   
-  const mockLearningPlan = {
+  const mockLearningPlan: LearningPlan = {
     id: "plan-1",
+    userId: "user-1",
     courseCode: "SP01-QI",
     title: "Sozialpolitik I",
     status: "active",
     startDate: format(today, 'yyyy-MM-dd'),
     endDate: format(addWeeks(today, 6), 'yyyy-MM-dd'),
-    weeklyHours: 8,
+    weeklyLearningHours: 8,
   };
   
   const estimatedCompletionDate = calculateEstimatedCompletionDate(mockLearningPlan);
@@ -138,7 +140,7 @@ const Overview = () => {
   };
 
   const renderCompletionBanner = () => (
-    <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
+    <div className="bg-[#1A1F2C] dark:bg-[#303746] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
       <span className="text-lg">With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong></span>
       <Dialog>
         <DialogTrigger asChild>
@@ -149,29 +151,29 @@ const Overview = () => {
             <span>edit my learning plan</span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
+        <DialogContent className="sm:max-w-[425px] bg-white dark:bg-[#1A1F2C] rounded-[24px] p-6">
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
+            <DialogTitle className="text-xl font-semibold text-[#1D1B20] dark:text-white">Edit Learning Plan</DialogTitle>
           </DialogHeader>
           <div className="py-4">
-            <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
+            <p className="text-[#626293] dark:text-[#A9A9D2] mb-4">How would you like to adjust your learning plan?</p>
             <div className="space-y-4">
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] dark:border-[#3F3F5F] bg-[#F8F7FF] dark:bg-[#222233] text-[#303746] dark:text-[#D8D8F2]">
                 <input type="radio" id="increase" name="schedule" className="h-4 w-4 accent-[#626293]" />
                 <label htmlFor="increase" className="flex-1 cursor-pointer">Increase my daily workload</label>
               </div>
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] dark:border-[#3F3F5F] bg-[#F8F7FF] dark:bg-[#222233] text-[#303746] dark:text-[#D8D8F2]">
                 <input type="radio" id="decrease" name="schedule" className="h-4 w-4 accent-[#626293]" />
                 <label htmlFor="decrease" className="flex-1 cursor-pointer">Decrease my daily workload</label>
               </div>
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] dark:border-[#3F3F5F] bg-[#F8F7FF] dark:bg-[#222233] text-[#303746] dark:text-[#D8D8F2]">
                 <input type="radio" id="specific" name="schedule" className="h-4 w-4 accent-[#626293]" />
                 <label htmlFor="specific" className="flex-1 cursor-pointer">Set a specific completion date</label>
               </div>
             </div>
             <div className="mt-6 flex justify-end gap-2">
-              <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
-              <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
+              <Button variant="outline" className="border-[#626293] text-[#626293] dark:border-[#A9A9D2] dark:text-[#A9A9D2]">Cancel</Button>
+              <Button className="bg-[#1A1F2C] dark:bg-[#A9A9D2] dark:text-[#1A1F2C] text-white">Apply Changes</Button>
             </div>
           </div>
         </DialogContent>
@@ -180,7 +182,7 @@ const Overview = () => {
   );
 
   return (
-    <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
+    <div className="bg-[rgba(243,243,247,1)] dark:bg-[#151823] flex flex-col items-center min-h-screen w-full">
       <Header title="Sozialpolitik I" />
       <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
         {isMobile ? (
@@ -195,13 +197,13 @@ const Overview = () => {
                 />
               </div>
               
-              <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
+              <div className="bg-white dark:bg-[#1A1F2C] w-full p-10 rounded-[24px] mt-8 max-md:p-5">
                 <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-2xl font-semibold text-[#1D1B20]">My Learning Plan</h2>
+                  <h2 className="text-2xl font-semibold text-[#1D1B20] dark:text-white">My Learning Plan</h2>
                   <Button 
                     variant="outline" 
                     onClick={handleCurrentWeekPlanClick}
-                    className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                    className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] dark:border-[#A9A9D2] dark:text-[#A9A9D2] hover:bg-gray-50 dark:hover:bg-[#222233]"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>current week plan</span>
@@ -218,28 +220,28 @@ const Overview = () => {
                         value={`week-${week.week}`}
                         className="border-0 mb-4 overflow-hidden"
                       >
-                        <div className="bg-[#F1F0FB] rounded-[24px] overflow-hidden transition-all duration-300">
+                        <div className="bg-[#F1F0FB] dark:bg-[#222233] rounded-[24px] overflow-hidden transition-all duration-300">
                           <AccordionTrigger className="px-6 py-4 hover:no-underline">
                             <div className="flex flex-col w-full">
                               <div className="flex items-center justify-between w-full">
                                 <div className="flex items-center gap-2 mb-2">
                                   <div 
                                     style={{ backgroundColor: weekColor }}
-                                    className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium"
+                                    className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium dark:bg-[#3F3F5F] dark:text-[#D8D8F2]"
                                   >
                                     Week {week.week}
                                   </div>
                                 </div>
                               </div>
-                              <h3 className="text-[#1D1B20] text-lg font-medium text-left mb-1">{week.title}</h3>
-                              <p className="text-[#626293] text-sm text-left">{week.dateRange}</p>
+                              <h3 className="text-[#1D1B20] dark:text-white text-lg font-medium text-left mb-1">{week.title}</h3>
+                              <p className="text-[#626293] dark:text-[#A9A9D2] text-sm text-left">{week.dateRange}</p>
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-6 pb-4">
-                            <div className="pt-2 border-t border-[#E8E5F7]">
-                              <p className="text-[#626293] text-sm mb-4">{week.description}</p>
+                            <div className="pt-2 border-t border-[#E8E5F7] dark:border-[#3F3F5F]">
+                              <p className="text-[#626293] dark:text-[#A9A9D2] text-sm mb-4">{week.description}</p>
                               <div className="mb-4">
-                                <h4 className="font-medium text-[#1D1B20] mb-2">{week.chapters.join(" and ")}</h4>
+                                <h4 className="font-medium text-[#1D1B20] dark:text-white mb-2">{week.chapters.join(" and ")}</h4>
                                 <div className="flex flex-wrap gap-2">
                                   {week.tags.map((tag, i) => (
                                     <Badge key={i} variant={tag.variant as any}>
@@ -251,7 +253,7 @@ const Overview = () => {
                               <Button 
                                 variant="secondary"
                                 onClick={() => handleWeekClick(week.week)}
-                                className="w-full bg-[#626293] text-white hover:bg-[#4e4e75] transition-colors rounded-xl flex items-center justify-center gap-2"
+                                className="w-full bg-[#626293] text-white hover:bg-[#4e4e75] dark:bg-[#3F3F5F] dark:hover:bg-[#4e4e75] transition-colors rounded-xl flex items-center justify-center gap-2"
                                 aria-label={`View details for Week ${week.week}: ${week.title}`}
                               >
                                 <span>View Details</span>
@@ -286,89 +288,12 @@ const Overview = () => {
                   />
                 </div>
                 
-                <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
+                <div className="bg-white dark:bg-[#1A1F2C] w-full p-10 rounded-[24px] mt-8 max-md:p-5">
                   <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-2xl font-semibold text-[#1D1B20]">My Learning Plan</h2>
+                    <h2 className="text-2xl font-semibold text-[#1D1B20] dark:text-white">My Learning Plan</h2>
                     <Button 
                       variant="outline" 
                       onClick={handleCurrentWeekPlanClick}
-                      className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
-                    >
-                      <Calendar className="w-4 h-4" />
-                      <span>current week plan</span>
-                    </Button>
-                  </div>
-                  
-                  {renderCompletionBanner()}
-                  
-                  <div className="flex flex-col gap-4">
-                    <Accordion type="multiple" className="w-full">
-                      {weeks.map((week) => (
-                        <AccordionItem 
-                          key={week.week} 
-                          value={`week-${week.week}`}
-                          className="border-0 mb-4 overflow-hidden"
-                        >
-                          <div className="bg-[#F1F0FB] rounded-[24px] overflow-hidden transition-all duration-300">
-                            <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                              <div className="flex flex-col w-full">
-                                <div className="flex items-center justify-between w-full">
-                                  <div className="flex items-center gap-2 mb-2">
-                                    <div 
-                                      style={{ backgroundColor: weekColor }}
-                                      className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium"
-                                    >
-                                      Week {week.week}
-                                    </div>
-                                  </div>
-                                </div>
-                                <h3 className="text-[#1D1B20] text-lg font-medium text-left mb-1">{week.title}</h3>
-                                <p className="text-[#626293] text-sm text-left">{week.dateRange}</p>
-                              </div>
-                            </AccordionTrigger>
-                            <AccordionContent className="px-6 pb-4">
-                              <div className="pt-2 border-t border-[#E8E5F7]">
-                                <p className="text-[#626293] text-sm mb-4">{week.description}</p>
-                                <div className="mb-4">
-                                  <h4 className="font-medium text-[#1D1B20] mb-2">{week.chapters.join(" and ")}</h4>
-                                  <div className="flex flex-wrap gap-2">
-                                    {week.tags.map((tag, i) => (
-                                      <Badge key={i} variant={tag.variant as any}>
-                                        {tag.text}
-                                      </Badge>
-                                    ))}
-                                  </div>
-                                </div>
-                                <Button 
-                                  variant="secondary"
-                                  onClick={() => handleWeekClick(week.week)}
-                                  className="w-full bg-[#626293] text-white hover:bg-[#4e4e75] transition-colors rounded-xl flex items-center justify-center gap-2"
-                                  aria-label={`View details for Week ${week.week}: ${week.title}`}
-                                >
-                                  <span>View Details</span>
-                                  <ArrowRight className="w-4 h-4" />
-                                </Button>
-                              </div>
-                            </AccordionContent>
-                          </div>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
-                  </div>
-                </div>
-              </ScrollArea>
-            </ResizablePanel>
-            <ResizableHandle withHandle className="mx-6" />
-            <ResizablePanel defaultSize={30} minSize={20}>
-              <ScrollArea className="h-full py-12 pr-0">
-                <SidebarChat />
-              </ScrollArea>
-            </ResizablePanel>
-          </ResizablePanelGroup>
-        )}
-      </div>
-    </div>
-  );
-};
+                      className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] dark:border-[#A9A9D2] dark:text-[#A9A9D2] hover:bg-gray-50 dark:hover:bg-[#222233]"
+                   
 
-export default Overview;
