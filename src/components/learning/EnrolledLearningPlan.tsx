@@ -1,12 +1,15 @@
+
 import React, { useState } from "react";
 import { Header } from "./Header";
 import { CourseInfo } from "./CourseInfo";
 import { TabNavigation } from "./TabNavigation";
 import { LearningPlanContent } from "./LearningPlanContent";
 import { SidebarChat } from "./SidebarChat";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const EnrolledLearningPlan: React.FC = () => {
   const [activeTab, setActiveTab] = useState("learning-plan");
+  const isMobile = useIsMobile();
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -18,7 +21,7 @@ export const EnrolledLearningPlan: React.FC = () => {
       aria-label="Learning Plan Page"
     >
       <Header title="Sozialpolitik I" />
-      <div className="flex w-full max-w-[1920px] items-stretch gap-[40px_72px] flex-1 h-full px-[72px] max-md:max-w-full max-md:px-5">
+      <div className="flex w-full max-w-[1920px] items-stretch flex-wrap gap-[40px_72px] flex-1 h-full px-[72px] max-md:max-w-full max-md:px-5">
         <main className="min-w-60 w-full flex-1 shrink basis-[0%] py-12 rounded-[32px] max-md:max-w-full">
           <CourseInfo
             courseCode="SP01-QI"
@@ -51,9 +54,16 @@ export const EnrolledLearningPlan: React.FC = () => {
             </div>
           </div>
         </main>
-        <aside>
-          <SidebarChat />
-        </aside>
+        {isMobile ? null : (
+          <aside className="w-1/3">
+            <SidebarChat />
+          </aside>
+        )}
+        {isMobile && (
+          <div className="w-full mt-6">
+            <SidebarChat />
+          </div>
+        )}
       </div>
     </div>
   );
