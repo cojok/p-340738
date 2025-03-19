@@ -3,6 +3,7 @@ import React from "react";
 import { LearningModule } from "./LearningModule";
 import { Button } from "@/components/ui/button";
 import { PenSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface LearningPlanContentProps {
   dateRange: string;
@@ -15,6 +16,13 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   sectionTitle,
   onOverviewEdit,
 }) => {
+  const navigate = useNavigate();
+  
+  const handleOverviewClick = () => {
+    // Navigate to the overview page
+    navigate('/overview');
+  };
+
   return (
     <div className="bg-white w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
       <div className="flex w-full gap-6 pb-2 max-md:max-w-full">
@@ -29,7 +37,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
               </h2>
               <Button 
                 variant="outline" 
-                onClick={onOverviewEdit}
+                onClick={handleOverviewClick}
                 className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
               >
                 <PenSquare className="w-4 h-4" />
