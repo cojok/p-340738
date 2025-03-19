@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -215,10 +216,13 @@ const Overview = () => {
                                 </div>
                               </div>
                               <Button 
+                                variant="secondary"
                                 onClick={() => handleWeekClick(week.week)}
-                                className="w-full bg-[#F5F5F7] text-[#101019] hover:bg-[#EDEDF0] mt-2"
+                                className="w-full bg-[#626293] text-white hover:bg-[#4e4e75] transition-colors rounded-xl flex items-center justify-center gap-2"
+                                aria-label={`View details for Week ${week.week}: ${week.title}`}
                               >
-                                View Details
+                                <span>View Details</span>
+                                <ArrowRight className="w-4 h-4" />
                               </Button>
                             </div>
                           </AccordionContent>
@@ -341,10 +345,13 @@ const Overview = () => {
                                   </div>
                                 </div>
                                 <Button 
+                                  variant="secondary"
                                   onClick={() => handleWeekClick(week.week)}
-                                  className="w-full bg-[#F5F5F7] text-[#101019] hover:bg-[#EDEDF0] mt-2"
+                                  className="w-full bg-[#626293] text-white hover:bg-[#4e4e75] transition-colors rounded-xl flex items-center justify-center gap-2"
+                                  aria-label={`View details for Week ${week.week}: ${week.title}`}
                                 >
-                                  View Details
+                                  <span>View Details</span>
+                                  <ArrowRight className="w-4 h-4" />
                                 </Button>
                               </div>
                             </AccordionContent>
