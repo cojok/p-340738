@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import { calculateEstimatedCompletionDate } from "@/hooks/use-learning-plan";
+import { addWeeks, format, addDays } from "date-fns";
 
 const Overview = () => {
   const isMobile = useIsMobile();
@@ -20,6 +22,18 @@ const Overview = () => {
   const weekColor = "#E5DEFF"; // Soft Purple
   
   const today = new Date();
+  
+  const mockLearningPlan = {
+    id: "plan-1",
+    courseCode: "SP01-QI",
+    title: "Sozialpolitik I",
+    status: "active",
+    startDate: format(today, 'yyyy-MM-dd'),
+    endDate: format(addWeeks(today, 6), 'yyyy-MM-dd'),
+    weeklyHours: 8,
+  };
+  
+  const estimatedCompletionDate = calculateEstimatedCompletionDate(mockLearningPlan);
   
   const weeks = [
     {
@@ -123,6 +137,48 @@ const Overview = () => {
     navigate('/learning-plan');
   };
 
+  const renderCompletionBanner = () => (
+    <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
+      <span className="text-lg">With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong></span>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button 
+            className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
+          >
+            <PenLine className="w-4 h-4" />
+            <span>edit my learning plan</span>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
+          </DialogHeader>
+          <div className="py-4">
+            <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                <input type="radio" id="increase" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                <label htmlFor="increase" className="flex-1 cursor-pointer">Increase my daily workload</label>
+              </div>
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                <input type="radio" id="decrease" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                <label htmlFor="decrease" className="flex-1 cursor-pointer">Decrease my daily workload</label>
+              </div>
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                <input type="radio" id="specific" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                <label htmlFor="specific" className="flex-1 cursor-pointer">Set a specific completion date</label>
+              </div>
+            </div>
+            <div className="mt-6 flex justify-end gap-2">
+              <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
+              <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+
   return (
     <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
       <Header title="Sozialpolitik I" />
@@ -152,45 +208,7 @@ const Overview = () => {
                   </Button>
                 </div>
                 
-                <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
-                  <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button 
-                        className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
-                      >
-                        <PenLine className="w-4 h-4" />
-                        <span>edit my learning plan</span>
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
-                      <DialogHeader>
-                        <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
-                      </DialogHeader>
-                      <div className="py-4">
-                        <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                            <input type="radio" id="increase" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                            <label htmlFor="increase" className="flex-1 cursor-pointer">Increase my daily workload</label>
-                          </div>
-                          <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                            <input type="radio" id="decrease" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                            <label htmlFor="decrease" className="flex-1 cursor-pointer">Decrease my daily workload</label>
-                          </div>
-                          <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                            <input type="radio" id="specific" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                            <label htmlFor="specific" className="flex-1 cursor-pointer">Set a specific completion date</label>
-                          </div>
-                        </div>
-                        <div className="mt-6 flex justify-end gap-2">
-                          <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
-                          <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
-                        </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                </div>
+                {renderCompletionBanner()}
                 
                 <div className="flex flex-col gap-4">
                   <Accordion type="multiple" className="w-full">
@@ -281,45 +299,7 @@ const Overview = () => {
                     </Button>
                   </div>
                   
-                  <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
-                    <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button 
-                          className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
-                        >
-                          <PenLine className="w-4 h-4" />
-                          <span>edit my learning plan</span>
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
-                        <DialogHeader>
-                          <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
-                        </DialogHeader>
-                        <div className="py-4">
-                          <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
-                          <div className="space-y-4">
-                            <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                              <input type="radio" id="increase-desktop" name="schedule-desktop" className="h-4 w-4 accent-[#626293]" />
-                              <label htmlFor="increase-desktop" className="flex-1 cursor-pointer">Increase my daily workload</label>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                              <input type="radio" id="decrease-desktop" name="schedule-desktop" className="h-4 w-4 accent-[#626293]" />
-                              <label htmlFor="decrease-desktop" className="flex-1 cursor-pointer">Decrease my daily workload</label>
-                            </div>
-                            <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
-                              <input type="radio" id="specific-desktop" name="schedule-desktop" className="h-4 w-4 accent-[#626293]" />
-                              <label htmlFor="specific-desktop" className="flex-1 cursor-pointer">Set a specific completion date</label>
-                            </div>
-                          </div>
-                          <div className="mt-6 flex justify-end gap-2">
-                            <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
-                            <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
-                          </div>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
+                  {renderCompletionBanner()}
                   
                   <div className="flex flex-col gap-4">
                     <Accordion type="multiple" className="w-full">

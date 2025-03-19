@@ -1,3 +1,4 @@
+
 import { useQuery } from '@tanstack/react-query';
 import { 
   fetchLearningPlanById, 
@@ -8,7 +9,7 @@ import {
 } from '../services/api.service';
 import { LearningPlan, LearningActivity } from '../types/api.types';
 import { toast } from 'sonner';
-import { parseISO, format, addWeeks } from 'date-fns';
+import { parseISO, format, addWeeks, addDays } from 'date-fns';
 
 export const useLearningPlan = (planId?: string) => {
   // Fetch learning plan
@@ -62,7 +63,7 @@ export const useLearningPlan = (planId?: string) => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  // Calculate estimated completion date based on weekly learning hours
+  // Calculate estimated completion date based on current date and learning plan
   const estimatedCompletionDate = learningPlan ? calculateEstimatedCompletionDate(learningPlan) : null;
 
   return {
@@ -77,22 +78,33 @@ export const useLearningPlan = (planId?: string) => {
 // Helper function to calculate estimated completion date
 export const calculateEstimatedCompletionDate = (plan: LearningPlan): string => {
   try {
-    // If the plan has an endDate, use that
-    if (plan.endDate) {
-      const endDate = parseISO(plan.endDate);
-      return format(endDate, 'dd.MM.yyyy');
+    // Always calculate based on the current date
+    const today = new Date();
+    
+    // If the plan has a fixed duration in weeks, use that
+    const courseDurationWeeks = 6; // Standard course duration
+    
+    // Adjust weeks based on weekly study hours (more hours = faster completion)
+    let adjustedWeeks = courseDurationWeeks;
+    if (plan.weeklyHours) {
+      // Basic adjustment - this could be more sophisticated
+      if (plan.weeklyHours > 10) {
+        adjustedWeeks = Math.max(4, adjustedWeeks - 2); // Faster but minimum 4 weeks
+      } else if (plan.weeklyHours < 5) {
+        adjustedWeeks = adjustedWeeks + 2; // Slower
+      }
     }
     
-    // Otherwise calculate based on start date and weekly hours
-    // This is a simplified calculation - in a real app this would be more complex
-    const startDate = parseISO(plan.startDate);
-    const weeksToComplete = 6; // Just an example, would be calculated based on course content and weekly hours
-    const estimatedEndDate = addWeeks(startDate, weeksToComplete);
+    // Calculate the estimated end date from today
+    const estimatedEndDate = addWeeks(today, adjustedWeeks);
     
+    // Format as day-month-year
     return format(estimatedEndDate, 'dd.MM.yyyy');
   } catch (error) {
     console.error('Error calculating completion date:', error);
-    return '19.10.2024'; // Fallback date
+    
+    // Fallback: Calculate a default date 6 weeks from now
+    const fallbackDate = addWeeks(new Date(), 6);
+    return format(fallbackDate, 'dd.MM.yyyy');
   }
 };
-

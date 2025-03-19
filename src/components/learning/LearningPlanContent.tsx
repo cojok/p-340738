@@ -6,6 +6,7 @@ import { PenLine, CalendarCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { LearningActivity } from "@/types/api.types";
 import { Skeleton } from "@/components/ui/skeleton";
+import { addDays, format } from "date-fns";
 
 interface LearningPlanContentProps {
   dateRange: string;
@@ -18,7 +19,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   dateRange,
   onOverviewEdit,
   activities = [],
-  estimatedCompletionDate = "19.10.2024", // Default fallback date
+  estimatedCompletionDate = null, // No default fallback - will be calculated dynamically
 }) => {
   const navigate = useNavigate();
   
@@ -26,6 +27,17 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
     // Navigate to the overview page
     navigate('/overview');
   };
+
+  // Helper function to get next week's date range
+  const getNextWeekDateRange = () => {
+    const today = new Date();
+    const nextWeekStart = addDays(today, 7);
+    const nextWeekEnd = addDays(nextWeekStart, 6);
+    return `${format(nextWeekStart, "do MMMM")} to ${format(nextWeekEnd, "do MMMM")}`;
+  };
+
+  // Get the current estimated completion date or calculate a default
+  const displayCompletionDate = estimatedCompletionDate || format(addDays(new Date(), 42), 'dd.MM.yyyy');
 
   // Group activities by unit (each unit would have multiple activities)
   // For this example, we'll group by activity type assuming we don't have unit information
@@ -147,7 +159,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
       
       {/* Completion date banner */}
       <div className="bg-[#1A1F2C] text-white rounded-[24px] p-4 md:p-6 my-6 overflow-hidden">
-        <span className="text-sm md:text-lg">With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong></span>
+        <span className="text-sm md:text-lg">With your current settings you will finish the course on the <strong>{displayCompletionDate}</strong></span>
       </div>
       
       <div className="w-full mt-6 md:mt-8 rounded-3xl max-w-full">
@@ -156,9 +168,9 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
             {/* Display learning modules based on API data */}
             {renderLearningModules()}
             
-            {/* Upcoming Week Content - Static for now */}
+            {/* Upcoming Week Content - Dynamic with dates */}
             <div className="bg-[rgba(243,243,247,0.6)] mt-6 md:mt-8 p-4 md:p-6 rounded-3xl">
-              <h3 className="text-[#626293] text-base font-medium mb-4">Next Week (21st October to 27th October)</h3>
+              <h3 className="text-[#626293] text-base font-medium mb-4">Next Week ({getNextWeekDateRange()})</h3>
               
               <div className="flex flex-col gap-4 md:gap-5">
                 <div className="bg-[rgba(243,243,247,1)] p-4 md:p-5 rounded-xl">
