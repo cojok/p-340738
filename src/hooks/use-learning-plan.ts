@@ -29,8 +29,8 @@ export const useLearningPlan = (planId?: string) => {
           return activePlan || plans[0]; // Return first active plan or first plan
         }
       } catch (error) {
-        // Use mock data as fallback
         console.error('Error fetching learning plan:', error);
+        // Use mock data as fallback and show toast notification
         toast.error('Unable to load learning plan data. Showing cached data instead.');
         return getMockLearningPlan();
       }
@@ -51,8 +51,8 @@ export const useLearningPlan = (planId?: string) => {
         if (!learningPlan?.id) return [];
         return await fetchLearningActivitiesByPlanId(learningPlan.id);
       } catch (error) {
-        // Use mock data as fallback
         console.error('Error fetching learning activities:', error);
+        // Use mock data as fallback and show toast notification
         toast.error('Unable to load learning activities. Showing cached data instead.');
         return getMockLearningActivities();
       }
