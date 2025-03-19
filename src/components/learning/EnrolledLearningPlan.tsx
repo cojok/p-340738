@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
 import { CourseInfo } from "./CourseInfo";
@@ -62,7 +63,6 @@ export const EnrolledLearningPlan: React.FC = () => {
                   {activeTab === "learning-plan" && (
                     <LearningPlanContent
                       dateRange="14th October to 20th October"
-                      sectionTitle="Finanzierung und Investition - Inhaltsübersicht"
                       onOverviewEdit={() => {}}
                     />
                   )}
@@ -98,7 +98,6 @@ export const EnrolledLearningPlan: React.FC = () => {
                     {activeTab === "learning-plan" && (
                       <LearningPlanContent
                         dateRange="14th October to 20th October"
-                        sectionTitle="Finanzierung und Investition - Inhaltsübersicht"
                         onOverviewEdit={() => {}}
                       />
                     )}

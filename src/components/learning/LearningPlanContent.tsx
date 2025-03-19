@@ -7,13 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 interface LearningPlanContentProps {
   dateRange: string;
-  sectionTitle: string;
   onOverviewEdit?: () => void;
 }
 
 export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   dateRange,
-  sectionTitle,
   onOverviewEdit,
 }) => {
   const navigate = useNavigate();
@@ -49,9 +47,6 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
       </div>
       <div className="w-full mt-8 rounded-3xl max-md:max-w-full">
         <div className="w-full overflow-hidden rounded-3xl max-md:max-w-full">
-          <h2 className="text-[#1D1B20] text-xl font-medium">
-            {sectionTitle}
-          </h2>
           <div className="flex w-full flex-col items-stretch justify-center mt-6 max-md:max-w-full">
             {/* Current Week - Only 2 Units with Video Materials and Quizzes */}
             <LearningModule
@@ -80,10 +75,6 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
                   description: "10 questions"
                 }
               ]}
-              videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
-              audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/a690391e763b1003a3cc30ac2346e5013d24eb29?placeholderIfAbsent=true"
-              practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/d9e93f45438008d90ed010e196ad77b19069ba44?placeholderIfAbsent=true"
-              chatIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6685ec8eceee80e952eedfd31a027cb5420bfd5e?placeholderIfAbsent=true"
             />
             
             <LearningModule
@@ -98,11 +89,11 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
                   description: "20 min"
                 },
                 { 
-                  type: "Video",
-                  title: "Vergleich statischer Investitionsverfahren",
-                  icon: <FileVideo className="w-5 h-5" />,
-                  bgColor: "bg-[rgba(216,206,233,1)]",
-                  description: "15 min"
+                  type: "Course Book",
+                  title: "Grundlagen statischer Investitionsverfahren",
+                  icon: <BookText className="w-5 h-5" />,
+                  bgColor: "bg-[rgba(253,243,186,1)]",
+                  description: "18 pages"
                 },
                 {
                   type: "Quiz",
@@ -112,25 +103,33 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
                   description: "5 exercises"
                 }
               ]}
-              videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
-              audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/0b3e2648cf54f95b8484ce6ec4c46ff033704dc2?placeholderIfAbsent=true"
-              practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/f275ede79db99bafb182a6d5fb570db9688c1595?placeholderIfAbsent=true"
-              chatIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6685ec8eceee80e952eedfd31a027cb5420bfd5e?placeholderIfAbsent=true"
             />
             
-            {/* Future Content - Not for current week */}
+            {/* Upcoming Week Content */}
             <div className="bg-[rgba(243,243,247,0.6)] mt-8 p-6 rounded-3xl">
-              <h3 className="text-[#626293] text-base font-medium mb-4">Upcoming Content</h3>
+              <h3 className="text-[#626293] text-base font-medium mb-4">Next Week (21st October to 27th October)</h3>
               
+              <div className="flex flex-col gap-5">
+                <div className="bg-[rgba(243,243,247,1)] p-5 rounded-xl">
+                  <h4 className="text-[#313149] text-base font-medium mb-3">Unit 3: Klassische dynamische Verfahren der Investitionsrechnung</h4>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="text-xs bg-[rgba(216,206,233,0.5)] text-[#626293] py-1 px-3 rounded-full">Video Lecture</span>
+                    <span className="text-xs bg-[rgba(253,243,186,0.5)] text-[#626293] py-1 px-3 rounded-full">Course Book</span>
+                    <span className="text-xs bg-[rgba(248,216,190,0.5)] text-[#626293] py-1 px-3 rounded-full">Practical Exercise</span>
+                  </div>
+                </div>
+                
+                <div className="bg-[rgba(243,243,247,1)] p-5 rounded-xl">
+                  <h4 className="text-[#313149] text-base font-medium mb-3">Unit 4: Wiederholung und Quizzes - Investitionsrechnung</h4>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="text-xs bg-[rgba(248,216,190,0.5)] text-[#626293] py-1 px-3 rounded-full">Quiz</span>
+                    <span className="text-xs bg-[rgba(216,206,233,0.5)] text-[#626293] py-1 px-3 rounded-full">Recap Video</span>
+                  </div>
+                </div>
+              </div>
+              
+              <h3 className="text-[#626293] text-base font-medium mt-6 mb-4">Future Content</h3>
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-3 text-[#626293]">
-                  <CalendarCheck className="w-5 h-5" />
-                  <span>Unit 3: Klassische dynamische Verfahren der Investitionsrechnung</span>
-                </div>
-                <div className="flex items-center gap-3 text-[#626293]">
-                  <CalendarCheck className="w-5 h-5" />
-                  <span>Unit 4: Wiederholung und Quizzes - Investitionsrechnung</span>
-                </div>
                 <div className="flex items-center gap-3 text-[#626293]">
                   <CalendarCheck className="w-5 h-5" />
                   <span>Unit 5: Wiederholung und Quizzes - Unternehmensfinanzierung</span>
