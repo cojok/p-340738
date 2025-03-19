@@ -68,8 +68,11 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
                       <h5 className="text-[#313149] font-medium text-sm truncate">{resource.type}</h5>
                       <p className="text-[#626293] text-sm truncate">{resource.title}</p>
                     </div>
-                    <div className="text-xs text-[#626293] bg-[rgba(243,243,247,1)] py-1 px-2 rounded-full whitespace-nowrap flex-shrink-0">
+                    <div className="text-xs text-[#626293] bg-[rgba(243,243,247,1)] py-1 px-2 rounded-full whitespace-nowrap flex-shrink-0 hidden sm:block">
                       {resource.description}
+                    </div>
+                    <div className="text-xs text-[#626293] bg-[rgba(243,243,247,1)] py-1 px-2 rounded-full flex-shrink-0 sm:hidden">
+                      {resource.description.length > 10 ? resource.description.substring(0, 8) + '...' : resource.description}
                     </div>
                   </div>
                 ))}

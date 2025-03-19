@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
 
   return (
     <div
-      className="bg-[rgba(243,243,247,1)] flex min-h-28 w-full max-w-[1920px] items-center gap-6 flex-wrap px-[72px] max-md:px-5"
+      className="bg-[rgba(243,243,247,1)] flex min-h-28 w-full max-w-[1920px] items-center gap-6 flex-wrap px-4 sm:px-6 lg:px-[72px] max-md:px-5"
       aria-label="Course header"
     >
       <div className="self-stretch flex items-center gap-2.5 w-10 my-auto">
@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           </div>
         </button>
       </div>
-      <div className="flex-1 self-stretch min-w-60 min-h-10 text-2xl text-[#626293] font-medium tracking-[0px] leading-[1.4] shrink basis-[0%] my-auto max-md:max-w-full">
+      <div className="flex-1 self-stretch min-w-0 min-h-10 text-xl sm:text-2xl text-[#626293] font-medium tracking-[0px] leading-[1.4] my-auto max-md:max-w-full truncate">
         {title}
       </div>
       {!isMobile ? (
