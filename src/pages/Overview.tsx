@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -239,16 +238,8 @@ const Overview = () => {
                 </div>
                 
                 <div className="bg-white dark:bg-gray-800 w-full p-10 rounded-[24px] mt-8 max-md:p-5">
-                  <div className="flex flex-col mb-8">
-                    <h2 className="text-2xl font-semibold text-[#1D1B20] dark:text-white mb-4">My Learning Plan</h2>
-                    <Button 
-                      variant="outline" 
-                      onClick={handleCurrentWeekPlanClick}
-                      className="h-10 w-fit flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] dark:border-gray-400 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                    >
-                      <Calendar className="w-4 h-4" />
-                      <span>current week plan</span>
-                    </Button>
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-semibold text-[#1D1B20] dark:text-white">My Learning Plan</h2>
                   </div>
                   
                   {renderCompletionBanner()}
