@@ -76,7 +76,7 @@ export const useLearningPlan = (planId?: string) => {
 };
 
 // Helper function to calculate estimated completion date
-export const calculateEstimatedCompletionDate = (plan: LearningPlan): string => {
+export const calculateEstimatedCompletionDate = (plan: LearningPlan | { weeklyHours?: number }): string => {
   try {
     // Always calculate based on the current date
     const today = new Date();
@@ -86,11 +86,15 @@ export const calculateEstimatedCompletionDate = (plan: LearningPlan): string => 
     
     // Adjust weeks based on weekly study hours (more hours = faster completion)
     let adjustedWeeks = courseDurationWeeks;
-    if (plan.weeklyHours) {
+    
+    // Check if weeklyLearningHours or weeklyHours is available
+    const weeklyHours = 'weeklyLearningHours' in plan ? plan.weeklyLearningHours : (plan.weeklyHours || 8);
+    
+    if (weeklyHours) {
       // Basic adjustment - this could be more sophisticated
-      if (plan.weeklyHours > 10) {
+      if (weeklyHours > 10) {
         adjustedWeeks = Math.max(4, adjustedWeeks - 2); // Faster but minimum 4 weeks
-      } else if (plan.weeklyHours < 5) {
+      } else if (weeklyHours < 5) {
         adjustedWeeks = adjustedWeeks + 2; // Slower
       }
     }
