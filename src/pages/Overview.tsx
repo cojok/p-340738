@@ -111,7 +111,7 @@ const Overview = () => {
       <span className="text-lg">
         With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong>
       </span>
-      <ChatDrawer>
+      <ChatDrawer courseCode={learningPlan?.courseCode}>
         <Button 
           className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2 whitespace-nowrap"
         >
