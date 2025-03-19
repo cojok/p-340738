@@ -1,14 +1,18 @@
+
 import React from "react";
 import { LearningModule } from "./LearningModule";
+import { Button } from "@/components/ui/button";
 
 interface LearningPlanContentProps {
   dateRange: string;
   sectionTitle: string;
+  onOverviewEdit?: () => void;
 }
 
 export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   dateRange,
   sectionTitle,
+  onOverviewEdit,
 }) => {
   return (
     <div className="bg-white min-w-[420px] w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
@@ -22,20 +26,18 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
               <h2 className="text-[#101019] text-2xl font-semibold tracking-[0px] self-stretch flex-1 shrink basis-[0%] my-auto max-md:max-w-full">
                 {dateRange}
               </h2>
-              <button className="self-stretch flex items-center overflow-hidden text-sm text-black font-normal text-center tracking-[0.5px] leading-[1.3] justify-center my-auto">
-                <div className="self-stretch flex items-center justify-center my-auto rounded-xl">
-                  <div className="self-stretch flex min-h-10 items-center gap-4 justify-center my-auto px-4 rounded-xl">
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/c1c1fffcf96d679a5451a516900e7edd40b289e7?placeholderIfAbsent=true"
-                      className="aspect-[1] object-contain w-4 self-stretch shrink-0 my-auto"
-                      alt="Edit icon"
-                    />
-                    <span className="self-stretch my-auto">
-                      overview and edit
-                    </span>
-                  </div>
-                </div>
-              </button>
+              <Button 
+                variant="ghost" 
+                onClick={onOverviewEdit}
+                className="flex items-center gap-2 text-sm font-normal"
+              >
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/c1c1fffcf96d679a5451a516900e7edd40b289e7?placeholderIfAbsent=true"
+                  className="w-4 h-4"
+                  alt="Edit icon"
+                />
+                overview and edit
+              </Button>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React from "react";
 
 interface TabNavigationProps {
   activeTab: string;
@@ -18,7 +19,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
           alt="Tab background"
         />
         <button
-          className={`self-stretch z-0 min-h-12 min-w-60 gap-2 ${
+          className={`self-stretch z-0 min-h-12 min-w-60 flex items-center justify-center ${
             activeTab === "learning-plan" ? "text-[#101019]" : "text-[#626293]"
           } h-full flex-1 shrink basis-[0%] px-4 max-md:max-w-full`}
           onClick={() => onTabChange("learning-plan")}
@@ -28,7 +29,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
           Learning Plan
         </button>
         <button
-          className={`self-stretch z-0 min-h-12 min-w-60 gap-2 ${
+          className={`self-stretch z-0 min-h-12 min-w-60 flex items-center justify-center ${
             activeTab === "course-info" ? "text-[#101019]" : "text-[#626293]"
           } h-full flex-1 shrink basis-[0%] px-4 max-md:max-w-full`}
           onClick={() => onTabChange("course-info")}
