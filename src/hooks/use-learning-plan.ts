@@ -102,13 +102,25 @@ export const calculateEstimatedCompletionDate = (plan: LearningPlan | { weeklyHo
     // Calculate the estimated end date from today
     const estimatedEndDate = addWeeks(today, adjustedWeeks);
     
-    // Format as day-month-year
-    return format(estimatedEndDate, 'dd.MM.yyyy');
+    // Format as "1st October to 19th October" (like in the Overview page)
+    // We'll use today as the start date and estimated end date as the end date
+    const startDay = format(today, 'do');
+    const startMonth = format(today, 'MMMM');
+    const endDay = format(estimatedEndDate, 'do');
+    const endMonth = format(estimatedEndDate, 'MMMM');
+    
+    return `${startDay} ${startMonth} to ${endDay} ${endMonth}`;
   } catch (error) {
     console.error('Error calculating completion date:', error);
     
     // Fallback: Calculate a default date 6 weeks from now
-    const fallbackDate = addWeeks(new Date(), 6);
-    return format(fallbackDate, 'dd.MM.yyyy');
+    const today = new Date();
+    const fallbackDate = addWeeks(today, 6);
+    const startDay = format(today, 'do');
+    const startMonth = format(today, 'MMMM');
+    const endDay = format(fallbackDate, 'do');
+    const endMonth = format(fallbackDate, 'MMMM');
+    
+    return `${startDay} ${startMonth} to ${endDay} ${endMonth}`;
   }
 };
