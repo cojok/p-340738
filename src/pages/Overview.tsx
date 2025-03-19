@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
-import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronUp, Calendar, PenLine } from "lucide-react";
 import { SidebarChat } from "@/components/learning/SidebarChat";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
@@ -85,7 +84,7 @@ const Overview = () => {
     navigate('/learning-plan', { state: { selectedWeek: week } });
   };
 
-  const handleLearningPlanClick = () => {
+  const handleCurrentWeekPlanClick = () => {
     // Navigate back to the learning plan
     navigate('/learning-plan');
   };
@@ -94,9 +93,44 @@ const Overview = () => {
     <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
       <Header title="Sozialpolitik I" />
       <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
+        <div className="pt-12 pb-6">
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center justify-between">
+              <h1 className="text-3xl font-bold text-[#1D1B20]">Learning Plan</h1>
+              <Button 
+                variant="outline" 
+                onClick={handleCurrentWeekPlanClick}
+                className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>current week plan</span>
+              </Button>
+            </div>
+            
+            {/* Banner */}
+            <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="bg-[#E5DEFF] p-4 rounded-full">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
+              </div>
+              <Button 
+                className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
+              >
+                <PenLine className="w-4 h-4" />
+                <span>edit</span>
+              </Button>
+            </div>
+          </div>
+        </div>
+        
         {isMobile ? (
           <div className="flex flex-col w-full gap-6 h-full">
-            <ScrollArea className="flex-1 w-full py-12">
+            <ScrollArea className="flex-1 w-full">
               <div className="flex w-full items-center justify-between">
                 <CourseInfo
                   courseCode="SP01-QI"
@@ -111,7 +145,7 @@ const Overview = () => {
                   <h2 className="text-[#1D1B20] text-xl font-medium">Course Overview</h2>
                   <Button 
                     variant="outline" 
-                    onClick={handleLearningPlanClick}
+                    onClick={handleCurrentWeekPlanClick}
                     className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                   >
                     <BookOpen className="w-4 h-4" />
@@ -197,7 +231,7 @@ const Overview = () => {
                     <h2 className="text-[#1D1B20] text-xl font-medium">Course Overview</h2>
                     <Button 
                       variant="outline" 
-                      onClick={handleLearningPlanClick}
+                      onClick={handleCurrentWeekPlanClick}
                       className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                     >
                       <BookOpen className="w-4 h-4" />

@@ -23,8 +23,10 @@ export const SidebarChat: React.FC = () => {
             </button>
           </div>
           <div className="flex flex-col gap-3 text-sm text-[#303746] font-normal">
-            <button className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-2.5 py-3 px-4 rounded-[16px] text-left hover:bg-[#EDEDF0] transition-colors">
-              <PenLine className="w-5 h-5 text-[#626293]" />
+            <button className="w-full flex items-center bg-[#1A1F2C] text-white gap-2.5 py-3 px-4 rounded-[16px] text-left hover:bg-[#282E3C] transition-colors">
+              <div className="bg-[#E5DEFF] p-1.5 rounded-full">
+                <PenLine className="w-3.5 h-3.5 text-[#1A1F2C]" />
+              </div>
               <span>Edit my Learning Plan</span>
             </button>
             <button className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-2.5 py-3 px-4 rounded-[16px] text-left hover:bg-[#EDEDF0] transition-colors">
