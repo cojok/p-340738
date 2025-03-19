@@ -15,6 +15,16 @@ const Overview = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   
+  // An array of pastel colors for the week labels
+  const weekColors = [
+    "#E5DEFF", // Soft Purple
+    "#D3E4FD", // Soft Blue
+    "#E5F1FA", // Light Blue (current color)
+    "#E9F5E9", // Soft Green
+    "#F8E8E8", // Soft Pink
+    "#F5EBDA", // Soft Orange
+  ];
+  
   const weeks = [
     {
       week: 1,
@@ -72,18 +82,20 @@ const Overview = () => {
                   credits={5}
                   status="Enrolled"
                 />
-                <Button 
-                  variant="outline" 
-                  onClick={handleLearningPlanClick}
-                  className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  <span>learning plan</span>
-                </Button>
               </div>
               
               <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
-                <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
+                <div className="flex items-center justify-between mb-8">
+                  <h2 className="text-[#1D1B20] text-xl font-medium">Course Overview</h2>
+                  <Button 
+                    variant="outline" 
+                    onClick={handleLearningPlanClick}
+                    className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span>Learning Plan</span>
+                  </Button>
+                </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {weeks.map((week) => (
@@ -94,7 +106,10 @@ const Overview = () => {
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 mb-3">
-                          <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
+                          <div 
+                            style={{ backgroundColor: weekColors[(week.week - 1) % weekColors.length] }} 
+                            className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium"
+                          >
                             Week {week.week}
                           </div>
                         </div>
@@ -125,18 +140,20 @@ const Overview = () => {
                     credits={5}
                     status="Enrolled"
                   />
-                  <Button 
-                    variant="outline" 
-                    onClick={handleLearningPlanClick}
-                    className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
-                  >
-                    <BookOpen className="w-4 h-4" />
-                    <span>learning plan</span>
-                  </Button>
                 </div>
                 
                 <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
-                  <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
+                  <div className="flex items-center justify-between mb-8">
+                    <h2 className="text-[#1D1B20] text-xl font-medium">Course Overview</h2>
+                    <Button 
+                      variant="outline" 
+                      onClick={handleLearningPlanClick}
+                      className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      <span>Learning Plan</span>
+                    </Button>
+                  </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {weeks.map((week) => (
@@ -147,7 +164,10 @@ const Overview = () => {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2 mb-3">
-                            <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
+                            <div 
+                              style={{ backgroundColor: weekColors[(week.week - 1) % weekColors.length] }} 
+                              className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium"
+                            >
                               Week {week.week}
                             </div>
                           </div>
