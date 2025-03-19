@@ -99,7 +99,7 @@ const Overview = () => {
               <h1 className="text-3xl font-bold text-[#1D1B20]">Course Overview</h1>
             </div>
             
-            {/* Banner */}
+            {/* Dark Banner */}
             <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="bg-[#E5DEFF] p-4 rounded-full">
