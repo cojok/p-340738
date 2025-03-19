@@ -3,8 +3,12 @@ import React from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
 import { ArrowRight } from "lucide-react";
+import { SidebarChat } from "@/components/learning/SidebarChat";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 
 const Overview = () => {
+  const isMobile = useIsMobile();
   const weeks = [
     {
       week: 1,
@@ -41,37 +45,92 @@ const Overview = () => {
   return (
     <div className="bg-[rgba(243,243,247,1)] flex flex-col overflow-hidden items-center min-h-screen">
       <Header title="Sozialpolitik I" />
-      <div className="w-full max-w-[1920px] px-16 max-md:px-5 py-12">
-        <CourseInfo
-          courseCode="SP01-QI"
-          courseTitle="Sozialpolitik I"
-          credits={5}
-          status="Enrolled"
-        />
-        
-        <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
-          <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {weeks.map((week) => (
-              <div 
-                key={week.week} 
-                className="bg-[#F1F0FB] p-6 rounded-2xl transition-shadow hover:shadow-md cursor-pointer group"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
-                      Week {week.week}
+      <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1 overflow-hidden">
+        {isMobile ? (
+          <div className="flex flex-col w-full gap-6">
+            <main className="w-full py-12">
+              <CourseInfo
+                courseCode="SP01-QI"
+                courseTitle="Sozialpolitik I"
+                credits={5}
+                status="Enrolled"
+              />
+              
+              <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
+                <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {weeks.map((week) => (
+                    <div 
+                      key={week.week} 
+                      className="bg-[#F1F0FB] p-6 rounded-2xl transition-shadow hover:shadow-md cursor-pointer group"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
+                            Week {week.week}
+                          </div>
+                        </div>
+                        <ArrowRight className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+                      </div>
+                      <h3 className="text-[#1D1B20] text-lg font-medium mb-2">{week.title}</h3>
+                      <p className="text-[#626293] text-sm">{week.description}</p>
                     </div>
-                  </div>
-                  <ArrowRight className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+                  ))}
                 </div>
-                <h3 className="text-[#1D1B20] text-lg font-medium mb-2">{week.title}</h3>
-                <p className="text-[#626293] text-sm">{week.description}</p>
               </div>
-            ))}
+            </main>
+            <div className="w-full mb-6">
+              <SidebarChat />
+            </div>
           </div>
-        </div>
+        ) : (
+          <ResizablePanelGroup 
+            direction="horizontal" 
+            className="min-h-[800px] h-full rounded-lg"
+          >
+            <ResizablePanel defaultSize={70} minSize={50}>
+              <main className="w-full py-12 pr-6">
+                <CourseInfo
+                  courseCode="SP01-QI"
+                  courseTitle="Sozialpolitik I"
+                  credits={5}
+                  status="Enrolled"
+                />
+                
+                <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
+                  <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {weeks.map((week) => (
+                      <div 
+                        key={week.week} 
+                        className="bg-[#F1F0FB] p-6 rounded-2xl transition-shadow hover:shadow-md cursor-pointer group"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
+                              Week {week.week}
+                            </div>
+                          </div>
+                          <ArrowRight className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+                        </div>
+                        <h3 className="text-[#1D1B20] text-lg font-medium mb-2">{week.title}</h3>
+                        <p className="text-[#626293] text-sm">{week.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </main>
+            </ResizablePanel>
+            <ResizableHandle withHandle className="mx-6" />
+            <ResizablePanel defaultSize={30} minSize={20}>
+              <div className="h-full py-12 pr-0">
+                <SidebarChat />
+              </div>
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        )}
       </div>
     </div>
   );
