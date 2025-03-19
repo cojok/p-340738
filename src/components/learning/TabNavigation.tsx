@@ -35,7 +35,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
   };
 
   return (
-    <div className="bg-[rgba(243,243,247,1)] min-h-[72px] w-full rounded-[24px_24px_0px_0px] max-md:max-w-full relative">
+    <div className="bg-[rgba(243,243,247,1)] min-h-[72px] w-full rounded-[24px_24px_0px_0px] max-w-full relative">
       <Tabs 
         value={activeTab} 
         onValueChange={handleTabChange}
@@ -63,10 +63,13 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
         </TabsList>
       </Tabs>
       {/* This div creates the white rounded corner that connects to the main content */}
-      <div className={`absolute bottom-0 left-0 w-full h-6 ${activeTab === "course-info" 
-        ? "bg-white rounded-t-none rounded-b-[0px_24px]" // Rounded on bottom-right when course-info is active
-        : "bg-white rounded-t-none rounded-b-[24px_0px]"}`} // Rounded on bottom-left when learning-plan is active
-      />
+      <div className="absolute bottom-0 left-0 w-full h-6 bg-white rounded-t-none"></div>
+      {/* These divs create the rounded corners */}
+      {activeTab === "learning-plan" ? (
+        <div className="absolute bottom-0 right-0 w-6 h-6 bg-[rgba(243,243,247,1)] rounded-br-[24px]"></div>
+      ) : (
+        <div className="absolute bottom-0 left-0 w-6 h-6 bg-[rgba(243,243,247,1)] rounded-bl-[24px]"></div>
+      )}
     </div>
   );
 };

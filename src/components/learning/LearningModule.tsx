@@ -33,15 +33,15 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
                 Introduction
               </h4>
               <div className="text-[#626293] text-sm font-normal leading-[22px] tracking-[0.25px] mt-2 max-w-full">
-                <p>{introduction}</p>
+                <p className="break-words">{introduction}</p>
               </div>
             </div>
           </div>
           <div className="w-full lg:w-[40%] flex-1">
             {resources && (
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 w-full">
                 {resources.map((resource, index) => (
-                  <div key={index} className="bg-white p-3 md:p-4 rounded-2xl flex items-center gap-3 w-full overflow-hidden">
+                  <div key={index} className="bg-white p-3 md:p-4 rounded-2xl flex items-center gap-2 w-full overflow-hidden">
                     <div className={`${resource.bgColor} p-2 md:p-3 rounded-xl flex-shrink-0`}>
                       {resource.icon}
                     </div>
