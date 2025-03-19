@@ -40,7 +40,10 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
         </TabsList>
       </Tabs>
       {/* This div creates the white rounded corner that connects to the main content */}
-      <div className={`absolute bottom-0 left-0 w-full h-6 ${activeTab === "course-info" ? "bg-white rounded-[0px_0px_0px_32px]" : "bg-white rounded-[0px_32px_0px_0px]"}`} />
+      <div className={`absolute bottom-0 left-0 w-full h-6 ${activeTab === "course-info" 
+        ? "bg-white rounded-t-none rounded-b-[32px_0px]" // Rounded on bottom-right when course-info is active
+        : "bg-white rounded-t-none rounded-b-[0px_32px]"}`} // Rounded on bottom-left when learning-plan is active
+      />
     </div>
   );
 };

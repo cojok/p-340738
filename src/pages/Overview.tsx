@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -15,15 +14,8 @@ const Overview = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   
-  // An array of pastel colors for the week labels
-  const weekColors = [
-    "#E5DEFF", // Soft Purple
-    "#D3E4FD", // Soft Blue
-    "#E5F1FA", // Light Blue (current color)
-    "#E9F5E9", // Soft Green
-    "#F8E8E8", // Soft Pink
-    "#F5EBDA", // Soft Orange
-  ];
+  // Using a single color (Soft Purple) for all week labels
+  const weekColor = "#E5DEFF"; // Soft Purple
   
   const weeks = [
     {
@@ -107,7 +99,7 @@ const Overview = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 mb-3">
                           <div 
-                            style={{ backgroundColor: weekColors[(week.week - 1) % weekColors.length] }} 
+                            style={{ backgroundColor: weekColor }}
                             className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium"
                           >
                             Week {week.week}
@@ -165,7 +157,7 @@ const Overview = () => {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2 mb-3">
                             <div 
-                              style={{ backgroundColor: weekColors[(week.week - 1) % weekColors.length] }} 
+                              style={{ backgroundColor: weekColor }}
                               className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium"
                             >
                               Week {week.week}
