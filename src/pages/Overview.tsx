@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -115,18 +114,17 @@ const Overview = () => {
               
               <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
                 <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-[#1D1B20] text-xl font-medium">Course Overview</h2>
                   <Button 
                     variant="outline" 
                     onClick={handleCurrentWeekPlanClick}
-                    className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                    className="h-10 ml-auto flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>current week plan</span>
                   </Button>
                 </div>
                 
-                {/* Dark Banner - now positioned between title and course content */}
+                {/* Dark Banner - positioned between title and course content */}
                 <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
                   <div className="flex items-center gap-4">
                     <div className="bg-[#E5DEFF] p-4 rounded-full">
@@ -250,18 +248,17 @@ const Overview = () => {
                 
                 <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
                   <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-[#1D1B20] text-xl font-medium">Course Overview</h2>
                     <Button 
                       variant="outline" 
                       onClick={handleCurrentWeekPlanClick}
-                      className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                      className="h-10 ml-auto flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                     >
                       <Calendar className="w-4 h-4" />
                       <span>current week plan</span>
                     </Button>
                   </div>
                   
-                  {/* Dark Banner - now positioned between title and course content */}
+                  {/* Dark Banner - positioned between title and course content */}
                   <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
                     <div className="flex items-center gap-4">
                       <div className="bg-[#E5DEFF] p-4 rounded-full">
