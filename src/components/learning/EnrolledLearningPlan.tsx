@@ -40,7 +40,7 @@ export const EnrolledLearningPlan: React.FC = () => {
 
   return (
     <div
-      className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full overflow-x-hidden"
+      className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full overflow-hidden"
       aria-label="Learning Plan Page"
     >
       <Header title="Finanzierung und Investition" />
@@ -54,21 +54,23 @@ export const EnrolledLearningPlan: React.FC = () => {
                 credits={5}
                 status="Enrolled"
               />
-              <div className="flex w-full items-stretch mt-8 max-w-full">
-                <div className="w-full max-w-full">
+              <div className="flex w-full items-stretch mt-8 max-w-full overflow-hidden">
+                <div className="w-full max-w-full overflow-hidden">
                   <TabNavigation
                     activeTab={activeTab}
                     onTabChange={handleTabChange}
                   />
-                  {activeTab === "learning-plan" && (
-                    <LearningPlanContent
-                      dateRange="14th October to 20th October"
-                      onOverviewEdit={() => {}}
-                    />
-                  )}
-                  {activeTab === "course-info" && (
-                    <CourseInfoContent />
-                  )}
+                  <div className="w-full overflow-hidden">
+                    {activeTab === "learning-plan" && (
+                      <LearningPlanContent
+                        dateRange="14th October to 20th October"
+                        onOverviewEdit={() => {}}
+                      />
+                    )}
+                    {activeTab === "course-info" && (
+                      <CourseInfoContent />
+                    )}
+                  </div>
                 </div>
               </div>
             </ScrollArea>
@@ -98,21 +100,23 @@ export const EnrolledLearningPlan: React.FC = () => {
                   credits={5}
                   status="Enrolled"
                 />
-                <div className="flex w-full items-stretch flex-wrap mt-8 max-w-full">
-                  <div className="w-full max-w-full">
+                <div className="flex w-full items-stretch flex-wrap mt-8 max-w-full overflow-hidden">
+                  <div className="w-full max-w-full overflow-hidden">
                     <TabNavigation
                       activeTab={activeTab}
                       onTabChange={handleTabChange}
                     />
-                    {activeTab === "learning-plan" && (
-                      <LearningPlanContent
-                        dateRange="14th October to 20th October"
-                        onOverviewEdit={() => {}}
-                      />
-                    )}
-                    {activeTab === "course-info" && (
-                      <CourseInfoContent />
-                    )}
+                    <div className="w-full overflow-hidden">
+                      {activeTab === "learning-plan" && (
+                        <LearningPlanContent
+                          dateRange="14th October to 20th October"
+                          onOverviewEdit={() => {}}
+                        />
+                      )}
+                      {activeTab === "course-info" && (
+                        <CourseInfoContent />
+                      )}
+                    </div>
                   </div>
                 </div>
               </ScrollArea>

@@ -35,7 +35,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
   };
 
   return (
-    <div className="bg-[rgba(243,243,247,1)] min-h-[72px] w-full rounded-[24px_24px_0px_0px] max-w-full relative">
+    <div className="bg-[rgba(243,243,247,1)] min-h-[72px] w-full rounded-[24px_24px_0px_0px] max-w-full relative overflow-hidden">
       <Tabs 
         value={activeTab} 
         onValueChange={handleTabChange}
@@ -62,9 +62,9 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
           </TabsTrigger>
         </TabsList>
       </Tabs>
-      {/* This div creates the white rounded corner that connects to the main content */}
+      {/* White background beneath the active tab */}
       <div className="absolute bottom-0 left-0 w-full h-6 bg-white rounded-t-none"></div>
-      {/* These divs create the rounded corners */}
+      {/* Create the proper tab corner effect for both states */}
       {activeTab === "learning-plan" ? (
         <div className="absolute bottom-0 right-0 w-6 h-6 bg-[rgba(243,243,247,1)] rounded-br-[24px]"></div>
       ) : (
