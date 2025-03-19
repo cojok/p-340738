@@ -2,7 +2,7 @@
 import React from "react";
 import { Header } from "@/components/learning/Header";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -33,6 +33,21 @@ export const ContentPage: React.FC = () => {
                 <li>Fremdkapitalfinanzierung</li>
                 <li>Eigenkapitalfinanzierung</li>
               </ul>
+            </div>
+            
+            <div className="mb-6">
+              <a 
+                href="https://res.cloudinary.com/iubh/image/upload/v1630568577/15%20-%20Dokumente/Weiterbildungen/Kurshandbücher/DLBLOFUI-01_Invesition_und_Finanzierung_FS_P_IWe_oECTS_26.08.2021_btnnxg.pdf" 
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="flex items-center text-blue-600 gap-2 hover:underline transition-colors py-1"
+                download
+              >
+                <span className="inline-flex items-center justify-center">
+                  <ArrowDown className="h-4 w-4" />
+                </span>
+                <span>Download module handbook</span>
+              </a>
             </div>
             
             <div className="border-t pt-6">

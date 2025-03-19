@@ -1,30 +1,54 @@
 
-import React from "react";
-import { ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowRight, ArrowDown, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 export const CourseInfoContent: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const courseDescription = "Die Studierenden widmen sich im ersten Teil dieses Kurses der Investitionsseite und damit der Frage der Analyse und Generierung finanzwirtschaftlicher Werte. Behandelt werden zunächst die Grundlagen, Annahmen und Ziele der Investitionstheorie sowie deren Anwendung im praktischen Kontext. Eine Abgrenzung von statischen und dynamischen Verfahren dient der grundsätzlichen Einordnung der Methoden, wobei der Fokus auf den dynamischen Verfahren liegt. Gegenstand der Investitionsanalyse ist die wirtschaftliche Beurteilung der Vorteilhaftigkeit von Zahlungsströmen, welche aus unternehmerischen Entscheidungen jedweder Art resultieren können.";
+
   return (
     <div className="bg-white w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
       <h2 className="text-[#1D1B20] text-xl font-medium mb-6">
         Course description
       </h2>
-      <p className="text-[#626293] mb-6">
-        Die Studierenden widmen sich im ersten Teil dieses Kurses der Investitionsseite und damit der Frage der Analyse und Generierung finanzwirtschaftlicher Werte. Behandelt werden zunächst die Grundlagen, Annahmen und Ziele der Investitionstheorie sowie deren Anwendung im praktischen Kontext. Eine Abgrenzung von statischen und dynamischen Verfahren dient der grundsätzlichen Einordnung der Methoden, wobei der Fokus auf den dynamischen Verfahren liegt. Gegenstand der Investitionsanalyse ist die wirtschaftliche Beurteilung der Vorteilhaftigkeit von Zahlungsströmen, welche aus unternehmerischen Entscheidungen jedweder Art resultieren können...{" "}
-        <a href="#" className="text-blue-500 hover:underline">
-          More
-        </a>
-      </p>
+      
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className="mb-6"
+      >
+        <div className="text-[#626293]">
+          <p className={`${!isOpen ? "line-clamp-3" : ""}`}>
+            {courseDescription}
+          </p>
+          <CollapsibleTrigger asChild>
+            <button className="text-blue-500 hover:underline focus:outline-none mt-1">
+              {isOpen ? "Less" : "More"}
+            </button>
+          </CollapsibleTrigger>
+        </div>
+        <CollapsibleContent>
+          <p className="text-[#626293] mt-4">
+            Der zweite Teil des Moduls widmet sich der Finanzierungsseite, also der Beschaffung finanzieller Mittel für Investitionen. Neben den Finanzierungsformen stehen hier insbesondere die Einsatzgebiete sowie der Umgang mit Kennzahlen und finanziellen Steuerungsmodellen im Vordergrund. Besondere Berücksichtigung erfahren die Instrumente der Aussenfinanzierung, wie z.B. Kredite, Anleihen oder Leasing, aber auch die Innenfinanzierung sowie spezifische Herausforderungen nicht-börsennotierter Unternehmen.
+          </p>
+        </CollapsibleContent>
+      </Collapsible>
       
       <div className="mb-8">
-        <a href="#" className="flex items-center text-blue-600 gap-2 hover:underline">
+        <a 
+          href="https://res.cloudinary.com/iubh/image/upload/v1630568577/15%20-%20Dokumente/Weiterbildungen/Kurshandbücher/DLBLOFUI-01_Invesition_und_Finanzierung_FS_P_IWe_oECTS_26.08.2021_btnnxg.pdf" 
+          target="_blank"
+          rel="noopener noreferrer" 
+          className="flex items-center text-blue-600 gap-2 hover:underline transition-colors py-1"
+          download
+        >
           <span className="inline-flex items-center justify-center">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 6V12H18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <ArrowDown className="h-4 w-4" />
           </span>
-          Module handbook
+          <span>Module handbook</span>
         </a>
       </div>
 
@@ -97,4 +121,3 @@ export const CourseInfoContent: React.FC = () => {
     </div>
   );
 };
-
