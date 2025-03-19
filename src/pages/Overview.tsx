@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -263,7 +264,7 @@ const Overview = () => {
                             value={`week-${week.week}`}
                             className="border-0 mb-4 overflow-hidden"
                           >
-                            <div className={`bg-[#F1F0FB] dark:bg-gray-700 rounded-[24px] overflow-hidden transition-all duration-300 ${week.isCurrentWeek ? 'ring-2 ring-[#626293] dark:ring-purple-400' : ''}`}>
+                            <div className={`bg-[#F1F0FB] dark:bg-gray-700 rounded-[24px] overflow-hidden transition-all duration-300 ${week.isCurrentWeek ? 'bg-opacity-90 dark:bg-opacity-90' : ''}`}>
                               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                                 <div className="flex flex-col w-full">
                                   <div className="flex items-center justify-between w-full">
