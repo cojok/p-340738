@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -11,6 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 
 const Overview = () => {
   const isMobile = useIsMobile();
@@ -28,7 +28,10 @@ const Overview = () => {
       description: "This week introduces the fundamental concepts and history of social policy, exploring its evolution and importance in modern society.",
       chapters: ["Chapter 1"],
       dateRange: getDateRange(0),
-      tags: ["live session", "self-testing"]
+      tags: [
+        { text: "live session", variant: "purple" },
+        { text: "self-testing", variant: "yellow" }
+      ]
     },
     {
       week: 2,
@@ -36,7 +39,9 @@ const Overview = () => {
       description: "Explore core theoretical frameworks and models that underpin social policy analysis and development.",
       chapters: ["Chapter 2", "Chapter 3"],
       dateRange: getDateRange(7),
-      tags: ["self-testing"]
+      tags: [
+        { text: "self-testing", variant: "yellow" }
+      ]
     },
     {
       week: 3,
@@ -44,7 +49,10 @@ const Overview = () => {
       description: "Compare and contrast different welfare state models from around the world and their social, economic, and political implications.",
       chapters: ["Chapter 4"],
       dateRange: getDateRange(14),
-      tags: ["live session", "self-testing"]
+      tags: [
+        { text: "live session", variant: "purple" }, 
+        { text: "self-testing", variant: "yellow" }
+      ]
     },
     {
       week: 4,
@@ -52,7 +60,9 @@ const Overview = () => {
       description: "Learn analytical tools and methodologies used to evaluate social policy effectiveness and outcomes.",
       chapters: ["Chapter 5", "Chapter 6"],
       dateRange: getDateRange(21),
-      tags: ["self-testing"]
+      tags: [
+        { text: "self-testing", variant: "yellow" }
+      ]
     },
     {
       week: 5,
@@ -60,7 +70,10 @@ const Overview = () => {
       description: "Address current social policy challenges including inequality, demographic changes, and technological disruption.",
       chapters: ["Chapter 7"],
       dateRange: getDateRange(28),
-      tags: ["live session", "self-testing"]
+      tags: [
+        { text: "live session", variant: "purple" },
+        { text: "self-testing", variant: "yellow" }
+      ]
     },
     {
       week: 6,
@@ -68,7 +81,9 @@ const Overview = () => {
       description: "Explore emerging trends and future directions in social policy development and implementation.",
       chapters: ["Chapter 8", "Chapter 9"],
       dateRange: getDateRange(35),
-      tags: ["self-testing"]
+      tags: [
+        { text: "self-testing", variant: "yellow" }
+      ]
     }
   ];
 
@@ -209,9 +224,9 @@ const Overview = () => {
                                 <h4 className="font-medium text-[#1D1B20] mb-2">{week.chapters.join(" and ")}</h4>
                                 <div className="flex flex-wrap gap-2">
                                   {week.tags.map((tag, i) => (
-                                    <span key={i} className="bg-[#F5F5F7] text-[#626293] px-3 py-1 rounded-full text-xs">
-                                      {tag}
-                                    </span>
+                                    <Badge key={i} variant={tag.variant as any}>
+                                      {tag.text}
+                                    </Badge>
                                   ))}
                                 </div>
                               </div>
@@ -338,9 +353,9 @@ const Overview = () => {
                                   <h4 className="font-medium text-[#1D1B20] mb-2">{week.chapters.join(" and ")}</h4>
                                   <div className="flex flex-wrap gap-2">
                                     {week.tags.map((tag, i) => (
-                                      <span key={i} className="bg-[#F5F5F7] text-[#626293] px-3 py-1 rounded-full text-xs">
-                                        {tag}
-                                      </span>
+                                      <Badge key={i} variant={tag.variant as any}>
+                                        {tag.text}
+                                      </Badge>
                                     ))}
                                   </div>
                                 </div>
