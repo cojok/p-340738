@@ -2,7 +2,7 @@
 import React from "react";
 import { LearningModule } from "./LearningModule";
 import { Button } from "@/components/ui/button";
-import { PenSquare } from "lucide-react";
+import { PenLine } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface LearningPlanContentProps {
@@ -40,7 +40,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
                 onClick={handleOverviewClick}
                 className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
               >
-                <PenSquare className="w-4 h-4" />
+                <PenLine className="w-4 h-4" />
                 <span>overview and edit</span>
               </Button>
             </div>
@@ -54,16 +54,16 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
           </h2>
           <div className="flex w-full flex-col items-stretch justify-center mt-6 max-md:max-w-full">
             <LearningModule
-              title="2.4 The Functional View: Distributed Ledger Technologies (DLT)"
-              introduction="Distributed Ledger Technologies (DLT) represent a revolutionary approach to managing and recording digital data across multiple locations or nodes simultaneously. Unlike traditional centralized databases, DLT eliminates the need for a central authority offering a decentralized system where participants..."
+              title="2.1 Statische Verfahren der Kostenvergleichsrechnung"
+              introduction="Statische Verfahren der Investitionsrechnung sind einfache Methoden zur Bewertung von Investitionen. Die Kostenvergleichsrechnung vergleicht Investitionsalternativen anhand ihrer durchschnittlichen Kosten pro Periode. Diese Methode eignet sich besonders für Rationalisierungsinvestitionen und berücksichtigt fixe sowie variable Kosten..."
               videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
               audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/a690391e763b1003a3cc30ac2346e5013d24eb29?placeholderIfAbsent=true"
               practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/d9e93f45438008d90ed010e196ad77b19069ba44?placeholderIfAbsent=true"
               chatIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6685ec8eceee80e952eedfd31a027cb5420bfd5e?placeholderIfAbsent=true"
             />
             <LearningModule
-              title="2.5 History of Blockchain and Distributed Ledger Technology"
-              introduction="The history of blockchain and Distributed Ledger Technology (DLT) begins in 2008 with the creation of Bitcoin by an anonymous person or group known as Satoshi Nakamoto. Blockchain, the underlying technology behind Bitcoin, was designed as a decentralized ledger to enable secure , peer-to-peer..."
+              title="2.2 Gewinnvergleichsrechnung und Rentabilitätsrechnung"
+              introduction="Die Gewinnvergleichsrechnung erweitert die Kostenvergleichsrechnung um die Erlösseite. Sie ist besonders geeignet, wenn Investitionsalternativen zu unterschiedlichen Erlösen führen. Die Rentabilitätsrechnung setzt den durchschnittlichen Gewinn ins Verhältnis zum durchschnittlich gebundenen Kapital und ermöglicht eine Beurteilung der Vorteilhaftigkeit..."
               videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
               audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/0b3e2648cf54f95b8484ce6ec4c46ff033704dc2?placeholderIfAbsent=true"
               practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/f275ede79db99bafb182a6d5fb570db9688c1595?placeholderIfAbsent=true"

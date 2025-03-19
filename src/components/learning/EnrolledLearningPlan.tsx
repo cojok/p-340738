@@ -36,14 +36,14 @@ export const EnrolledLearningPlan: React.FC = () => {
       className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full"
       aria-label="Learning Plan Page"
     >
-      <Header title="Sozialpolitik I" />
+      <Header title="Finanzierung und Investition" />
       <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
         {isMobile ? (
           <div className="flex flex-col w-full gap-[24px] max-md:max-w-full h-full">
             <ScrollArea className="flex-1 w-full py-12">
               <CourseInfo
-                courseCode="SP01-QI"
-                courseTitle="Sozialpolitik I"
+                courseCode="FI01-QI"
+                courseTitle="Finanzierung und Investition"
                 credits={5}
                 status="Enrolled"
               />
@@ -56,7 +56,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                   {activeTab === "learning-plan" && (
                     <LearningPlanContent
                       dateRange="14th October to 20th October"
-                      sectionTitle="2. Basic Concepts"
+                      sectionTitle="2. Statische Verfahren der Investitionsrechnung"
                       onOverviewEdit={() => {}}
                     />
                   )}
@@ -78,8 +78,8 @@ export const EnrolledLearningPlan: React.FC = () => {
             <ResizablePanel defaultSize={70} minSize={50}>
               <ScrollArea className="h-full py-12">
                 <CourseInfo
-                  courseCode="SP01-QI"
-                  courseTitle="Sozialpolitik I"
+                  courseCode="FI01-QI"
+                  courseTitle="Finanzierung und Investition"
                   credits={5}
                   status="Enrolled"
                 />
@@ -92,7 +92,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                     {activeTab === "learning-plan" && (
                       <LearningPlanContent
                         dateRange="14th October to 20th October"
-                        sectionTitle="2. Basic Concepts"
+                        sectionTitle="2. Statische Verfahren der Investitionsrechnung"
                         onOverviewEdit={() => {}}
                       />
                     )}
