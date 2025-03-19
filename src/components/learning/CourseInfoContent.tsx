@@ -1,6 +1,7 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const CourseInfoContent: React.FC = () => {
   return (
@@ -29,7 +30,7 @@ export const CourseInfoContent: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-[#F1F0FB] p-6 rounded-2xl">
+        <Link to="/course/content" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-purple-200 p-2 rounded-full">
@@ -42,9 +43,9 @@ export const CourseInfoContent: React.FC = () => {
             <ArrowRight className="text-gray-400" />
           </div>
           <p className="mt-2 text-sm text-gray-600">12 chapters and 20 Quizzes</p>
-        </div>
+        </Link>
         
-        <div className="bg-[#F1F0FB] p-6 rounded-2xl">
+        <Link to="/course/objectives" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-green-200 p-2 rounded-full">
@@ -59,9 +60,9 @@ export const CourseInfoContent: React.FC = () => {
             <ArrowRight className="text-gray-400" />
           </div>
           <p className="mt-2 text-sm text-gray-600">18 learning goals</p>
-        </div>
+        </Link>
         
-        <div className="bg-[#F1F0FB] p-6 rounded-2xl">
+        <Link to="/course/exams" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-blue-200 p-2 rounded-full">
@@ -75,9 +76,9 @@ export const CourseInfoContent: React.FC = () => {
             <ArrowRight className="text-gray-400" />
           </div>
           <p className="mt-2 text-sm text-gray-600">2 exam types</p>
-        </div>
+        </Link>
         
-        <div className="bg-[#F1F0FB] p-6 rounded-2xl">
+        <Link to="/course/good-to-know" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-teal-200 p-2 rounded-full">
@@ -92,7 +93,7 @@ export const CourseInfoContent: React.FC = () => {
             <ArrowRight className="text-gray-400" />
           </div>
           <p className="mt-2 text-sm text-gray-600">Additional helpful information</p>
-        </div>
+        </Link>
       </div>
     </div>
   );

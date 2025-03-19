@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
 import { CourseInfo } from "./CourseInfo";
@@ -16,16 +15,23 @@ export const EnrolledLearningPlan: React.FC = () => {
   const isMobile = useIsMobile();
   const location = useLocation();
 
-  // Check if there's a selected week in the location state
+  // Check if there's a tab parameter in the URL
   useEffect(() => {
-    // If location state contains a selectedWeek, we can use it to highlight that week
+    const searchParams = new URLSearchParams(location.search);
+    const tabParam = searchParams.get('tab');
+    
+    if (tabParam === 'course-info' || tabParam === 'learning-plan') {
+      setActiveTab(tabParam);
+    }
+    
+    // Check if there's a selected week in the location state
     if (location.state && location.state.selectedWeek) {
       // Ensure we're showing the learning plan tab
       setActiveTab("learning-plan");
       // You could add additional state here to scroll to or highlight the selected week
       console.log("Selected week:", location.state.selectedWeek);
     }
-  }, [location.state]);
+  }, [location.search, location.state]);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
