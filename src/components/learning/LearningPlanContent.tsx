@@ -11,12 +11,14 @@ interface LearningPlanContentProps {
   dateRange: string;
   onOverviewEdit?: () => void;
   activities?: LearningActivity[];
+  estimatedCompletionDate?: string | null;
 }
 
 export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   dateRange,
   onOverviewEdit,
   activities = [],
+  estimatedCompletionDate = "19.10.2024", // Default fallback date
 }) => {
   const navigate = useNavigate();
   
@@ -142,6 +144,12 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
           </div>
         </div>
       </div>
+      
+      {/* Completion date banner */}
+      <div className="bg-[#1A1F2C] text-white rounded-[24px] p-4 md:p-6 my-6 overflow-hidden">
+        <span className="text-sm md:text-lg">With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong></span>
+      </div>
+      
       <div className="w-full mt-6 md:mt-8 rounded-3xl max-w-full">
         <div className="w-full overflow-hidden rounded-3xl max-w-full">
           <div className="flex w-full flex-col items-stretch justify-center mt-4 md:mt-6 max-w-full">

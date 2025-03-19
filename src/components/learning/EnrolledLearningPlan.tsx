@@ -25,7 +25,7 @@ export const EnrolledLearningPlan: React.FC = () => {
   const learningPlanId = searchParams.get('planId') || undefined;
   
   // Fetch learning plan data
-  const { learningPlan, activities, isLoading, hasError } = useLearningPlan(learningPlanId);
+  const { learningPlan, activities, isLoading, hasError, estimatedCompletionDate } = useLearningPlan(learningPlanId);
 
   // Format date range for display (e.g., "14th October to 20th October")
   const formatDateRange = (startDate?: string, endDate?: string) => {
@@ -114,6 +114,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                         dateRange={formatDateRange(learningPlan?.startDate, learningPlan?.endDate)}
                         onOverviewEdit={() => {}}
                         activities={activities || []}
+                        estimatedCompletionDate={estimatedCompletionDate}
                       />
                     )}
                     {activeTab === "course-info" && (
@@ -163,6 +164,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                           dateRange={formatDateRange(learningPlan?.startDate, learningPlan?.endDate)}
                           onOverviewEdit={() => {}}
                           activities={activities || []}
+                          estimatedCompletionDate={estimatedCompletionDate}
                         />
                       )}
                       {activeTab === "course-info" && (

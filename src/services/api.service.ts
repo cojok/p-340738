@@ -82,15 +82,15 @@ export const fetchLearningActivitiesByPlanId = async (planId: string): Promise<L
   }
 };
 
-// Fallback mock data in case the API is unreachable
+// Fallback mock data with consistent dates in case the API is unreachable
 export const getMockLearningPlan = (): LearningPlan => ({
   id: 'mock-plan-id',
   userId: 1,
   courseCode: 'FI01-QI',
   title: 'Finanzierung und Investition',
   status: 'active',
-  startDate: '2024-10-14',
-  endDate: '2024-10-20',
+  startDate: '2024-10-01',
+  endDate: '2024-10-19',
   weeklyLearningHours: 10
 });
 
@@ -115,5 +115,19 @@ export const getMockLearningActivities = (): LearningActivity[] => [
     activityType: 'Quiz',
     title: 'Grundlagen-Quiz',
     description: '10 questions'
+  },
+  {
+    id: 'mock-activity-4',
+    learningPlanId: 'mock-plan-id',
+    activityType: 'Cycle',
+    title: 'Anwendungsübungen - Finanzwirtschaft',
+    description: '5 exercises'
+  },
+  {
+    id: 'mock-activity-5',
+    learningPlanId: 'mock-plan-id',
+    activityType: 'Exam Trainer',
+    title: 'Klausurvorbereitung - Grundlagen',
+    description: '15 practice questions'
   }
 ];
