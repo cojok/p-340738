@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { CourseInfoContent } from "./CourseInfoContent";
 
 export const EnrolledLearningPlan: React.FC = () => {
   const [activeTab, setActiveTab] = useState("learning-plan");
@@ -53,28 +54,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                     />
                   )}
                   {activeTab === "course-info" && (
-                    <div className="bg-white min-w-[420px] w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
-                      <h2 className="text-[#1D1B20] text-xl font-medium tracking-[0px]">
-                        Course Information
-                      </h2>
-                      <p className="text-[#626293] mt-4">
-                        This section would contain detailed course information.
-                      </p>
-                      <div className="flex flex-col gap-4 mt-6">
-                        <div className="bg-white p-4 border border-gray-100 rounded-xl">
-                          <h3 className="text-[#1D1B20] font-medium">Course Objectives</h3>
-                          <p className="text-[#626293] mt-2 text-sm">Understand the fundamental concepts of social policy and its importance in modern society.</p>
-                        </div>
-                        <div className="bg-white p-4 border border-gray-100 rounded-xl">
-                          <h3 className="text-[#1D1B20] font-medium">Required Materials</h3>
-                          <p className="text-[#626293] mt-2 text-sm">Core textbook: "Introduction to Social Policy" by J. Smith (2022)</p>
-                        </div>
-                        <div className="bg-white p-4 border border-gray-100 rounded-xl">
-                          <h3 className="text-[#1D1B20] font-medium">Assessment Methods</h3>
-                          <p className="text-[#626293] mt-2 text-sm">60% Final Exam, 30% Term Paper, 10% Participation</p>
-                        </div>
-                      </div>
-                    </div>
+                    <CourseInfoContent />
                   )}
                 </div>
               </div>
@@ -110,28 +90,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                       />
                     )}
                     {activeTab === "course-info" && (
-                      <div className="bg-white min-w-[420px] w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
-                        <h2 className="text-[#1D1B20] text-xl font-medium tracking-[0px]">
-                          Course Information
-                        </h2>
-                        <p className="text-[#626293] mt-4">
-                          This course provides an introduction to the principles of social policy.
-                        </p>
-                        <div className="flex flex-col gap-4 mt-6">
-                          <div className="bg-white p-4 border border-gray-100 rounded-xl">
-                            <h3 className="text-[#1D1B20] font-medium">Course Objectives</h3>
-                            <p className="text-[#626293] mt-2 text-sm">Understand the fundamental concepts of social policy and its importance in modern society.</p>
-                          </div>
-                          <div className="bg-white p-4 border border-gray-100 rounded-xl">
-                            <h3 className="text-[#1D1B20] font-medium">Required Materials</h3>
-                            <p className="text-[#626293] mt-2 text-sm">Core textbook: "Introduction to Social Policy" by J. Smith (2022)</p>
-                          </div>
-                          <div className="bg-white p-4 border border-gray-100 rounded-xl">
-                            <h3 className="text-[#1D1B20] font-medium">Assessment Methods</h3>
-                            <p className="text-[#626293] mt-2 text-sm">60% Final Exam, 30% Term Paper, 10% Participation</p>
-                          </div>
-                        </div>
-                      </div>
+                      <CourseInfoContent />
                     )}
                   </div>
                 </div>

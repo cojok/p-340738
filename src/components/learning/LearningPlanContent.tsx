@@ -2,6 +2,7 @@
 import React from "react";
 import { LearningModule } from "./LearningModule";
 import { Button } from "@/components/ui/button";
+import { PenSquare } from "lucide-react";
 
 interface LearningPlanContentProps {
   dateRange: string;
@@ -27,15 +28,11 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
                 {dateRange}
               </h2>
               <Button 
-                variant="ghost" 
+                variant="outline" 
                 onClick={onOverviewEdit}
-                className="flex items-center gap-2 text-sm font-normal"
+                className="flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
               >
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/c1c1fffcf96d679a5451a516900e7edd40b289e7?placeholderIfAbsent=true"
-                  className="w-4 h-4"
-                  alt="Edit icon"
-                />
+                <PenSquare className="w-4 h-4" />
                 overview and edit
               </Button>
             </div>

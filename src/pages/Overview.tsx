@@ -2,6 +2,7 @@
 import React from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
+import { ArrowRight } from "lucide-react";
 
 const Overview = () => {
   const weeks = [
@@ -55,12 +56,15 @@ const Overview = () => {
             {weeks.map((week) => (
               <div 
                 key={week.week} 
-                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
-                    Week {week.week}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
+                      Week {week.week}
+                    </div>
                   </div>
+                  <ArrowRight className="text-gray-300 group-hover:text-gray-500 transition-colors" />
                 </div>
                 <h3 className="text-[#1D1B20] text-lg font-medium mb-2">{week.title}</h3>
                 <p className="text-[#626293] text-sm">{week.description}</p>
