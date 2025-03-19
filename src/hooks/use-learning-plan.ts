@@ -86,11 +86,11 @@ export const calculateEstimatedCompletionDate = (plan: LearningPlan): string => 
     
     // Adjust weeks based on weekly study hours (more hours = faster completion)
     let adjustedWeeks = courseDurationWeeks;
-    if (plan.weeklyLearningHours) {
+    if (plan.weeklyHours) {
       // Basic adjustment - this could be more sophisticated
-      if (plan.weeklyLearningHours > 10) {
+      if (plan.weeklyHours > 10) {
         adjustedWeeks = Math.max(4, adjustedWeeks - 2); // Faster but minimum 4 weeks
-      } else if (plan.weeklyLearningHours < 5) {
+      } else if (plan.weeklyHours < 5) {
         adjustedWeeks = adjustedWeeks + 2; // Slower
       }
     }

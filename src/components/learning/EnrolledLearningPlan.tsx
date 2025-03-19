@@ -78,7 +78,7 @@ export const EnrolledLearningPlan: React.FC = () => {
     <div className="w-full p-4 sm:p-6 flex flex-col items-center justify-center gap-4 text-center">
       <AlertCircle className="h-12 w-12 text-red-500" />
       <h3 className="text-xl font-medium text-red-500">Failed to load data</h3>
-      <p className="text-gray-500 dark:text-gray-400">
+      <p className="text-gray-500">
         Unable to connect to the learning plan service. Please try again later.
       </p>
     </div>
@@ -86,7 +86,7 @@ export const EnrolledLearningPlan: React.FC = () => {
 
   return (
     <div
-      className="bg-[rgba(243,243,247,1)] dark:bg-[#151823] flex flex-col items-center min-h-screen w-full overflow-hidden"
+      className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full overflow-hidden"
       aria-label="Learning Plan Page"
     >
       <Header title={learningPlan?.title || "Loading..."} />
