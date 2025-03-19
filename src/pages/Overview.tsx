@@ -8,6 +8,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { useNavigate } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { BookOpen } from "lucide-react";
 
 const Overview = () => {
   const isMobile = useIsMobile();
@@ -51,6 +53,11 @@ const Overview = () => {
     navigate('/learning-plan', { state: { selectedWeek: week } });
   };
 
+  const handleLearningPlanClick = () => {
+    // Navigate back to the learning plan
+    navigate('/learning-plan');
+  };
+
   return (
     <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
       <Header title="Sozialpolitik I" />
@@ -58,12 +65,22 @@ const Overview = () => {
         {isMobile ? (
           <div className="flex flex-col w-full gap-6 h-full">
             <ScrollArea className="flex-1 w-full py-12">
-              <CourseInfo
-                courseCode="SP01-QI"
-                courseTitle="Sozialpolitik I"
-                credits={5}
-                status="Enrolled"
-              />
+              <div className="flex w-full items-center justify-between">
+                <CourseInfo
+                  courseCode="SP01-QI"
+                  courseTitle="Sozialpolitik I"
+                  credits={5}
+                  status="Enrolled"
+                />
+                <Button 
+                  variant="outline" 
+                  onClick={handleLearningPlanClick}
+                  className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>learning plan</span>
+                </Button>
+              </div>
               
               <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
                 <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
@@ -101,12 +118,22 @@ const Overview = () => {
           >
             <ResizablePanel defaultSize={70} minSize={50}>
               <ScrollArea className="h-full py-12 pr-6">
-                <CourseInfo
-                  courseCode="SP01-QI"
-                  courseTitle="Sozialpolitik I"
-                  credits={5}
-                  status="Enrolled"
-                />
+                <div className="flex w-full items-center justify-between">
+                  <CourseInfo
+                    courseCode="SP01-QI"
+                    courseTitle="Sozialpolitik I"
+                    credits={5}
+                    status="Enrolled"
+                  />
+                  <Button 
+                    variant="outline" 
+                    onClick={handleLearningPlanClick}
+                    className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span>learning plan</span>
+                  </Button>
+                </div>
                 
                 <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
                   <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
