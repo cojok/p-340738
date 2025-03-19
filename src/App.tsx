@@ -10,9 +10,6 @@ import Overview from "./pages/Overview";
 import NotFound from "./pages/NotFound";
 import { EnrolledLearningPlan } from "./components/learning/EnrolledLearningPlan";
 import ContentPage from "./pages/course/ContentPage";
-import ObjectivesPage from "./pages/course/ObjectivesPage";
-import ExamsPage from "./pages/course/ExamsPage";
-import GoodToKnowPage from "./pages/course/GoodToKnowPage";
 
 const queryClient = new QueryClient();
 
@@ -28,11 +25,8 @@ const App = () => (
             <Route path="/overview" element={<Overview />} />
             <Route path="/learning-plan" element={<EnrolledLearningPlan />} />
             
-            {/* Course Info Pages */}
+            {/* Course Info Pages - All consolidated into ContentPage */}
             <Route path="/course/content" element={<ContentPage />} />
-            <Route path="/course/objectives" element={<ObjectivesPage />} />
-            <Route path="/course/exams" element={<ExamsPage />} />
-            <Route path="/course/good-to-know" element={<GoodToKnowPage />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
