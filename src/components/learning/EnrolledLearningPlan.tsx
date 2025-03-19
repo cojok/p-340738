@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
 import { CourseInfo } from "./CourseInfo";
 import { TabNavigation } from "./TabNavigation";
@@ -7,14 +7,25 @@ import { LearningPlanContent } from "./LearningPlanContent";
 import { SidebarChat } from "./SidebarChat";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { CourseInfoContent } from "./CourseInfoContent";
 
 export const EnrolledLearningPlan: React.FC = () => {
   const [activeTab, setActiveTab] = useState("learning-plan");
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check if there's a selected week in the location state
+  useEffect(() => {
+    // If location state contains a selectedWeek, we can use it to highlight that week
+    if (location.state && location.state.selectedWeek) {
+      // Ensure we're showing the learning plan tab
+      setActiveTab("learning-plan");
+      // You could add additional state here to scroll to or highlight the selected week
+      console.log("Selected week:", location.state.selectedWeek);
+    }
+  }, [location.state]);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -32,7 +43,7 @@ export const EnrolledLearningPlan: React.FC = () => {
       <Header title="Sozialpolitik I" />
       <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1 overflow-hidden">
         {isMobile ? (
-          <div className="flex flex-col w-full gap-[40px] max-md:max-w-full">
+          <div className="flex flex-col w-full gap-[24px] max-md:max-w-full">
             <main className="min-w-60 w-full py-12 rounded-[32px] max-md:max-w-full">
               <CourseInfo
                 courseCode="SP01-QI"

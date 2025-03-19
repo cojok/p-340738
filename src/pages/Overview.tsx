@@ -6,9 +6,12 @@ import { ArrowRight } from "lucide-react";
 import { SidebarChat } from "@/components/learning/SidebarChat";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
+import { useNavigate } from "react-router-dom";
 
 const Overview = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  
   const weeks = [
     {
       week: 1,
@@ -42,6 +45,11 @@ const Overview = () => {
     }
   ];
 
+  const handleWeekClick = (week: number) => {
+    // Navigate to the learning plan with this week selected
+    navigate('/learning-plan', { state: { selectedWeek: week } });
+  };
+
   return (
     <div className="bg-[rgba(243,243,247,1)] flex flex-col overflow-hidden items-center min-h-screen">
       <Header title="Sozialpolitik I" />
@@ -64,6 +72,7 @@ const Overview = () => {
                     <div 
                       key={week.week} 
                       className="bg-[#F1F0FB] p-6 rounded-2xl transition-shadow hover:shadow-md cursor-pointer group"
+                      onClick={() => handleWeekClick(week.week)}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 mb-3">
@@ -106,6 +115,7 @@ const Overview = () => {
                       <div 
                         key={week.week} 
                         className="bg-[#F1F0FB] p-6 rounded-2xl transition-shadow hover:shadow-md cursor-pointer group"
+                        onClick={() => handleWeekClick(week.week)}
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2 mb-3">

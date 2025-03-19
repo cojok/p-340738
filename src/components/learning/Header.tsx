@@ -11,7 +11,8 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate(-1); // Navigate back to the previous page
+    // Navigate back to the previous page in history
+    navigate(-1);
   };
 
   return (
@@ -25,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           aria-label="Go back"
           onClick={handleBackClick}
         >
-          <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl">
+          <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl hover:bg-[#E5E4F5] transition-colors">
             <ArrowLeft className="h-4 w-4 text-[#626293]" />
           </div>
         </button>
@@ -48,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           className="self-stretch flex items-center overflow-hidden justify-center w-10 my-auto"
           aria-label="Notifications"
         >
-          <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl">
+          <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl hover:bg-[#E5E4F5] transition-colors">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/947f80fb3f47e4b061f112f399cb9e3efd16f8da?placeholderIfAbsent=true"
               className="aspect-[1] object-contain w-4 self-stretch my-auto"
@@ -60,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           className="self-stretch flex items-center overflow-hidden justify-center w-10 my-auto"
           aria-label="Settings"
         >
-          <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl">
+          <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl hover:bg-[#E5E4F5] transition-colors">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c39ab6db1400465d0274ce76c6dbaeb8358a2a5?placeholderIfAbsent=true"
               className="aspect-[1] object-contain w-4 self-stretch my-auto"
@@ -72,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           className="self-stretch flex items-center gap-2 justify-center my-auto rounded-xl"
           aria-label="Synthea assistant"
         >
-          <div className="self-stretch flex min-h-10 items-center gap-2 justify-center my-auto px-2 rounded-xl">
+          <div className="self-stretch flex min-h-10 items-center gap-2 justify-center my-auto px-2 rounded-xl hover:bg-[#E5E4F5] transition-colors">
             <div className="bg-black self-stretch flex min-h-6 items-center gap-2.5 justify-center w-6 h-6 my-auto rounded-full border-black border-solid border-4">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/74aa56ac63d853a42399482d6866d039d2c723bb?placeholderIfAbsent=true"
