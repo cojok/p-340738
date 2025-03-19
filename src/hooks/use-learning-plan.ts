@@ -63,8 +63,8 @@ export const useLearningPlan = (planId?: string) => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  // Calculate estimated completion date based on current date and learning plan
-  const estimatedCompletionDate = learningPlan ? calculateEstimatedCompletionDate(learningPlan) : null;
+  // Use fixed exam date text (6 weeks from now)
+  const estimatedCompletionDate = "19th March to 30th April";
 
   return {
     learningPlan,
