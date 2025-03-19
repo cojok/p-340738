@@ -1,7 +1,7 @@
 
 import React from "react";
-import { ArrowLeft, BookOpen } from "lucide-react";
-import { useNavigate, Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   title: string;
@@ -11,8 +11,8 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    // Navigate back to the previous page in history
-    navigate(-1);
+    // When on the Overview page, navigate to Learning Plan
+    navigate("/learning-plan");
   };
 
   return (
@@ -23,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
       <div className="self-stretch flex items-center gap-2.5 w-10 my-auto">
         <button
           className="self-stretch flex w-10 items-center overflow-hidden justify-center my-auto"
-          aria-label="Go back"
+          aria-label="Go back to Learning Plan"
           onClick={handleBackClick}
         >
           <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl hover:bg-[#E5E4F5] transition-colors">
@@ -35,16 +35,6 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
         {title}
       </div>
       <div className="self-stretch flex items-center gap-4 my-auto">
-        <Link
-          to="/learning-plan"
-          className="self-stretch flex items-center overflow-hidden justify-center my-auto px-3 py-2 rounded-xl bg-[#F1F0FB] hover:bg-[#E5E4F5] transition-colors"
-          aria-label="Go to Learning Plan"
-        >
-          <div className="flex items-center gap-2">
-            <BookOpen className="h-4 w-4 text-[#626293]" />
-            <span className="text-sm text-[#626293]">Learning Plan</span>
-          </div>
-        </Link>
         <button
           className="self-stretch flex items-center overflow-hidden justify-center w-10 my-auto"
           aria-label="Notifications"

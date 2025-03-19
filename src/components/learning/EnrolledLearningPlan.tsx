@@ -7,14 +7,13 @@ import { LearningPlanContent } from "./LearningPlanContent";
 import { SidebarChat } from "./SidebarChat";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { CourseInfoContent } from "./CourseInfoContent";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const EnrolledLearningPlan: React.FC = () => {
   const [activeTab, setActiveTab] = useState("learning-plan");
   const isMobile = useIsMobile();
-  const navigate = useNavigate();
   const location = useLocation();
 
   // Check if there's a selected week in the location state
@@ -32,13 +31,9 @@ export const EnrolledLearningPlan: React.FC = () => {
     setActiveTab(tab);
   };
 
-  const handleOverviewEdit = () => {
-    navigate("/overview");
-  };
-
   return (
     <div
-      className="bg-[rgba(243,243,247,1)] flex flex-col items-center h-screen"
+      className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full"
       aria-label="Learning Plan Page"
     >
       <Header title="Sozialpolitik I" />
@@ -62,7 +57,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                     <LearningPlanContent
                       dateRange="14th October to 20th October"
                       sectionTitle="2. Basic Concepts"
-                      onOverviewEdit={handleOverviewEdit}
+                      onOverviewEdit={() => {}}
                     />
                   )}
                   {activeTab === "course-info" && (
@@ -98,7 +93,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                       <LearningPlanContent
                         dateRange="14th October to 20th October"
                         sectionTitle="2. Basic Concepts"
-                        onOverviewEdit={handleOverviewEdit}
+                        onOverviewEdit={() => {}}
                       />
                     )}
                     {activeTab === "course-info" && (

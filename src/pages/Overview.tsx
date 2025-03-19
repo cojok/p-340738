@@ -52,7 +52,7 @@ const Overview = () => {
   };
 
   return (
-    <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen">
+    <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
       <Header title="Sozialpolitik I" />
       <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
         {isMobile ? (
