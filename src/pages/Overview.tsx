@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -12,9 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { calculateEstimatedCompletionDate } from "@/hooks/use-learning-plan";
 import { addDays, format, startOfWeek } from "date-fns";
 import { useLearningPlan } from "@/hooks/use-learning-plan";
+import { ChatDrawer } from "@/components/learning/ChatDrawer";
 
 const Overview = () => {
   const isMobile = useIsMobile();
@@ -27,7 +26,6 @@ const Overview = () => {
   const today = new Date();
   const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 }); // Start on Monday
   
-  // Generate six weeks of content based on the current week
   const generateWeekContent = () => {
     const weeks = [];
     
@@ -46,7 +44,6 @@ const Overview = () => {
     return weeks;
   };
 
-  // Helper functions to generate content
   function getCourseContentTitle(weekIndex: number): string {
     const titles = [
       "Introduction to Social Policy",
@@ -74,12 +71,10 @@ const Overview = () => {
   function getWeekTags(weekIndex: number): { text: string; variant: string }[] {
     const tags = [];
     
-    // Add live session tag for odd weeks
     if (weekIndex % 2 === 0) {
       tags.push({ text: "live session", variant: "purple" });
     }
     
-    // Add self-testing tag for all weeks
     tags.push({ text: "self-testing", variant: "yellow" });
     
     return tags;
@@ -116,42 +111,14 @@ const Overview = () => {
       <span className="text-lg">
         With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong>
       </span>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button 
-            className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2 whitespace-nowrap"
-          >
-            <PenLine className="w-4 h-4" />
-            <span>edit my learning plan</span>
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-900 rounded-[24px] p-6">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-[#1D1B20] dark:text-white">Edit Learning Plan</DialogTitle>
-          </DialogHeader>
-          <div className="py-4">
-            <p className="text-[#626293] dark:text-gray-300 mb-4">How would you like to adjust your learning plan?</p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] dark:border-gray-700 bg-[#F8F7FF] dark:bg-gray-800 text-[#303746] dark:text-gray-200">
-                <input type="radio" id="increase" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                <label htmlFor="increase" className="flex-1 cursor-pointer">Increase my daily workload</label>
-              </div>
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] dark:border-gray-700 bg-[#F8F7FF] dark:bg-gray-800 text-[#303746] dark:text-gray-200">
-                <input type="radio" id="decrease" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                <label htmlFor="decrease" className="flex-1 cursor-pointer">Decrease my daily workload</label>
-              </div>
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] dark:border-gray-700 bg-[#F8F7FF] dark:bg-gray-800 text-[#303746] dark:text-gray-200">
-                <input type="radio" id="specific" name="schedule" className="h-4 w-4 accent-[#626293]" />
-                <label htmlFor="specific" className="flex-1 cursor-pointer">Set a specific completion date</label>
-              </div>
-            </div>
-            <div className="mt-6 flex justify-end gap-2">
-              <Button variant="outline" className="border-[#626293] text-[#626293] dark:border-gray-400 dark:text-gray-300">Cancel</Button>
-              <Button className="bg-[#1A1F2C] text-white dark:bg-gray-700">Apply Changes</Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <ChatDrawer>
+        <Button 
+          className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2 whitespace-nowrap"
+        >
+          <PenLine className="w-4 h-4" />
+          <span>edit my learning plan</span>
+        </Button>
+      </ChatDrawer>
     </div>
   );
 

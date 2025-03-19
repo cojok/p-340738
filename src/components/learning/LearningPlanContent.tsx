@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { LearningActivity } from "@/types/api.types";
 import { Skeleton } from "@/components/ui/skeleton";
 import { addDays, format, startOfWeek } from "date-fns";
+import { ChatDrawer } from "./ChatDrawer";
 
 interface LearningPlanContentProps {
   dateRange: string;
@@ -18,35 +19,28 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   dateRange,
   onOverviewEdit,
   activities = [],
-  estimatedCompletionDate = null, // No default fallback - will be calculated dynamically
+  estimatedCompletionDate = null,
 }) => {
   const navigate = useNavigate();
   
   const handleOverviewClick = () => {
-    // Navigate to the overview page
     navigate('/overview');
   };
 
-  // Helper function to get next week's date range using current date
   const getNextWeekDateRange = () => {
     const today = new Date();
-    const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 }); // Start on Monday
+    const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 });
     const nextWeekStart = addDays(currentWeekStart, 7);
     const nextWeekEnd = addDays(nextWeekStart, 6);
     return `${format(nextWeekStart, "do MMMM")} to ${format(nextWeekEnd, "do MMMM")}`;
   };
 
-  // Get the current estimated completion date or calculate a default
   const displayCompletionDate = estimatedCompletionDate || format(addDays(new Date(), 42), 'dd.MM.yyyy');
 
-  // Group activities by unit (each unit would have multiple activities)
-  // For this example, we'll group by activity type assuming we don't have unit information
   const groupActivitiesByType = (activities: LearningActivity[]) => {
     const grouped: Record<string, LearningActivity[]> = {};
     
     activities.forEach(activity => {
-      // Using activity type as a simple grouping mechanism
-      // In a real API, you might have unitId or similar property
       const group = activity.activityType || 'Other';
       
       if (!grouped[group]) {
@@ -59,7 +53,6 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
     return grouped;
   };
 
-  // Create a learning module for each group
   const renderLearningModules = () => {
     if (!activities || activities.length === 0) {
       return (
@@ -69,8 +62,6 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
       );
     }
 
-    // For demo purposes, let's create two mock units with the activities
-    // In a real implementation, you would group by actual unit IDs from the API
     const unit1Activities = activities.slice(0, Math.ceil(activities.length / 2));
     const unit2Activities = activities.slice(Math.ceil(activities.length / 2));
 
@@ -105,15 +96,10 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
     );
   };
 
-  // Helper function to get icon based on activity type
   const getIconForActivityType = (type: string) => {
-    // This function would return the appropriate icon component
-    // For simplicity, we'll return null here as the actual implementation
-    // would depend on how your LearningModule component handles icons
     return null;
   };
 
-  // Helper function to get background color based on activity type
   const getBgColorForActivityType = (type: string) => {
     switch (type) {
       case 'Video':
@@ -131,15 +117,13 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
     }
   };
 
-  // Get the current week date range for display
   const getCurrentWeekDateRange = () => {
     const today = new Date();
-    const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 }); // Start on Monday
+    const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 });
     const currentWeekEnd = addDays(currentWeekStart, 6);
     return `${format(currentWeekStart, "do MMMM")} to ${format(currentWeekEnd, "do MMMM")}`;
   };
 
-  // Use the actual current week date range if no dateRange is provided
   const displayDateRange = dateRange || getCurrentWeekDateRange();
 
   return (
@@ -168,18 +152,23 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
         </div>
       </div>
       
-      {/* Completion date banner */}
-      <div className="bg-[#1A1F2C] text-white rounded-[24px] p-4 md:p-6 my-6 overflow-hidden">
+      <div className="bg-[#1A1F2C] text-white rounded-[24px] p-4 md:p-6 my-6 overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <span className="text-sm md:text-lg">With your current settings you will finish the course on the <strong>{displayCompletionDate}</strong></span>
+        <ChatDrawer>
+          <Button 
+            className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2 whitespace-nowrap"
+          >
+            <PenLine className="w-4 h-4" />
+            <span>edit my learning plan</span>
+          </Button>
+        </ChatDrawer>
       </div>
       
       <div className="w-full mt-6 md:mt-8 rounded-3xl max-w-full">
         <div className="w-full overflow-hidden rounded-3xl max-w-full">
           <div className="flex w-full flex-col items-stretch justify-center mt-4 md:mt-6 max-w-full">
-            {/* Display learning modules based on API data */}
             {renderLearningModules()}
             
-            {/* Upcoming Week Content - Dynamic with dates */}
             <div className="bg-[rgba(243,243,247,0.6)] mt-6 md:mt-8 p-4 md:p-6 rounded-3xl">
               <h3 className="text-[#626293] text-base font-medium mb-4">Next Week ({getNextWeekDateRange()})</h3>
               
