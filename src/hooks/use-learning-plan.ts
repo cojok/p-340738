@@ -63,8 +63,10 @@ export const useLearningPlan = (planId?: string) => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  // Use fixed exam date text (6 weeks from now)
-  const estimatedCompletionDate = "19th March to 30th April";
+  // Calculate a single date 6 weeks from now
+  const today = new Date();
+  const completionDate = addWeeks(today, 6);
+  const estimatedCompletionDate = format(completionDate, "do MMMM");
 
   return {
     learningPlan,

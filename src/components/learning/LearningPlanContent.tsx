@@ -1,4 +1,3 @@
-
 import React from "react";
 import { LearningModule } from "./LearningModule";
 import { Button } from "@/components/ui/button";
@@ -36,7 +35,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
     return `${format(nextWeekStart, "do MMMM")} to ${format(nextWeekEnd, "do MMMM")}`;
   };
 
-  const displayCompletionDate = estimatedCompletionDate || format(addDays(new Date(), 42), 'dd.MM.yyyy');
+  const displayCompletionDate = estimatedCompletionDate || format(addDays(new Date(), 42), 'do MMMM');
 
   const groupActivitiesByType = (activities: LearningActivity[]) => {
     const grouped: Record<string, LearningActivity[]> = {};
@@ -154,7 +153,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
       </div>
       
       <div className="bg-[#F3F3F7] text-[#626293] rounded-[24px] p-4 md:p-6 my-6 overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <span className="text-sm md:text-lg">With your current settings you will finish the course on the <strong>{displayCompletionDate}</strong></span>
+        <span className="text-sm md:text-lg">With your current settings you will finish the course on <strong>{displayCompletionDate}</strong></span>
         <ChatDrawer>
           <Button 
             className="bg-[rgba(98,98,147,0.2)] hover:bg-[rgba(98,98,147,0.3)] text-[#626293] rounded-xl py-2 px-4 flex items-center gap-2 whitespace-nowrap"

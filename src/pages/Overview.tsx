@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -16,7 +15,6 @@ import { addDays, format, startOfWeek } from "date-fns";
 import { useLearningPlan } from "@/hooks/use-learning-plan";
 import { ChatDrawer } from "@/components/learning/ChatDrawer";
 
-// Course code constant
 const COURSE_CODE = "DLBLOFUI-01";
 
 const Overview = () => {
@@ -113,7 +111,7 @@ const Overview = () => {
   const renderCompletionBanner = () => (
     <div className="bg-[#1A1F2C] dark:bg-gray-800 text-white rounded-[24px] p-6 flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
       <span className="text-lg">
-        With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong>
+        With your current settings you will finish the course on <strong>{estimatedCompletionDate}</strong>
       </span>
       <ChatDrawer courseCode={COURSE_CODE}>
         <Button 
