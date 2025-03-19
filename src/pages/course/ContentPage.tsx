@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { Header } from "@/components/learning/Header";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowDown, ExternalLink, Menu, Target, FileText, HelpCircle, CheckCircle, Calendar, Clock, BookOpen, MessageCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { 
@@ -368,6 +369,16 @@ const PageContent: React.FC<{ pageType: string }> = ({ pageType }) => {
 export const ContentPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("content");
   const isMobile = useIsMobile();
+  const location = useLocation();
+  
+  // Parse the section from URL search params
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const section = searchParams.get('section');
+    if (section) {
+      setActiveSection(section);
+    }
+  }, [location.search]);
   
   const getSectionTitle = () => {
     switch (activeSection) {

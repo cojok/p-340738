@@ -76,7 +76,7 @@ export const CourseInfoContent: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Link to="/course/content" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
+        <Link to="/course/content?section=content" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-purple-200 p-2 rounded-full">
@@ -91,7 +91,7 @@ export const CourseInfoContent: React.FC = () => {
           <p className="mt-2 text-sm text-gray-600">12 chapters and 20 Quizzes</p>
         </Link>
         
-        <Link to="/course/objectives" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
+        <Link to="/course/content?section=objectives" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-green-200 p-2 rounded-full">
@@ -108,7 +108,7 @@ export const CourseInfoContent: React.FC = () => {
           <p className="mt-2 text-sm text-gray-600">18 learning goals</p>
         </Link>
         
-        <Link to="/course/exams" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
+        <Link to="/course/content?section=exams" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-blue-200 p-2 rounded-full">
@@ -124,7 +124,7 @@ export const CourseInfoContent: React.FC = () => {
           <p className="mt-2 text-sm text-gray-600">2 exam types</p>
         </Link>
         
-        <Link to="/course/good-to-know" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
+        <Link to="/course/content?section=goodtoknow" className="bg-[#F1F0FB] p-6 rounded-2xl hover:bg-[#E8E6F8] transition-colors">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-teal-200 p-2 rounded-full">
