@@ -22,14 +22,14 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   };
 
   return (
-    <div className="bg-white w-full p-4 md:p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full">
-      <div className="flex w-full gap-6 pb-2 max-md:max-w-full">
-        <div className="w-full flex-1 shrink basis-[0%] max-md:max-w-full">
-          <div className="flex w-full flex-col items-stretch max-md:max-w-full">
+    <div className="bg-white w-full p-4 md:p-6 lg:p-10 rounded-[0px_0px_32px_32px] max-w-full">
+      <div className="flex w-full gap-6 pb-2 max-w-full">
+        <div className="w-full flex-1 shrink basis-[0%] max-w-full">
+          <div className="flex w-full flex-col items-stretch max-w-full">
             <div className="text-sm text-[#626293] font-normal leading-[1.3]">
               Your Weekly Learning Plan
             </div>
-            <div className="flex w-full items-center justify-between gap-4 mt-2 flex-wrap max-md:max-w-full">
+            <div className="flex w-full items-center justify-between gap-4 mt-2 flex-wrap max-w-full">
               <h2 className="text-[#101019] text-xl md:text-2xl font-semibold">
                 {dateRange}
               </h2>
@@ -46,9 +46,9 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
           </div>
         </div>
       </div>
-      <div className="w-full mt-6 md:mt-8 rounded-3xl max-md:max-w-full">
-        <div className="w-full overflow-hidden rounded-3xl max-md:max-w-full">
-          <div className="flex w-full flex-col items-stretch justify-center mt-4 md:mt-6 max-md:max-w-full">
+      <div className="w-full mt-6 md:mt-8 rounded-3xl max-w-full">
+        <div className="w-full overflow-hidden rounded-3xl max-w-full">
+          <div className="flex w-full flex-col items-stretch justify-center mt-4 md:mt-6 max-w-full">
             {/* Current Week - Only 2 Units with Video Materials and Quizzes */}
             <LearningModule
               title="Unit 1: Finanzwirtschaftliche Grundlagen"
