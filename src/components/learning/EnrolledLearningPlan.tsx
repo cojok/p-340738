@@ -66,7 +66,7 @@ export const EnrolledLearningPlan: React.FC = () => {
 
   // Loading state UI
   const renderLoadingState = () => (
-    <div className="w-full flex flex-col gap-4 p-6">
+    <div className="w-full flex flex-col gap-4 p-4 sm:p-6">
       <Skeleton className="h-8 w-3/4" />
       <Skeleton className="h-20 w-full" />
       <Skeleton className="h-60 w-full" />
@@ -75,7 +75,7 @@ export const EnrolledLearningPlan: React.FC = () => {
 
   // Error state UI
   const renderErrorState = () => (
-    <div className="w-full p-6 flex flex-col items-center justify-center gap-4 text-center">
+    <div className="w-full p-4 sm:p-6 flex flex-col items-center justify-center gap-4 text-center">
       <AlertCircle className="h-12 w-12 text-red-500" />
       <h3 className="text-xl font-medium text-red-500">Failed to load data</h3>
       <p className="text-gray-500">
@@ -90,18 +90,18 @@ export const EnrolledLearningPlan: React.FC = () => {
       aria-label="Learning Plan Page"
     >
       <Header title={learningPlan?.title || "Loading..."} />
-      <div className="w-full max-w-[1920px] px-4 sm:px-6 md:px-12 lg:px-16 flex-1 pb-6">
+      <div className="w-full max-w-[1920px] px-2 sm:px-6 md:px-12 lg:px-16 flex-1 pb-6">
         {isMobile ? (
           <div className="flex flex-col w-full gap-[24px] max-w-full h-full">
-            <ScrollArea className="flex-1 w-full py-6 md:py-12">
+            <ScrollArea className="flex-1 w-full py-4 md:py-12 overflow-visible">
               <CourseInfo
                 courseCode={learningPlan?.courseCode || "..."}
                 courseTitle={learningPlan?.title || "Loading..."}
                 credits={5}
                 status={learningPlan?.status || "Loading"}
               />
-              <div className="flex w-full items-stretch mt-8 max-w-full overflow-hidden">
-                <div className="w-full max-w-full overflow-hidden">
+              <div className="flex w-full items-stretch mt-4 sm:mt-8 max-w-full overflow-visible">
+                <div className="w-full max-w-full overflow-visible">
                   <TabNavigation
                     activeTab={activeTab}
                     onTabChange={handleTabChange}
