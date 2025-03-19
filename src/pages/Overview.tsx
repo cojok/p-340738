@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -92,13 +93,7 @@ const Overview = () => {
     <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
       <Header title="Sozialpolitik I" />
       <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
-        <div className="pt-12 pb-6">
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-[#1D1B20]">Course Overview</h1>
-            </div>
-          </div>
-        </div>
+        {/* Removed the Course Overview title that was here */}
         
         {isMobile ? (
           <div className="flex flex-col w-full gap-6 h-full">
@@ -113,11 +108,11 @@ const Overview = () => {
               </div>
               
               <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
-                <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center justify-end mb-8">
                   <Button 
                     variant="outline" 
                     onClick={handleCurrentWeekPlanClick}
-                    className="h-10 ml-auto flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                    className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>current week plan</span>
@@ -247,11 +242,11 @@ const Overview = () => {
                 </div>
                 
                 <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-end mb-8">
                     <Button 
                       variant="outline" 
                       onClick={handleCurrentWeekPlanClick}
-                      className="h-10 ml-auto flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                      className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                     >
                       <Calendar className="w-4 h-4" />
                       <span>current week plan</span>
