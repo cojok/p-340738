@@ -1,6 +1,5 @@
 import React from "react";
 import { ResourceCard } from "./ResourceCard";
-
 interface LearningModuleProps {
   title: string;
   introduction: string;
@@ -9,17 +8,15 @@ interface LearningModuleProps {
   practiceIconSrc: string;
   chatIconSrc: string;
 }
-
 export const LearningModule: React.FC<LearningModuleProps> = ({
   title,
   introduction,
   videoIconSrc,
   audioIconSrc,
   practiceIconSrc,
-  chatIconSrc,
+  chatIconSrc
 }) => {
-  return (
-    <div className="bg-[rgba(243,243,247,1)] flex w-full flex-col items-stretch justify-center p-6 rounded-3xl max-md:max-w-full max-md:px-5">
+  return <div className="bg-[rgba(243,243,247,1)] flex w-full flex-col items-stretch justify-center p-6 rounded-3xl max-md:max-w-full max-md:px-5">
       <div className="w-full max-md:max-w-full">
         <h3 className="text-[#101019] text-base font-medium tracking-[0.15px] max-md:max-w-full">
           {title}
@@ -35,7 +32,7 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
                   {introduction}
                 </p>
                 <button className="flex items-center text-black text-center tracking-[0.5px] leading-[1.3] justify-center mt-7 rounded-xl">
-                  <div className="self-stretch bg-[rgba(218,218,231,1)] min-h-8 gap-4 my-auto px-4 rounded-xl">
+                  <div className="self-stretch bg-[rgba(218,218,231,1)] min-h-8 gap-4 px-4 rounded-xl my-[8px]">
                     View script
                   </div>
                 </button>
@@ -47,31 +44,15 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
               <div className="self-stretch flex min-w-60 w-full items-stretch gap-4 flex-1 shrink basis-[0%] my-auto">
                 <div className="flex min-w-60 w-full gap-4 h-full flex-1 shrink basis-[0%]">
                   <div className="flex gap-4 flex-1 shrink basis-4">
-                    <ResourceCard
-                      type="Videos"
-                      iconSrc={videoIconSrc}
-                      bgColor="bg-[rgba(216,206,233,1)]"
-                    />
+                    <ResourceCard type="Videos" iconSrc={videoIconSrc} bgColor="bg-[rgba(216,206,233,1)]" />
                   </div>
-                  <ResourceCard
-                    type="Audio"
-                    iconSrc={audioIconSrc}
-                    bgColor="bg-[rgba(253,243,186,1)]"
-                  />
-                  <ResourceCard
-                    type="Practice"
-                    iconSrc={practiceIconSrc}
-                    bgColor="bg-[rgba(248,216,190,1)]"
-                  />
+                  <ResourceCard type="Audio" iconSrc={audioIconSrc} bgColor="bg-[rgba(253,243,186,1)]" />
+                  <ResourceCard type="Practice" iconSrc={practiceIconSrc} bgColor="bg-[rgba(248,216,190,1)]" />
                 </div>
               </div>
             </div>
             <div className="bg-white flex w-full items-center gap-2 text-sm text-[#313149] font-medium tracking-[0.1px] leading-[1.4] justify-center mt-4 p-6 rounded-2xl max-md:px-5">
-              <img
-                src={chatIconSrc}
-                className="aspect-[1] object-contain w-6 self-stretch shrink-0 my-auto"
-                alt="Chat icon"
-              />
+              <img src={chatIconSrc} className="aspect-[1] object-contain w-6 self-stretch shrink-0 my-auto" alt="Chat icon" />
               <div className="self-stretch my-auto">
                 Conversational Learning
               </div>
@@ -79,6 +60,5 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
