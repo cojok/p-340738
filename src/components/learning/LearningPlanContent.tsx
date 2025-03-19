@@ -1,4 +1,3 @@
-
 import React from "react";
 import { LearningModule } from "./LearningModule";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import { PenLine, CalendarCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { LearningActivity } from "@/types/api.types";
 import { Skeleton } from "@/components/ui/skeleton";
-import { addDays, format } from "date-fns";
+import { addDays, format, startOfWeek } from "date-fns";
 
 interface LearningPlanContentProps {
   dateRange: string;
@@ -28,10 +27,11 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
     navigate('/overview');
   };
 
-  // Helper function to get next week's date range
+  // Helper function to get next week's date range using current date
   const getNextWeekDateRange = () => {
     const today = new Date();
-    const nextWeekStart = addDays(today, 7);
+    const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 }); // Start on Monday
+    const nextWeekStart = addDays(currentWeekStart, 7);
     const nextWeekEnd = addDays(nextWeekStart, 6);
     return `${format(nextWeekStart, "do MMMM")} to ${format(nextWeekEnd, "do MMMM")}`;
   };
@@ -131,6 +131,17 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
     }
   };
 
+  // Get the current week date range for display
+  const getCurrentWeekDateRange = () => {
+    const today = new Date();
+    const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 }); // Start on Monday
+    const currentWeekEnd = addDays(currentWeekStart, 6);
+    return `${format(currentWeekStart, "do MMMM")} to ${format(currentWeekEnd, "do MMMM")}`;
+  };
+
+  // Use the actual current week date range if no dateRange is provided
+  const displayDateRange = dateRange || getCurrentWeekDateRange();
+
   return (
     <div className="bg-white w-full p-4 md:p-6 lg:p-10 rounded-[0px_0px_32px_32px] max-w-full overflow-hidden">
       <div className="flex w-full gap-4 md:gap-6 pb-2 max-w-full">
@@ -141,7 +152,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
             </div>
             <div className="flex w-full items-center justify-between gap-3 mt-2 flex-wrap max-w-full">
               <h2 className="text-[#101019] text-xl md:text-2xl font-semibold break-words">
-                {dateRange || "Current Learning Period"}
+                {displayDateRange}
               </h2>
               <Button 
                 variant="outline" 

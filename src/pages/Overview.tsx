@@ -13,7 +13,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { calculateEstimatedCompletionDate } from "@/hooks/use-learning-plan";
-import { addDays, format } from "date-fns";
+import { addDays, format, startOfWeek } from "date-fns";
 import { useLearningPlan } from "@/hooks/use-learning-plan";
 
 const Overview = () => {
@@ -25,21 +25,22 @@ const Overview = () => {
   
   const weekColor = "#E5DEFF"; // Soft Purple
   const today = new Date();
+  const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 }); // Start on Monday
   
-  // Generate six weeks of content based on the start date
+  // Generate six weeks of content based on the current week
   const generateWeekContent = () => {
     const weeks = [];
-    const startDate = learningPlan?.startDate ? new Date(learningPlan.startDate) : today;
     
     for (let i = 0; i < 6; i++) {
-      const weekStartDate = addDays(startDate, i * 7);
+      const weekStartDate = addDays(currentWeekStart, i * 7);
       weeks.push({
         week: i + 1,
         title: `Week ${i + 1}: ${getCourseContentTitle(i)}`,
         description: getCourseContentDescription(i),
         chapters: [`Chapter ${i + 1}`],
         dateRange: getDateRange(weekStartDate),
-        tags: getWeekTags(i)
+        tags: getWeekTags(i),
+        isCurrentWeek: i === 0
       });
     }
     return weeks;
@@ -295,7 +296,7 @@ const Overview = () => {
                             value={`week-${week.week}`}
                             className="border-0 mb-4 overflow-hidden"
                           >
-                            <div className="bg-[#F1F0FB] dark:bg-gray-700 rounded-[24px] overflow-hidden transition-all duration-300">
+                            <div className={`bg-[#F1F0FB] dark:bg-gray-700 rounded-[24px] overflow-hidden transition-all duration-300 ${week.isCurrentWeek ? 'ring-2 ring-[#626293] dark:ring-purple-400' : ''}`}>
                               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                                 <div className="flex flex-col w-full">
                                   <div className="flex items-center justify-between w-full">
@@ -306,6 +307,11 @@ const Overview = () => {
                                       >
                                         Week {week.week}
                                       </div>
+                                      {week.isCurrentWeek && (
+                                        <div className="bg-purple-200 text-purple-800 dark:bg-purple-900 dark:text-purple-200 px-3 py-1 rounded-full text-xs font-medium">
+                                          Current Week
+                                        </div>
+                                      )}
                                     </div>
                                   </div>
                                   <h3 className="text-[#1D1B20] dark:text-white text-lg font-medium text-left mb-1">{week.title}</h3>
