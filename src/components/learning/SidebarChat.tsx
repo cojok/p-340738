@@ -35,11 +35,9 @@ export const SidebarChat: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4 text-base text-[#303746] font-normal">
-                <button className="w-full flex items-center bg-[#1A1F2C] text-white gap-3 py-4 px-5 rounded-[20px] text-left hover:bg-[#282E3C] transition-colors">
-                  <div className="bg-[#E5DEFF] p-1.5 rounded-full">
-                    <PenLine className="w-4 h-4 text-[#1A1F2C]" />
-                  </div>
-                  <span>Edit my Learning Plan</span>
+                <button className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-3 py-4 px-5 rounded-[20px] text-left hover:bg-[#EDEDF0] transition-colors">
+                  <PenLine className="w-5 h-5 text-[#626293]" />
+                  <span className="text-[#1A1F2C]">Edit my Learning Plan</span>
                 </button>
                 <button className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-3 py-4 px-5 rounded-[20px] text-left hover:bg-[#EDEDF0] transition-colors">
                   <PlayCircle className="w-5 h-5 text-[#626293]" />

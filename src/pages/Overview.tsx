@@ -20,13 +20,16 @@ const Overview = () => {
   // Using a single color (Soft Purple) for all week labels
   const weekColor = "#E5DEFF"; // Soft Purple
   
+  // Get current date to calculate week dates
+  const today = new Date();
+  
   const weeks = [
     {
       week: 1,
       title: "Introduction to Social Policy",
       description: "This week introduces the fundamental concepts and history of social policy, exploring its evolution and importance in modern society.",
       chapters: ["Chapter 1"],
-      dateRange: "Wed 04.09.24 - Tue 10.09.24",
+      dateRange: getDateRange(0),
       tags: ["live session", "self-testing"]
     },
     {
@@ -34,7 +37,7 @@ const Overview = () => {
       title: "Basic Concepts",
       description: "Explore core theoretical frameworks and models that underpin social policy analysis and development.",
       chapters: ["Chapter 2", "Chapter 3"],
-      dateRange: "Wed 11.09.24 - Tue 17.09.24",
+      dateRange: getDateRange(7),
       tags: ["self-testing"]
     },
     {
@@ -42,7 +45,7 @@ const Overview = () => {
       title: "Welfare State Models",
       description: "Compare and contrast different welfare state models from around the world and their social, economic, and political implications.",
       chapters: ["Chapter 4"],
-      dateRange: "Wed 18.09.24 - Tue 24.09.24",
+      dateRange: getDateRange(14),
       tags: ["live session", "self-testing"]
     },
     {
@@ -50,7 +53,7 @@ const Overview = () => {
       title: "Policy Analysis Methods",
       description: "Learn analytical tools and methodologies used to evaluate social policy effectiveness and outcomes.",
       chapters: ["Chapter 5", "Chapter 6"],
-      dateRange: "Wed 25.09.24 - Tue 01.10.24",
+      dateRange: getDateRange(21),
       tags: ["self-testing"]
     },
     {
@@ -58,7 +61,7 @@ const Overview = () => {
       title: "Contemporary Challenges",
       description: "Address current social policy challenges including inequality, demographic changes, and technological disruption.",
       chapters: ["Chapter 7"],
-      dateRange: "Wed 02.10.24 - Tue 08.10.24",
+      dateRange: getDateRange(28),
       tags: ["live session", "self-testing"]
     },
     {
@@ -66,10 +69,32 @@ const Overview = () => {
       title: "Future Perspectives",
       description: "Explore emerging trends and future directions in social policy development and implementation.",
       chapters: ["Chapter 8", "Chapter 9"],
-      dateRange: "Wed 09.10.24 - Tue 15.10.24",
+      dateRange: getDateRange(35),
       tags: ["self-testing"]
     }
   ];
+
+  // Function to generate date ranges starting from today
+  function getDateRange(daysToAdd: number): string {
+    const startDate = new Date(today);
+    startDate.setDate(startDate.getDate() + daysToAdd);
+    
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 6);
+    
+    // Format dates as "Wed DD.MM.YY - Tue DD.MM.YY"
+    const formatDate = (date: Date): string => {
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const day = days[date.getDay()];
+      const dd = String(date.getDate()).padStart(2, '0');
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const yy = String(date.getFullYear()).slice(2);
+      
+      return `${day} ${dd}.${mm}.${yy}`;
+    };
+    
+    return `${formatDate(startDate)} - ${formatDate(endDate)}`;
+  }
 
   const toggleWeek = (week: number) => {
     if (openWeeks.includes(week)) {
@@ -108,7 +133,8 @@ const Overview = () => {
               </div>
               
               <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
-                <div className="flex items-center justify-end mb-8">
+                <div className="flex items-center justify-between mb-8">
+                  <h2 className="text-2xl font-semibold text-[#1D1B20]">My Learning Plan</h2>
                   <Button 
                     variant="outline" 
                     onClick={handleCurrentWeekPlanClick}
@@ -119,24 +145,15 @@ const Overview = () => {
                   </Button>
                 </div>
                 
-                {/* Dark Banner - positioned between title and course content */}
+                {/* Dark Banner - with updated text and no icon */}
                 <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-[#E5DEFF] p-4 rounded-full">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
-                  </div>
+                  <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button 
                         className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
                       >
-                        <PenLine className="w-4 h-4" />
-                        <span>edit</span>
+                        <span>edit my learning plan</span>
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
@@ -242,7 +259,8 @@ const Overview = () => {
                 </div>
                 
                 <div className="bg-white w-full p-10 rounded-[24px] mt-8 max-md:p-5">
-                  <div className="flex items-center justify-end mb-8">
+                  <div className="flex items-center justify-between mb-8">
+                    <h2 className="text-2xl font-semibold text-[#1D1B20]">My Learning Plan</h2>
                     <Button 
                       variant="outline" 
                       onClick={handleCurrentWeekPlanClick}
@@ -253,24 +271,15 @@ const Overview = () => {
                     </Button>
                   </div>
                   
-                  {/* Dark Banner - positioned between title and course content */}
+                  {/* Dark Banner - with updated text and no icon */}
                   <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-4">
-                      <div className="bg-[#E5DEFF] p-4 rounded-full">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#1A1F2C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
-                    </div>
+                    <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button 
                           className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
                         >
-                          <PenLine className="w-4 h-4" />
-                          <span>edit</span>
+                          <span>edit my learning plan</span>
                         </Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
