@@ -30,7 +30,7 @@ export const EnrolledLearningPlan: React.FC = () => {
       aria-label="Learning Plan Page"
     >
       <Header title="Sozialpolitik I" />
-      <div className="w-full max-w-[1920px] px-[72px] max-md:px-5 flex-1 overflow-hidden">
+      <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1 overflow-hidden">
         {isMobile ? (
           <div className="flex flex-col w-full gap-[40px] max-md:max-w-full">
             <main className="min-w-60 w-full py-12 rounded-[32px] max-md:max-w-full">
@@ -96,7 +96,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                 </div>
               </main>
             </ResizablePanel>
-            <ResizableHandle withHandle />
+            <ResizableHandle withHandle className="mx-6" />
             <ResizablePanel defaultSize={30} minSize={20}>
               <div className="h-full py-12 pr-0">
                 <SidebarChat />

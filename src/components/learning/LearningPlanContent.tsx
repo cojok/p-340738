@@ -16,32 +16,32 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   onOverviewEdit,
 }) => {
   return (
-    <div className="bg-white min-w-[420px] w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
+    <div className="bg-white w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
       <div className="flex w-full gap-6 pb-2 max-md:max-w-full">
         <div className="min-w-60 w-full flex-1 shrink basis-[0%] max-md:max-w-full">
           <div className="flex w-full flex-col items-stretch max-md:max-w-full">
-            <div className="gap-2 text-sm text-[#626293] font-normal tracking-[0.5px] leading-[1.3]">
+            <div className="text-sm text-[#626293] font-normal leading-[1.3]">
               Your Weekly Learning Plan
             </div>
-            <div className="flex w-full items-center gap-4 flex-wrap mt-1 max-md:max-w-full">
-              <h2 className="text-[#101019] text-2xl font-semibold tracking-[0px] self-stretch flex-1 shrink basis-[0%] my-auto max-md:max-w-full">
+            <div className="flex w-full items-center justify-between gap-4 mt-2 max-md:flex-wrap max-md:max-w-full">
+              <h2 className="text-[#101019] text-2xl font-semibold">
                 {dateRange}
               </h2>
               <Button 
                 variant="outline" 
                 onClick={onOverviewEdit}
-                className="flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
+                className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
               >
                 <PenSquare className="w-4 h-4" />
-                overview and edit
+                <span>overview and edit</span>
               </Button>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full mt-6 rounded-3xl max-md:max-w-full">
+      <div className="w-full mt-8 rounded-3xl max-md:max-w-full">
         <div className="w-full overflow-hidden rounded-3xl max-md:max-w-full">
-          <h2 className="text-[#1D1B20] text-xl font-medium tracking-[0px]">
+          <h2 className="text-[#1D1B20] text-xl font-medium">
             {sectionTitle}
           </h2>
           <div className="flex w-full flex-col items-stretch justify-center mt-6 max-md:max-w-full">

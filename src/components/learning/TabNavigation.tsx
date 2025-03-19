@@ -12,35 +12,35 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
   onTabChange,
 }) => {
   return (
-    <div className="bg-[rgba(243,243,247,1)] min-h-[72px] w-full text-base font-normal rounded-[24px_24px_0px_0px] max-md:max-w-full">
-      <div className="relative flex min-h-12 w-full items-stretch justify-between flex-1 h-full max-md:max-w-full">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0afb42b8979e9ad3a98d502415b39246b29f2dc8?placeholderIfAbsent=true"
-          className="aspect-[25.64] object-contain w-[1232px] absolute z-0 min-w-60 rounded-[24px_24px_24px_24px] inset-0 max-md:max-w-full"
-          alt="Tab background"
-        />
-        <Tabs 
-          value={activeTab} 
-          onValueChange={onTabChange}
-          className="flex w-full min-h-12"
-        >
-          <TabsList className="bg-transparent w-full h-full flex">
-            <TabsTrigger 
-              value="learning-plan" 
-              className={`flex-1 min-h-12 text-base flex items-center justify-center ${activeTab === "learning-plan" ? "text-[#101019]" : "text-[#626293]"}`}
-            >
-              Learning Plan
-            </TabsTrigger>
-            <TabsTrigger 
-              value="course-info" 
-              className={`flex-1 min-h-12 text-base flex items-center justify-center ${activeTab === "course-info" ? "text-[#101019]" : "text-[#626293]"}`}
-            >
-              Course Info
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
-      <div className="bg-white flex min-h-6 w-full rounded-[0px_32px_0px_0px] max-md:max-w-full" />
+    <div className="bg-[rgba(243,243,247,1)] min-h-[72px] w-full rounded-[24px_24px_0px_0px] max-md:max-w-full relative">
+      <Tabs 
+        value={activeTab} 
+        onValueChange={onTabChange}
+        className="w-full"
+      >
+        <TabsList className="bg-transparent w-full h-[72px] flex border-0 p-0 rounded-[24px_24px_0_0] overflow-visible">
+          <TabsTrigger 
+            value="learning-plan" 
+            className={`z-10 flex-1 h-[72px] text-base flex items-center justify-center transition-all duration-300 rounded-[24px_24px_0_0] 
+              ${activeTab === "learning-plan" 
+                ? "bg-white text-[#101019] border-0 data-[state=active]:bg-white data-[state=active]:shadow-none" 
+                : "text-[#626293] border-0 bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none"}`}
+          >
+            Learning Plan
+          </TabsTrigger>
+          <TabsTrigger 
+            value="course-info" 
+            className={`z-10 flex-1 h-[72px] text-base flex items-center justify-center transition-all duration-300 rounded-[24px_24px_0_0] 
+              ${activeTab === "course-info" 
+                ? "bg-white text-[#101019] border-0 data-[state=active]:bg-white data-[state=active]:shadow-none" 
+                : "text-[#626293] border-0 bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none"}`}
+          >
+            Course Info
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+      {/* This div creates the white rounded corner that connects to the main content */}
+      <div className={`absolute bottom-0 left-0 w-full h-6 ${activeTab === "course-info" ? "bg-white rounded-[0px_0px_0px_32px]" : "bg-white rounded-[0px_32px_0px_0px]"}`} />
     </div>
   );
 };

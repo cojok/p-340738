@@ -41,7 +41,7 @@ const Overview = () => {
   return (
     <div className="bg-[rgba(243,243,247,1)] flex flex-col overflow-hidden items-center min-h-screen">
       <Header title="Sozialpolitik I" />
-      <div className="w-full max-w-[1920px] px-[72px] max-md:px-5 py-12">
+      <div className="w-full max-w-[1920px] px-16 max-md:px-5 py-12">
         <CourseInfo
           courseCode="SP01-QI"
           courseTitle="Sozialpolitik I"
@@ -50,16 +50,16 @@ const Overview = () => {
         />
         
         <div className="bg-white w-full p-10 rounded-[32px] mt-8 max-md:p-5">
-          <h2 className="text-[#1D1B20] text-xl font-medium mb-6">Course Overview</h2>
+          <h2 className="text-[#1D1B20] text-xl font-medium mb-8">Course Overview</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {weeks.map((week) => (
               <div 
                 key={week.week} 
-                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                className="bg-[#F1F0FB] p-6 rounded-2xl transition-shadow hover:shadow-md cursor-pointer group"
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-3">
                     <div className="bg-[#E5F1FA] text-[#303746] px-3 py-1 rounded-full text-sm font-medium">
                       Week {week.week}
                     </div>
