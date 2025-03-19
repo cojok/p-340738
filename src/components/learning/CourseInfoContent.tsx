@@ -3,6 +3,34 @@ import React, { useState } from "react";
 import { ArrowRight, ArrowDown, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
+
+interface StyledLinkProps {
+  href: string;
+  children: React.ReactNode;
+  icon?: React.ReactNode;
+  className?: string;
+  download?: boolean;
+}
+
+const StyledLink: React.FC<StyledLinkProps> = ({ href, children, icon, className, download = false }) => {
+  return (
+    <a 
+      href={href} 
+      target="_blank"
+      rel="noopener noreferrer" 
+      className={cn(
+        "inline-flex items-center text-blue-600 hover:text-purple-600 gap-2 hover:underline transition-colors py-1 px-1",
+        "border border-transparent hover:border-blue-200 rounded",
+        className
+      )}
+      download={download}
+    >
+      {icon && <span className="inline-flex items-center justify-center">{icon}</span>}
+      <span>{children}</span>
+    </a>
+  );
+};
 
 export const CourseInfoContent: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,18 +66,13 @@ export const CourseInfoContent: React.FC = () => {
       </Collapsible>
       
       <div className="mb-8">
-        <a 
-          href="https://res.cloudinary.com/iubh/image/upload/v1630568577/15%20-%20Dokumente/Weiterbildungen/Kurshandbücher/DLBLOFUI-01_Invesition_und_Finanzierung_FS_P_IWe_oECTS_26.08.2021_btnnxg.pdf" 
-          target="_blank"
-          rel="noopener noreferrer" 
-          className="flex items-center text-blue-600 gap-2 hover:underline transition-colors py-1"
+        <StyledLink 
+          href="https://res.cloudinary.com/iubh/image/upload/v1630568577/15%20-%20Dokumente/Weiterbildungen/Kurshandbücher/DLBLOFUI-01_Invesition_und_Finanzierung_FS_P_IWe_oECTS_26.08.2021_btnnxg.pdf"
+          icon={<ArrowDown className="h-4 w-4" />}
           download
         >
-          <span className="inline-flex items-center justify-center">
-            <ArrowDown className="h-4 w-4" />
-          </span>
-          <span>Module handbook</span>
-        </a>
+          Module handbook
+        </StyledLink>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
