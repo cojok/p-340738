@@ -19,10 +19,10 @@ export const SidebarChat: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4 text-base text-[#303746] font-normal">
-                <button className="w-full flex items-center backdrop-blur-md bg-[#E9F3FE] gap-2.5 py-4 px-6 rounded-[20px] text-left hover:bg-[#D9ECFE] transition-colors">
+                <button className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-2.5 py-4 px-6 rounded-[20px] text-left hover:bg-[#EDEDF0] transition-colors">
                   <span className="text-[#1A1F2C]">Asking questions about the course content</span>
                 </button>
-                <button className="w-full flex items-center backdrop-blur-md bg-[#E9F3FE] gap-2.5 py-4 px-6 rounded-[20px] text-left hover:bg-[#D9ECFE] transition-colors">
+                <button className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-2.5 py-4 px-6 rounded-[20px] text-left hover:bg-[#EDEDF0] transition-colors">
                   <span className="text-[#1A1F2C]">Deep Dialog Learning</span>
                 </button>
               </div>
