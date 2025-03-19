@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -17,10 +16,8 @@ const Overview = () => {
   const navigate = useNavigate();
   const [openWeeks, setOpenWeeks] = useState<number[]>([]);
   
-  // Using a single color (Soft Purple) for all week labels
   const weekColor = "#E5DEFF"; // Soft Purple
   
-  // Get current date to calculate week dates
   const today = new Date();
   
   const weeks = [
@@ -74,7 +71,6 @@ const Overview = () => {
     }
   ];
 
-  // Function to generate date ranges starting from today
   function getDateRange(daysToAdd: number): string {
     const startDate = new Date(today);
     startDate.setDate(startDate.getDate() + daysToAdd);
@@ -82,7 +78,6 @@ const Overview = () => {
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + 6);
     
-    // Format dates as "Wed DD.MM.YY - Tue DD.MM.YY"
     const formatDate = (date: Date): string => {
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       const day = days[date.getDay()];
@@ -105,12 +100,10 @@ const Overview = () => {
   };
 
   const handleWeekClick = (week: number) => {
-    // Navigate to the learning plan with this week selected
     navigate('/learning-plan', { state: { selectedWeek: week } });
   };
 
   const handleCurrentWeekPlanClick = () => {
-    // Navigate back to the learning plan
     navigate('/learning-plan');
   };
 
@@ -118,8 +111,6 @@ const Overview = () => {
     <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
       <Header title="Sozialpolitik I" />
       <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
-        {/* Removed the Course Overview title that was here */}
-        
         {isMobile ? (
           <div className="flex flex-col w-full gap-6 h-full">
             <ScrollArea className="flex-1 w-full">
@@ -145,7 +136,6 @@ const Overview = () => {
                   </Button>
                 </div>
                 
-                {/* Dark Banner - with updated text and no icon */}
                 <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
                   <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
                   <Dialog>
@@ -153,6 +143,7 @@ const Overview = () => {
                       <Button 
                         className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
                       >
+                        <PenLine className="w-4 h-4" />
                         <span>edit my learning plan</span>
                       </Button>
                     </DialogTrigger>
@@ -271,7 +262,6 @@ const Overview = () => {
                     </Button>
                   </div>
                   
-                  {/* Dark Banner - with updated text and no icon */}
                   <div className="bg-[#1A1F2C] text-white rounded-[24px] p-6 flex items-center justify-between mb-8">
                     <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
                     <Dialog>
@@ -279,6 +269,7 @@ const Overview = () => {
                         <Button 
                           className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
                         >
+                          <PenLine className="w-4 h-4" />
                           <span>edit my learning plan</span>
                         </Button>
                       </DialogTrigger>
