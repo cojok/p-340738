@@ -44,10 +44,10 @@ export const EnrolledLearningPlan: React.FC = () => {
       aria-label="Learning Plan Page"
     >
       <Header title="Finanzierung und Investition" />
-      <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
+      <div className="w-full max-w-[1920px] px-4 md:px-16 flex-1">
         {isMobile ? (
           <div className="flex flex-col w-full gap-[24px] max-md:max-w-full h-full">
-            <ScrollArea className="flex-1 w-full py-12">
+            <ScrollArea className="flex-1 w-full py-6 md:py-12">
               <CourseInfo
                 courseCode="FI01-QI"
                 courseTitle="Finanzierung und Investition"
@@ -55,7 +55,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                 status="Enrolled"
               />
               <div className="flex w-full items-stretch flex-wrap mt-8 max-md:max-w-full">
-                <div className="min-w-60 flex-1 shrink basis-[0%] max-md:max-w-full">
+                <div className="w-full flex-1 max-md:max-w-full">
                   <TabNavigation
                     activeTab={activeTab}
                     onTabChange={handleTabChange}
@@ -80,8 +80,17 @@ export const EnrolledLearningPlan: React.FC = () => {
           <ResizablePanelGroup 
             direction="horizontal" 
             className="min-h-[800px] h-full rounded-lg"
+            onLayout={(sizes) => {
+              // Optional: Store the sizes in localStorage for persistence
+              window.localStorage.setItem('panel-layout', JSON.stringify(sizes))
+            }}
           >
-            <ResizablePanel defaultSize={70} minSize={50}>
+            <ResizablePanel 
+              defaultSize={70} 
+              minSize={40} 
+              maxSize={80}
+              className="overflow-hidden"
+            >
               <ScrollArea className="h-full py-12">
                 <CourseInfo
                   courseCode="FI01-QI"
@@ -90,7 +99,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                   status="Enrolled"
                 />
                 <div className="flex w-full items-stretch flex-wrap mt-8 max-md:max-w-full">
-                  <div className="min-w-60 flex-1 shrink basis-[0%] max-md:max-w-full">
+                  <div className="w-full max-md:max-w-full">
                     <TabNavigation
                       activeTab={activeTab}
                       onTabChange={handleTabChange}
@@ -108,9 +117,14 @@ export const EnrolledLearningPlan: React.FC = () => {
                 </div>
               </ScrollArea>
             </ResizablePanel>
-            <ResizableHandle withHandle className="mx-6" />
-            <ResizablePanel defaultSize={30} minSize={20}>
-              <ScrollArea className="h-full py-12 pr-0">
+            <ResizableHandle withHandle className="mx-2 md:mx-6" />
+            <ResizablePanel 
+              defaultSize={30} 
+              minSize={20} 
+              maxSize={40}
+              className="overflow-hidden"
+            >
+              <ScrollArea className="h-full py-6 md:py-12 pr-0">
                 <SidebarChat />
               </ScrollArea>
             </ResizablePanel>

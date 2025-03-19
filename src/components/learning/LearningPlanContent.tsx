@@ -22,15 +22,15 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   };
 
   return (
-    <div className="bg-white w-full p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full max-md:px-5">
+    <div className="bg-white w-full p-4 md:p-10 rounded-[0px_0px_32px_32px] max-md:max-w-full">
       <div className="flex w-full gap-6 pb-2 max-md:max-w-full">
-        <div className="min-w-60 w-full flex-1 shrink basis-[0%] max-md:max-w-full">
+        <div className="w-full flex-1 shrink basis-[0%] max-md:max-w-full">
           <div className="flex w-full flex-col items-stretch max-md:max-w-full">
             <div className="text-sm text-[#626293] font-normal leading-[1.3]">
               Your Weekly Learning Plan
             </div>
-            <div className="flex w-full items-center justify-between gap-4 mt-2 max-md:flex-wrap max-md:max-w-full">
-              <h2 className="text-[#101019] text-2xl font-semibold">
+            <div className="flex w-full items-center justify-between gap-4 mt-2 flex-wrap max-md:max-w-full">
+              <h2 className="text-[#101019] text-xl md:text-2xl font-semibold">
                 {dateRange}
               </h2>
               <Button 
@@ -39,15 +39,16 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
                 className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
               >
                 <PenLine className="w-4 h-4" />
-                <span>overview and edit</span>
+                <span className="hidden sm:inline">overview and edit</span>
+                <span className="sm:hidden">edit</span>
               </Button>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full mt-8 rounded-3xl max-md:max-w-full">
+      <div className="w-full mt-6 md:mt-8 rounded-3xl max-md:max-w-full">
         <div className="w-full overflow-hidden rounded-3xl max-md:max-w-full">
-          <div className="flex w-full flex-col items-stretch justify-center mt-6 max-md:max-w-full">
+          <div className="flex w-full flex-col items-stretch justify-center mt-4 md:mt-6 max-md:max-w-full">
             {/* Current Week - Only 2 Units with Video Materials and Quizzes */}
             <LearningModule
               title="Unit 1: Finanzwirtschaftliche Grundlagen"
@@ -106,11 +107,11 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
             />
             
             {/* Upcoming Week Content */}
-            <div className="bg-[rgba(243,243,247,0.6)] mt-8 p-6 rounded-3xl">
+            <div className="bg-[rgba(243,243,247,0.6)] mt-6 md:mt-8 p-4 md:p-6 rounded-3xl">
               <h3 className="text-[#626293] text-base font-medium mb-4">Next Week (21st October to 27th October)</h3>
               
-              <div className="flex flex-col gap-5">
-                <div className="bg-[rgba(243,243,247,1)] p-5 rounded-xl">
+              <div className="flex flex-col gap-4 md:gap-5">
+                <div className="bg-[rgba(243,243,247,1)] p-4 md:p-5 rounded-xl">
                   <h4 className="text-[#313149] text-base font-medium mb-3">Unit 3: Klassische dynamische Verfahren der Investitionsrechnung</h4>
                   <div className="flex flex-wrap gap-3">
                     <span className="text-xs bg-[rgba(216,206,233,0.5)] text-[#626293] py-1 px-3 rounded-full">Video Lecture</span>
@@ -119,7 +120,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
                   </div>
                 </div>
                 
-                <div className="bg-[rgba(243,243,247,1)] p-5 rounded-xl">
+                <div className="bg-[rgba(243,243,247,1)] p-4 md:p-5 rounded-xl">
                   <h4 className="text-[#313149] text-base font-medium mb-3">Unit 4: Wiederholung und Quizzes - Investitionsrechnung</h4>
                   <div className="flex flex-wrap gap-3">
                     <span className="text-xs bg-[rgba(248,216,190,0.5)] text-[#626293] py-1 px-3 rounded-full">Quiz</span>
