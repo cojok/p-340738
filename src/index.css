@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,20 +36,33 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Content color scheme from image */
+    --content-onaction: 240 30% 16%;
+    --content-onaction-inverted: 0 0% 100%;
+    --content-primary: 240 5% 10%;
+    --content-primary-inverted: 0 0% 100%;
+    --content-secondary: 240 14% 96%;
+    --content-secondary-inverted: 240 30% 16%;
+    --content-tertiary: 240 13% 85%;
+    --content-tertiary-inverted: 240 30% 16%;
+    --content-danger: 0 69% 50%;
+    --content-warning: 35 100% 50%;
+    --content-caution: 49 100% 50%;
+    --content-success: 142 76% 36%;
+    --content-confirm: 180 66% 55%;
+    --content-info: 210 100% 59%;
+    --content-draft: 270 59% 66%;
+    --content-link: 240 100% 56%;
+    --content-link-active: 240 100% 69%;
+    --content-disabled: 240 15% 65%;
   }
 
   .dark {
@@ -79,6 +93,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -87,6 +102,26 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark mode content color scheme from image */
+    --content-onaction-inverted: 240 30% 16%;
+    --content-onaction: 0 0% 100%;
+    --content-primary-inverted: 240 5% 10%;
+    --content-primary: 0 0% 100%;
+    --content-secondary-inverted: 240 14% 96%;
+    --content-secondary: 240 30% 16%;
+    --content-tertiary-inverted: 240 13% 85%;
+    --content-tertiary: 240 30% 16%;
+    --content-danger-inverted: 0 69% 35%;
+    --content-warning-inverted: 35 80% 40%;
+    --content-caution-inverted: 49 80% 40%;
+    --content-success-inverted: 142 56% 26%;
+    --content-confirm-inverted: 180 46% 45%;
+    --content-info-inverted: 210 80% 49%;
+    --content-draft-inverted: 270 39% 56%;
+    --content-link-inverted: 240 80% 46%;
+    --content-link-active-inverted: 240 80% 59%;
+    --content-disabled-inverted: 240 5% 55%;
   }
 }
 

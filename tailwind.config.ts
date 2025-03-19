@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,36 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				content: {
+					onaction: 'hsl(var(--content-onaction))',
+					'onaction-inverted': 'hsl(var(--content-onaction-inverted))',
+					primary: 'hsl(var(--content-primary))',
+					'primary-inverted': 'hsl(var(--content-primary-inverted))',
+					secondary: 'hsl(var(--content-secondary))',
+					'secondary-inverted': 'hsl(var(--content-secondary-inverted))',
+					tertiary: 'hsl(var(--content-tertiary))',
+					'tertiary-inverted': 'hsl(var(--content-tertiary-inverted))',
+					danger: 'hsl(var(--content-danger))',
+					warning: 'hsl(var(--content-warning))',
+					caution: 'hsl(var(--content-caution))',
+					success: 'hsl(var(--content-success))',
+					confirm: 'hsl(var(--content-confirm))',
+					info: 'hsl(var(--content-info))',
+					draft: 'hsl(var(--content-draft))',
+					link: 'hsl(var(--content-link))',
+					'link-active': 'hsl(var(--content-link-active))',
+					disabled: 'hsl(var(--content-disabled))',
+					'danger-inverted': 'hsl(var(--content-danger-inverted))',
+					'warning-inverted': 'hsl(var(--content-warning-inverted))',
+					'caution-inverted': 'hsl(var(--content-caution-inverted))',
+					'success-inverted': 'hsl(var(--content-success-inverted))',
+					'confirm-inverted': 'hsl(var(--content-confirm-inverted))',
+					'info-inverted': 'hsl(var(--content-info-inverted))',
+					'draft-inverted': 'hsl(var(--content-draft-inverted))',
+					'link-inverted': 'hsl(var(--content-link-inverted))',
+					'link-active-inverted': 'hsl(var(--content-link-active-inverted))',
+					'disabled-inverted': 'hsl(var(--content-disabled-inverted))',
 				}
 			},
 			borderRadius: {
