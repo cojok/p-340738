@@ -60,19 +60,16 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
             {resources && resources.length > 0 ? (
               <div className="flex flex-col gap-4 w-full">
                 {resources.map((resource, index) => (
-                  <div key={index} className="bg-white p-3 md:p-4 rounded-2xl flex items-center gap-2 w-full overflow-hidden">
-                    <div className={`${resource.bgColor} p-2 md:p-3 rounded-xl flex-shrink-0`}>
+                  <div key={index} className="bg-white p-3 md:p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full overflow-hidden">
+                    <div className={`${resource.bgColor} p-2 md:p-3 rounded-xl flex-shrink-0 mb-2 sm:mb-0`}>
                       {resource.icon || getIconByType(resource.type)}
                     </div>
                     <div className="flex-1 min-w-0 overflow-hidden">
                       <h5 className="text-[#313149] font-medium text-sm truncate">{resource.type}</h5>
                       <p className="text-[#626293] text-sm truncate">{resource.title}</p>
                     </div>
-                    <div className="text-xs text-[#626293] bg-[rgba(243,243,247,1)] py-1 px-2 rounded-full whitespace-nowrap flex-shrink-0 hidden sm:block">
+                    <div className="text-xs text-[#626293] bg-[rgba(243,243,247,1)] py-1 px-2 rounded-full whitespace-nowrap flex-shrink-0 mt-2 sm:mt-0 w-full sm:w-auto text-center sm:text-left">
                       {resource.description}
-                    </div>
-                    <div className="text-xs text-[#626293] bg-[rgba(243,243,247,1)] py-1 px-2 rounded-full flex-shrink-0 sm:hidden">
-                      {resource.description.length > 10 ? resource.description.substring(0, 8) + '...' : resource.description}
                     </div>
                   </div>
                 ))}
