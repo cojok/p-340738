@@ -10,11 +10,37 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/componen
 import { useLocation } from "react-router-dom";
 import { CourseInfoContent } from "./CourseInfoContent";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useLearningPlan } from "@/hooks/use-learning-plan";
+import { Skeleton } from "@/components/ui/skeleton";
+import { AlertCircle } from "lucide-react";
+import { format, parseISO } from "date-fns";
 
 export const EnrolledLearningPlan: React.FC = () => {
   const [activeTab, setActiveTab] = useState("learning-plan");
   const isMobile = useIsMobile();
   const location = useLocation();
+  
+  // Extract potential learningPlanId from URL search params
+  const searchParams = new URLSearchParams(location.search);
+  const learningPlanId = searchParams.get('planId') || undefined;
+  
+  // Fetch learning plan data
+  const { learningPlan, activities, isLoading, hasError } = useLearningPlan(learningPlanId);
+
+  // Format date range for display (e.g., "14th October to 20th October")
+  const formatDateRange = (startDate?: string, endDate?: string) => {
+    try {
+      if (!startDate || !endDate) return "";
+      
+      const start = parseISO(startDate);
+      const end = parseISO(endDate);
+      
+      return `${format(start, "do MMMM")} to ${format(end, "do MMMM")}`;
+    } catch (e) {
+      console.error("Error formatting dates:", e);
+      return "";
+    }
+  };
 
   // Check if there's a tab parameter in the URL
   useEffect(() => {
@@ -38,21 +64,41 @@ export const EnrolledLearningPlan: React.FC = () => {
     setActiveTab(tab);
   };
 
+  // Loading state UI
+  const renderLoadingState = () => (
+    <div className="w-full flex flex-col gap-4 p-6">
+      <Skeleton className="h-8 w-3/4" />
+      <Skeleton className="h-20 w-full" />
+      <Skeleton className="h-60 w-full" />
+    </div>
+  );
+
+  // Error state UI
+  const renderErrorState = () => (
+    <div className="w-full p-6 flex flex-col items-center justify-center gap-4 text-center">
+      <AlertCircle className="h-12 w-12 text-red-500" />
+      <h3 className="text-xl font-medium text-red-500">Failed to load data</h3>
+      <p className="text-gray-500">
+        Unable to connect to the learning plan service. Please try again later.
+      </p>
+    </div>
+  );
+
   return (
     <div
       className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full overflow-hidden"
       aria-label="Learning Plan Page"
     >
-      <Header title="Finanzierung und Investition" />
+      <Header title={learningPlan?.title || "Loading..."} />
       <div className="w-full max-w-[1920px] px-4 sm:px-6 md:px-12 lg:px-16 flex-1 pb-6">
         {isMobile ? (
           <div className="flex flex-col w-full gap-[24px] max-w-full h-full">
             <ScrollArea className="flex-1 w-full py-6 md:py-12">
               <CourseInfo
-                courseCode="FI01-QI"
-                courseTitle="Finanzierung und Investition"
+                courseCode={learningPlan?.courseCode || "..."}
+                courseTitle={learningPlan?.title || "Loading..."}
                 credits={5}
-                status="Enrolled"
+                status={learningPlan?.status || "Loading"}
               />
               <div className="flex w-full items-stretch mt-8 max-w-full overflow-hidden">
                 <div className="w-full max-w-full overflow-hidden">
@@ -62,9 +108,12 @@ export const EnrolledLearningPlan: React.FC = () => {
                   />
                   <div className="w-full overflow-hidden">
                     {activeTab === "learning-plan" && (
+                      isLoading ? renderLoadingState() :
+                      hasError ? renderErrorState() :
                       <LearningPlanContent
-                        dateRange="14th October to 20th October"
+                        dateRange={formatDateRange(learningPlan?.startDate, learningPlan?.endDate)}
                         onOverviewEdit={() => {}}
+                        activities={activities || []}
                       />
                     )}
                     {activeTab === "course-info" && (
@@ -95,10 +144,10 @@ export const EnrolledLearningPlan: React.FC = () => {
             >
               <ScrollArea className="h-full py-12">
                 <CourseInfo
-                  courseCode="FI01-QI"
-                  courseTitle="Finanzierung und Investition"
+                  courseCode={learningPlan?.courseCode || "..."}
+                  courseTitle={learningPlan?.title || "Loading..."}
                   credits={5}
-                  status="Enrolled"
+                  status={learningPlan?.status || "Loading"}
                 />
                 <div className="flex w-full items-stretch flex-wrap mt-8 max-w-full overflow-hidden">
                   <div className="w-full max-w-full overflow-hidden">
@@ -108,9 +157,12 @@ export const EnrolledLearningPlan: React.FC = () => {
                     />
                     <div className="w-full overflow-hidden">
                       {activeTab === "learning-plan" && (
+                        isLoading ? renderLoadingState() :
+                        hasError ? renderErrorState() :
                         <LearningPlanContent
-                          dateRange="14th October to 20th October"
+                          dateRange={formatDateRange(learningPlan?.startDate, learningPlan?.endDate)}
                           onOverviewEdit={() => {}}
+                          activities={activities || []}
                         />
                       )}
                       {activeTab === "course-info" && (

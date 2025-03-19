@@ -2,23 +2,119 @@
 import React from "react";
 import { LearningModule } from "./LearningModule";
 import { Button } from "@/components/ui/button";
-import { PenLine, BookOpen, PlayCircle, FileCheck, FileVideo, BookText, CheckSquare, CalendarCheck } from "lucide-react";
+import { PenLine, CalendarCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { LearningActivity } from "@/types/api.types";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface LearningPlanContentProps {
   dateRange: string;
   onOverviewEdit?: () => void;
+  activities?: LearningActivity[];
 }
 
 export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
   dateRange,
   onOverviewEdit,
+  activities = [],
 }) => {
   const navigate = useNavigate();
   
   const handleOverviewClick = () => {
     // Navigate to the overview page
     navigate('/overview');
+  };
+
+  // Group activities by unit (each unit would have multiple activities)
+  // For this example, we'll group by activity type assuming we don't have unit information
+  const groupActivitiesByType = (activities: LearningActivity[]) => {
+    const grouped: Record<string, LearningActivity[]> = {};
+    
+    activities.forEach(activity => {
+      // Using activity type as a simple grouping mechanism
+      // In a real API, you might have unitId or similar property
+      const group = activity.activityType || 'Other';
+      
+      if (!grouped[group]) {
+        grouped[group] = [];
+      }
+      
+      grouped[group].push(activity);
+    });
+    
+    return grouped;
+  };
+
+  // Create a learning module for each group
+  const renderLearningModules = () => {
+    if (!activities || activities.length === 0) {
+      return (
+        <div className="text-center py-6">
+          <p className="text-[#626293]">No learning activities available for this period.</p>
+        </div>
+      );
+    }
+
+    // For demo purposes, let's create two mock units with the activities
+    // In a real implementation, you would group by actual unit IDs from the API
+    const unit1Activities = activities.slice(0, Math.ceil(activities.length / 2));
+    const unit2Activities = activities.slice(Math.ceil(activities.length / 2));
+
+    return (
+      <>
+        <LearningModule
+          title="Unit 1: Finanzwirtschaftliche Grundlagen"
+          introduction="Dieses Modul führt in die grundlegenden Konzepte der Finanzwirtschaft ein. Studieren Sie das Kursbuch zu den Themen Grundprinzipien und Bestandteile der Finanzwirtschaft und schauen Sie sich die begleitenden Lehrvideos an."
+          resources={unit1Activities.map(activity => ({
+            type: activity.activityType,
+            title: activity.title,
+            icon: getIconForActivityType(activity.activityType),
+            bgColor: getBgColorForActivityType(activity.activityType),
+            description: activity.description
+          }))}
+        />
+        
+        {unit2Activities.length > 0 && (
+          <LearningModule
+            title="Unit 2: Statische Verfahren der Investitionsrechnung"
+            introduction="In diesem Modul werden statische Verfahren der Investitionsrechnung behandelt. Lesen Sie das Kursbuch zu den Themen Kostenvergleichsrechnung, Gewinnvergleichsrechnung, Rentabilitätsvergleichsrechnung und statische Amortisationsdauerrechnung und schauen Sie sich die dazugehörigen Videos an."
+            resources={unit2Activities.map(activity => ({
+              type: activity.activityType,
+              title: activity.title,
+              icon: getIconForActivityType(activity.activityType),
+              bgColor: getBgColorForActivityType(activity.activityType),
+              description: activity.description
+            }))}
+          />
+        )}
+      </>
+    );
+  };
+
+  // Helper function to get icon based on activity type
+  const getIconForActivityType = (type: string) => {
+    // This function would return the appropriate icon component
+    // For simplicity, we'll return null here as the actual implementation
+    // would depend on how your LearningModule component handles icons
+    return null;
+  };
+
+  // Helper function to get background color based on activity type
+  const getBgColorForActivityType = (type: string) => {
+    switch (type) {
+      case 'Video':
+        return "bg-[rgba(216,206,233,1)]";
+      case 'Course Book':
+        return "bg-[rgba(253,243,186,1)]";
+      case 'Quiz':
+        return "bg-[rgba(248,216,190,1)]";
+      case 'Cycle':
+        return "bg-[rgba(190,228,248,1)]";
+      case 'Exam Trainer':
+        return "bg-[rgba(216,233,206,1)]";
+      default:
+        return "bg-[rgba(233,233,233,1)]";
+    }
   };
 
   return (
@@ -31,7 +127,7 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
             </div>
             <div className="flex w-full items-center justify-between gap-3 mt-2 flex-wrap max-w-full">
               <h2 className="text-[#101019] text-xl md:text-2xl font-semibold break-words">
-                {dateRange}
+                {dateRange || "Current Learning Period"}
               </h2>
               <Button 
                 variant="outline" 
@@ -49,64 +145,10 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
       <div className="w-full mt-6 md:mt-8 rounded-3xl max-w-full">
         <div className="w-full overflow-hidden rounded-3xl max-w-full">
           <div className="flex w-full flex-col items-stretch justify-center mt-4 md:mt-6 max-w-full">
-            {/* Current Week - Only 2 Units with Video Materials and Quizzes */}
-            <LearningModule
-              title="Unit 1: Finanzwirtschaftliche Grundlagen"
-              introduction="Dieses Modul führt in die grundlegenden Konzepte der Finanzwirtschaft ein. Studieren Sie das Kursbuch zu den Themen Grundprinzipien und Bestandteile der Finanzwirtschaft und schauen Sie sich die begleitenden Lehrvideos an."
-              resources={[
-                { 
-                  type: "Video",
-                  title: "Einführung in die Finanzwirtschaft",
-                  icon: <FileVideo className="w-5 h-5" />,
-                  bgColor: "bg-[rgba(216,206,233,1)]",
-                  description: "25 min"
-                },
-                { 
-                  type: "Course Book",
-                  title: "Grundprinzipien der Finanzwirtschaft",
-                  icon: <BookText className="w-5 h-5" />,
-                  bgColor: "bg-[rgba(253,243,186,1)]",
-                  description: "15 pages"
-                },
-                {
-                  type: "Quiz",
-                  title: "Grundlagen-Quiz",
-                  icon: <CheckSquare className="w-5 h-5" />,
-                  bgColor: "bg-[rgba(248,216,190,1)]",
-                  description: "10 questions"
-                }
-              ]}
-            />
+            {/* Display learning modules based on API data */}
+            {renderLearningModules()}
             
-            <LearningModule
-              title="Unit 2: Statische Verfahren der Investitionsrechnung"
-              introduction="In diesem Modul werden statische Verfahren der Investitionsrechnung behandelt. Lesen Sie das Kursbuch zu den Themen Kostenvergleichsrechnung, Gewinnvergleichsrechnung, Rentabilitätsvergleichsrechnung und statische Amortisationsdauerrechnung und schauen Sie sich die dazugehörigen Videos an."
-              resources={[
-                { 
-                  type: "Video",
-                  title: "Kostenvergleichsrechnung in der Praxis",
-                  icon: <FileVideo className="w-5 h-5" />,
-                  bgColor: "bg-[rgba(216,206,233,1)]",
-                  description: "20 min"
-                },
-                { 
-                  type: "Course Book",
-                  title: "Grundlagen statischer Investitionsverfahren",
-                  icon: <BookText className="w-5 h-5" />,
-                  bgColor: "bg-[rgba(253,243,186,1)]",
-                  description: "18 pages"
-                },
-                {
-                  type: "Quiz",
-                  title: "Übungsaufgaben zur Amortisationsrechnung",
-                  icon: <CheckSquare className="w-5 h-5" />,
-                  bgColor: "bg-[rgba(248,216,190,1)]",
-                  description: "5 exercises"
-                }
-              ]}
-            />
-            
-            {/* Upcoming Week Content */}
+            {/* Upcoming Week Content - Static for now */}
             <div className="bg-[rgba(243,243,247,0.6)] mt-6 md:mt-8 p-4 md:p-6 rounded-3xl">
               <h3 className="text-[#626293] text-base font-medium mb-4">Next Week (21st October to 27th October)</h3>
               

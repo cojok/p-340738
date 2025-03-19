@@ -1,10 +1,11 @@
 
 import React from "react";
+import { FileVideo, BookText, CheckSquare, FileCheck, BookOpen, PlayCircle } from "lucide-react";
 
 interface Resource {
   type: string;
   title: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   bgColor: string;
   description: string;
 }
@@ -20,6 +21,24 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
   introduction,
   resources,
 }) => {
+  // Helper function to get icon based on resource type
+  const getIconByType = (type: string) => {
+    switch (type) {
+      case 'Video':
+        return <FileVideo className="w-5 h-5" />;
+      case 'Course Book':
+        return <BookText className="w-5 h-5" />;
+      case 'Quiz':
+        return <CheckSquare className="w-5 h-5" />;
+      case 'Cycle':
+        return <PlayCircle className="w-5 h-5" />;
+      case 'Exam Trainer':
+        return <FileCheck className="w-5 h-5" />;
+      default:
+        return <BookOpen className="w-5 h-5" />;
+    }
+  };
+
   return (
     <div className="bg-[rgba(243,243,247,1)] flex w-full flex-col items-stretch justify-center p-4 md:p-6 rounded-3xl max-w-full mb-6">
       <div className="w-full max-w-full">
@@ -38,12 +57,12 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
             </div>
           </div>
           <div className="w-full lg:w-[40%] flex-1">
-            {resources && (
+            {resources && resources.length > 0 ? (
               <div className="flex flex-col gap-4 w-full">
                 {resources.map((resource, index) => (
                   <div key={index} className="bg-white p-3 md:p-4 rounded-2xl flex items-center gap-2 w-full overflow-hidden">
                     <div className={`${resource.bgColor} p-2 md:p-3 rounded-xl flex-shrink-0`}>
-                      {resource.icon}
+                      {resource.icon || getIconByType(resource.type)}
                     </div>
                     <div className="flex-1 min-w-0 overflow-hidden">
                       <h5 className="text-[#313149] font-medium text-sm truncate">{resource.type}</h5>
@@ -54,6 +73,10 @@ export const LearningModule: React.FC<LearningModuleProps> = ({
                     </div>
                   </div>
                 ))}
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 items-center justify-center h-full bg-white p-6 rounded-2xl">
+                <p className="text-[#626293] text-center">No resources available for this module.</p>
               </div>
             )}
           </div>
