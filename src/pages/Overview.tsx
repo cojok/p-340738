@@ -1,16 +1,16 @@
+
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
-import { ArrowRight, ChevronDown, ChevronUp, Calendar, PenLine } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronUp, Calendar, PenLine, BookOpen } from "lucide-react";
 import { SidebarChat } from "@/components/learning/SidebarChat";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { useNavigate } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { BookOpen } from "lucide-react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const Overview = () => {
   const isMobile = useIsMobile();
@@ -96,15 +96,7 @@ const Overview = () => {
         <div className="pt-12 pb-6">
           <div className="flex flex-col gap-6">
             <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-[#1D1B20]">Learning Plan</h1>
-              <Button 
-                variant="outline" 
-                onClick={handleCurrentWeekPlanClick}
-                className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
-              >
-                <Calendar className="w-4 h-4" />
-                <span>current week plan</span>
-              </Button>
+              <h1 className="text-3xl font-bold text-[#1D1B20]">Course Overview</h1>
             </div>
             
             {/* Banner */}
@@ -118,12 +110,42 @@ const Overview = () => {
                 </div>
                 <span className="text-lg">With your current settings you will be fit to finish the course on the <strong>19.10.2024</strong></span>
               </div>
-              <Button 
-                className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
-              >
-                <PenLine className="w-4 h-4" />
-                <span>edit</span>
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button 
+                    className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2"
+                  >
+                    <PenLine className="w-4 h-4" />
+                    <span>edit</span>
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px] bg-white rounded-[24px] p-6">
+                  <DialogHeader>
+                    <DialogTitle className="text-xl font-semibold text-[#1D1B20]">Edit Learning Plan</DialogTitle>
+                  </DialogHeader>
+                  <div className="py-4">
+                    <p className="text-[#626293] mb-4">How would you like to adjust your learning plan?</p>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                        <input type="radio" id="increase" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                        <label htmlFor="increase" className="flex-1 cursor-pointer">Increase my daily workload</label>
+                      </div>
+                      <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                        <input type="radio" id="decrease" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                        <label htmlFor="decrease" className="flex-1 cursor-pointer">Decrease my daily workload</label>
+                      </div>
+                      <div className="flex items-center gap-2 p-3 rounded-xl border border-[#E5DEFF] bg-[#F8F7FF] text-[#303746]">
+                        <input type="radio" id="specific" name="schedule" className="h-4 w-4 accent-[#626293]" />
+                        <label htmlFor="specific" className="flex-1 cursor-pointer">Set a specific completion date</label>
+                      </div>
+                    </div>
+                    <div className="mt-6 flex justify-end gap-2">
+                      <Button variant="outline" className="border-[#626293] text-[#626293]">Cancel</Button>
+                      <Button className="bg-[#1A1F2C] text-white">Apply Changes</Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
@@ -148,8 +170,8 @@ const Overview = () => {
                     onClick={handleCurrentWeekPlanClick}
                     className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                   >
-                    <BookOpen className="w-4 h-4" />
-                    <span>Learning Plan</span>
+                    <Calendar className="w-4 h-4" />
+                    <span>current week plan</span>
                   </Button>
                 </div>
                 
@@ -234,8 +256,8 @@ const Overview = () => {
                       onClick={handleCurrentWeekPlanClick}
                       className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] hover:bg-gray-50"
                     >
-                      <BookOpen className="w-4 h-4" />
-                      <span>Learning Plan</span>
+                      <Calendar className="w-4 h-4" />
+                      <span>current week plan</span>
                     </Button>
                   </div>
                   

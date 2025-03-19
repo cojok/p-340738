@@ -11,16 +11,6 @@ export const SidebarChat: React.FC = () => {
             <div className="text-[rgba(16,16,25,1)] text-base font-medium">
               What would you like to do next?
             </div>
-            <button 
-              className="bg-black flex items-center justify-center w-8 h-8 rounded-full border-black border-solid border" 
-              aria-label="Synthea assistant"
-            >
-              <img 
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/74aa56ac63d853a42399482d6866d039d2c723bb?placeholderIfAbsent=true" 
-                className="w-8 h-8 aspect-square" 
-                alt="Synthea icon" 
-              />
-            </button>
           </div>
           <div className="flex flex-col gap-3 text-sm text-[#303746] font-normal">
             <button className="w-full flex items-center bg-[#1A1F2C] text-white gap-2.5 py-3 px-4 rounded-[16px] text-left hover:bg-[#282E3C] transition-colors">
