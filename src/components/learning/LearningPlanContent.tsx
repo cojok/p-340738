@@ -54,24 +54,40 @@ export const LearningPlanContent: React.FC<LearningPlanContentProps> = ({
           </h2>
           <div className="flex w-full flex-col items-stretch justify-center mt-6 max-md:max-w-full">
             <LearningModule
-              title="2.2 Kostenvergleichsrechnung"
-              introduction="Die Kostenvergleichsrechnung ist ein statisches Verfahren der Investitionsrechnung zur Bewertung alternativer Investitionen anhand ihrer durchschnittlichen Kosten pro Periode. Diese Methode eignet sich besonders für Rationalisierungsinvestitionen und berücksichtigt sowohl fixe als auch variable Kosten in der Kalkulation."
+              title="Unit 1: Finanzwirtschaftliche Grundlagen"
+              introduction="Dieses Modul führt in die grundlegenden Konzepte der Finanzwirtschaft ein. Es behandelt die Grundprinzipien der Finanzwirtschaft sowie ihre Bestandteile und schafft damit das Fundament für die weiteren Themen des Kurses."
               videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
               audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/a690391e763b1003a3cc30ac2346e5013d24eb29?placeholderIfAbsent=true"
               practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/d9e93f45438008d90ed010e196ad77b19069ba44?placeholderIfAbsent=true"
               chatIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6685ec8eceee80e952eedfd31a027cb5420bfd5e?placeholderIfAbsent=true"
             />
             <LearningModule
-              title="2.3 Gewinnvergleichsrechnung und 2.4 Rentabilitätsvergleichsrechnung"
-              introduction="Die Gewinnvergleichsrechnung erweitert die Kostenvergleichsrechnung durch Einbeziehung der Erlösseite, was sie besonders für Investitionen mit unterschiedlichen Erlösen wertvoll macht. Die Rentabilitätsvergleichsrechnung setzt den durchschnittlichen Gewinn ins Verhältnis zum durchschnittlich gebundenen Kapital und ermöglicht eine Beurteilung der Vorteilhaftigkeit verschiedener Investitionsalternativen."
+              title="Unit 2: Statische Verfahren der Investitionsrechnung"
+              introduction="In diesem Modul werden statische Verfahren der Investitionsrechnung behandelt, darunter die Kostenvergleichsrechnung, Gewinnvergleichsrechnung, Rentabilitätsvergleichsrechnung und statische Amortisationsdauerrechnung."
               videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
               audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/0b3e2648cf54f95b8484ce6ec4c46ff033704dc2?placeholderIfAbsent=true"
               practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/f275ede79db99bafb182a6d5fb570db9688c1595?placeholderIfAbsent=true"
               chatIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6685ec8eceee80e952eedfd31a027cb5420bfd5e?placeholderIfAbsent=true"
             />
             <LearningModule
-              title="2.5 Statische Amortisationsdauerrechnung"
-              introduction="Die statische Amortisationsdauerrechnung ist ein Verfahren zur Ermittlung des Zeitraums, in dem das für eine Investition eingesetzte Kapital durch die Rückflüsse aus der Investition wiedergewonnen wird. Im Gegensatz zu dynamischen Verfahren werden Zeitwerteffekte nicht berücksichtigt, was die Berechnung vereinfacht, aber die Genauigkeit beeinträchtigen kann."
+              title="Unit 3: Klassische dynamische Verfahren der Investitionsrechnung"
+              introduction="Dieses Modul fokussiert sich auf dynamische Verfahren der Investitionsrechnung, wie die Kapitalwertmethode, Annuitätenmethode, Interne Zinsfußmethode und dynamische Amortisationsdauerrechnung."
+              videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
+              audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/0b3e2648cf54f95b8484ce6ec4c46ff033704dc2?placeholderIfAbsent=true"
+              practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/f275ede79db99bafb182a6d5fb570db9688c1595?placeholderIfAbsent=true"
+              chatIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6685ec8eceee80e952eedfd31a027cb5420bfd5e?placeholderIfAbsent=true"
+            />
+            <LearningModule
+              title="Unit 4: Ausgewählte Arten der Unternehmensfinanzierung"
+              introduction="In diesem Modul werden verschiedene Arten der Unternehmensfinanzierung behandelt, einschließlich Eigenfinanzierung, Fremdfinanzierung und Mezzaninfinanzierung."
+              videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
+              audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/0b3e2648cf54f95b8484ce6ec4c46ff033704dc2?placeholderIfAbsent=true"
+              practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/f275ede79db99bafb182a6d5fb570db9688c1595?placeholderIfAbsent=true"
+              chatIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/6685ec8eceee80e952eedfd31a027cb5420bfd5e?placeholderIfAbsent=true"
+            />
+            <LearningModule
+              title="Unit 5: Kapitalstruktur"
+              introduction="Das Abschlussmodul behandelt die Kapitalstruktur nach Finanzierungsregeln und den Leverage-Effekt, und zeigt, wie unterschiedliche Kapitalstrukturen die finanzielle Performance eines Unternehmens beeinflussen können."
               videoIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/69a9695462c8f935bf5841327e8a3cc663e4b6c7?placeholderIfAbsent=true"
               audioIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/0b3e2648cf54f95b8484ce6ec4c46ff033704dc2?placeholderIfAbsent=true"
               practiceIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/f275ede79db99bafb182a6d5fb570db9688c1595?placeholderIfAbsent=true"
