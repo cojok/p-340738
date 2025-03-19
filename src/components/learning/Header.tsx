@@ -81,20 +81,18 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           </button>
         </div>
       ) : (
-        <div className="self-stretch flex items-center my-auto ml-auto">
-          <button
-            className="self-stretch flex items-center overflow-hidden justify-center"
-            aria-label="Synthea assistant"
-          >
-            <div className="bg-black self-stretch flex min-h-6 items-center gap-2.5 justify-center w-6 h-6 my-auto rounded-full border-black border-solid border-4">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/74aa56ac63d853a42399482d6866d039d2c723bb?placeholderIfAbsent=true"
-                className="aspect-[1] object-contain w-6 flex-1 shrink basis-[0%]"
-                alt="Synthea icon"
-              />
-            </div>
-          </button>
-        </div>
+        <button
+          className="ml-auto flex items-center justify-center my-auto"
+          aria-label="Synthea assistant"
+        >
+          <div className="bg-black flex items-center justify-center w-6 h-6 rounded-full border-black border-solid border-4">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/74aa56ac63d853a42399482d6866d039d2c723bb?placeholderIfAbsent=true"
+              className="aspect-[1] object-contain w-6 flex-1"
+              alt="Synthea icon"
+            />
+          </div>
+        </button>
       )}
     </div>
   );
