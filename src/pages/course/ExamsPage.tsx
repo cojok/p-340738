@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Header } from "@/components/learning/Header";
 import { Button } from "@/components/ui/button";
@@ -10,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export const ExamsPage: React.FC = () => {
   return (
     <div className="bg-[rgba(243,243,247,1)] flex flex-col items-center min-h-screen w-full">
-      <Header title="Finanzierung und Investition" />
+      <Header title="Investition und Finanzierung" />
       <ScrollArea className="w-full max-w-[1200px] px-6 md:px-16 py-12 flex-1">
         <Link to="/learning-plan?tab=course-info">
           <Button variant="ghost" className="mb-6">
