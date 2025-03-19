@@ -16,6 +16,9 @@ import { addDays, format, startOfWeek } from "date-fns";
 import { useLearningPlan } from "@/hooks/use-learning-plan";
 import { ChatDrawer } from "@/components/learning/ChatDrawer";
 
+// Course code constant
+const COURSE_CODE = "DLBLOFUI-01";
+
 const Overview = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
@@ -112,7 +115,7 @@ const Overview = () => {
       <span className="text-lg">
         With your current settings you will finish the course on the <strong>{estimatedCompletionDate}</strong>
       </span>
-      <ChatDrawer courseCode={learningPlan?.courseCode}>
+      <ChatDrawer courseCode={COURSE_CODE}>
         <Button 
           className="bg-[rgba(98,98,147,0.3)] hover:bg-[rgba(98,98,147,0.4)] text-white rounded-xl py-2 px-4 flex items-center gap-2 whitespace-nowrap"
         >

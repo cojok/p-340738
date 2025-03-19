@@ -1,11 +1,16 @@
 
 import React from "react";
 import { PenLine, PlayCircle, ListTodo, MessageSquare, BookOpen } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const SidebarChat: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isLearningPlanPage = location.pathname === "/learning-plan";
+
+  const handleContinueLearning = () => {
+    navigate('/learning-plan');
+  };
 
   return (
     <div className="flex w-full h-full">
@@ -39,7 +44,10 @@ export const SidebarChat: React.FC = () => {
                   <PenLine className="w-5 h-5 text-[#626293]" />
                   <span className="text-[#1A1F2C]">Edit my Learning Plan</span>
                 </button>
-                <button className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-3 py-4 px-5 rounded-[20px] text-left hover:bg-[#EDEDF0] transition-colors">
+                <button 
+                  className="w-full flex items-center backdrop-blur-md bg-[#F5F5F7] gap-3 py-4 px-5 rounded-[20px] text-left hover:bg-[#EDEDF0] transition-colors"
+                  onClick={handleContinueLearning}
+                >
                   <PlayCircle className="w-5 h-5 text-[#626293]" />
                   <span className="text-[#1A1F2C]">Continue Learning</span>
                 </button>
