@@ -9,7 +9,7 @@ import {
 } from '../services/api.service';
 import { LearningPlan, LearningActivity } from '../types/api.types';
 import { toast } from 'sonner';
-import { parseISO, format, addWeeks, addDays } from 'date-fns';
+import { parseISO, format, addWeeks, addDays, startOfWeek } from 'date-fns';
 
 export const useLearningPlan = (planId?: string) => {
   // Fetch learning plan

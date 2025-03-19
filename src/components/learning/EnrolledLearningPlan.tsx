@@ -13,7 +13,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLearningPlan } from "@/hooks/use-learning-plan";
 import { Skeleton } from "@/components/ui/skeleton";
 import { AlertCircle } from "lucide-react";
-import { format, parseISO } from "date-fns";
+import { format, parseISO, startOfWeek, addDays } from "date-fns";
 
 export const EnrolledLearningPlan: React.FC = () => {
   const [activeTab, setActiveTab] = useState("learning-plan");
@@ -27,19 +27,12 @@ export const EnrolledLearningPlan: React.FC = () => {
   // Fetch learning plan data
   const { learningPlan, activities, isLoading, hasError, estimatedCompletionDate } = useLearningPlan(learningPlanId);
 
-  // Format date range for display (e.g., "14th October to 20th October")
-  const formatDateRange = (startDate?: string, endDate?: string) => {
-    try {
-      if (!startDate || !endDate) return "";
-      
-      const start = parseISO(startDate);
-      const end = parseISO(endDate);
-      
-      return `${format(start, "do MMMM")} to ${format(end, "do MMMM")}`;
-    } catch (e) {
-      console.error("Error formatting dates:", e);
-      return "";
-    }
+  // Format date range for display using current week
+  const getCurrentWeekDateRange = () => {
+    const today = new Date();
+    const currentWeekStart = startOfWeek(today, { weekStartsOn: 1 });
+    const currentWeekEnd = addDays(currentWeekStart, 6);
+    return `${format(currentWeekStart, "do MMMM")} to ${format(currentWeekEnd, "do MMMM")}`;
   };
 
   // Check if there's a tab parameter in the URL
@@ -95,7 +88,7 @@ export const EnrolledLearningPlan: React.FC = () => {
           <div className="flex flex-col w-full gap-[24px] max-w-full h-full">
             <ScrollArea className="flex-1 w-full py-4 md:py-12 overflow-visible">
               <CourseInfo
-                courseCode={learningPlan?.courseCode || "..."}
+                courseCode={learningPlan?.courseCode || "DLBLOFUI-01"}
                 courseTitle={learningPlan?.title || "Loading..."}
                 credits={5}
                 status={learningPlan?.status || "Loading"}
@@ -111,7 +104,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                       isLoading ? renderLoadingState() :
                       hasError ? renderErrorState() :
                       <LearningPlanContent
-                        dateRange={formatDateRange(learningPlan?.startDate, learningPlan?.endDate)}
+                        dateRange={getCurrentWeekDateRange()}
                         onOverviewEdit={() => {}}
                         activities={activities || []}
                         estimatedCompletionDate={estimatedCompletionDate}
@@ -145,7 +138,7 @@ export const EnrolledLearningPlan: React.FC = () => {
             >
               <ScrollArea className="h-full py-12">
                 <CourseInfo
-                  courseCode={learningPlan?.courseCode || "..."}
+                  courseCode={learningPlan?.courseCode || "DLBLOFUI-01"}
                   courseTitle={learningPlan?.title || "Loading..."}
                   credits={5}
                   status={learningPlan?.status || "Loading"}
@@ -161,7 +154,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                         isLoading ? renderLoadingState() :
                         hasError ? renderErrorState() :
                         <LearningPlanContent
-                          dateRange={formatDateRange(learningPlan?.startDate, learningPlan?.endDate)}
+                          dateRange={getCurrentWeekDateRange()}
                           onOverviewEdit={() => {}}
                           activities={activities || []}
                           estimatedCompletionDate={estimatedCompletionDate}

@@ -86,8 +86,8 @@ export const fetchLearningActivitiesByPlanId = async (planId: string): Promise<L
 export const getMockLearningPlan = (): LearningPlan => ({
   id: 'mock-plan-id',
   userId: 1,
-  courseCode: 'FI01-QI',
-  title: 'Finanzierung und Investition',
+  courseCode: 'DLBLOFUI-01',
+  title: 'Investition und Finanzierung',
   status: 'active',
   startDate: '2024-10-01',
   endDate: '2024-10-19',
