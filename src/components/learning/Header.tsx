@@ -1,26 +1,32 @@
+
 import React from "react";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   title: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({ title }) => {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
+
   return (
     <div
-      className="bg-[rgba(243,243,247,1)] flex min-h-28 w-full max-w-[1920px] items-center gap-6 flex-wrap px-[72px] max-md:max-w-full max-md:px-5"
+      className="bg-[rgba(243,243,247,1)] flex min-h-28 w-full max-w-[1920px] items-center gap-6 flex-wrap px-[72px] max-md:px-5"
       aria-label="Course header"
     >
       <div className="self-stretch flex items-center gap-2.5 w-10 my-auto">
         <button
           className="self-stretch flex w-10 items-center overflow-hidden justify-center my-auto"
           aria-label="Go back"
+          onClick={handleBackClick}
         >
           <div className="self-stretch flex min-h-10 w-10 items-center gap-2.5 justify-center my-auto rounded-xl">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/32ebe5e4885442710564d5401d87c1f03d5a0760?placeholderIfAbsent=true"
-              className="aspect-[1] object-contain w-4 self-stretch my-auto"
-              alt="Back arrow"
-            />
+            <ArrowLeft className="h-4 w-4 text-[#626293]" />
           </div>
         </button>
       </div>
