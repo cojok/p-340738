@@ -26,7 +26,7 @@ export const ObjectivesPage: React.FC = () => {
           
           <div className="space-y-6">
             <div className="bg-green-50 p-6 rounded-xl">
-              <h2 className="text-xl font-medium text-green-900 mb-4">Qualifikationsziele des Moduls Investition und Finanzierung</h2>
+              <h2 className="text-xl font-medium text-green-900 mb-4">Kursziele</h2>
               <p className="mb-4">Nach erfolgreichem Abschluss sind die Studierenden in der Lage,</p>
               <ul className="space-y-3">
                 {[

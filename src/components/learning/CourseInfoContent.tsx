@@ -10,8 +10,7 @@ export const CourseInfoContent: React.FC = () => {
         Course description
       </h2>
       <p className="text-[#626293] mb-6">
-        Der Kurs Einführung in das wissenschaftliche Arbeiten für Psychologie und Gesundheit verfolgt das Ziel, Einblicke in die einzelnen Bestandteile und Abläufe des wissenschaftlichen Arbeitens in den Fachbereichen Psychologie und Gesundheit zu geben. Die Studierenden sollen Grundlagen und...
-        Lorem ipsum dolor sit amet...{" "}
+        Die Studierenden widmen sich im ersten Teil dieses Kurses der Investitionsseite und damit der Frage der Analyse und Generierung finanzwirtschaftlicher Werte. Behandelt werden zunächst die Grundlagen, Annahmen und Ziele der Investitionstheorie sowie deren Anwendung im praktischen Kontext. Eine Abgrenzung von statischen und dynamischen Verfahren dient der grundsätzlichen Einordnung der Methoden, wobei der Fokus auf den dynamischen Verfahren liegt. Gegenstand der Investitionsanalyse ist die wirtschaftliche Beurteilung der Vorteilhaftigkeit von Zahlungsströmen, welche aus unternehmerischen Entscheidungen jedweder Art resultieren können...{" "}
         <a href="#" className="text-blue-500 hover:underline">
           More
         </a>
@@ -98,3 +97,4 @@ export const CourseInfoContent: React.FC = () => {
     </div>
   );
 };
+
