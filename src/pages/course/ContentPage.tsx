@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Header } from "@/components/learning/Header";
 import { Button } from "@/components/ui/button";
@@ -22,8 +21,8 @@ const StyledLink: React.FC<StyledLinkProps> = ({ href, children, icon, className
       target="_blank"
       rel="noopener noreferrer" 
       className={cn(
-        "inline-flex items-center text-blue-600 hover:text-purple-600 gap-2 hover:underline transition-colors py-1 px-1",
-        "border border-transparent hover:border-blue-200 rounded",
+        "inline-flex items-center text-purple-600 hover:text-purple-800 gap-2 hover:underline transition-colors py-1 px-1",
+        "border border-transparent hover:border-purple-200 rounded",
         className
       )}
       download={download}
