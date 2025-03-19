@@ -24,7 +24,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
             className={`z-10 flex-1 h-[72px] text-base flex items-center justify-center transition-all duration-300 rounded-[24px_24px_0_0] 
               ${activeTab === "learning-plan" 
                 ? "bg-white text-[#101019] font-medium border-0 data-[state=active]:bg-white data-[state=active]:shadow-none" 
-                : "text-[#626293] border-0 bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none"}`}
+                : "text-[#626293] border-0 bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#101019]"}`}
           >
             Learning Plan
           </TabsTrigger>
@@ -33,7 +33,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
             className={`z-10 flex-1 h-[72px] text-base flex items-center justify-center transition-all duration-300 rounded-[24px_24px_0_0] 
               ${activeTab === "course-info" 
                 ? "bg-white text-[#101019] font-medium border-0 data-[state=active]:bg-white data-[state=active]:shadow-none" 
-                : "text-[#626293] border-0 bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none"}`}
+                : "text-[#626293] border-0 bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none hover:text-[#101019]"}`}
           >
             Course Info
           </TabsTrigger>

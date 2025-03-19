@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CourseInfoContent } from "./CourseInfoContent";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const EnrolledLearningPlan: React.FC = () => {
   const [activeTab, setActiveTab] = useState("learning-plan");
@@ -37,14 +38,14 @@ export const EnrolledLearningPlan: React.FC = () => {
 
   return (
     <div
-      className="bg-[rgba(243,243,247,1)] flex flex-col overflow-hidden items-center h-screen"
+      className="bg-[rgba(243,243,247,1)] flex flex-col items-center h-screen"
       aria-label="Learning Plan Page"
     >
       <Header title="Sozialpolitik I" />
-      <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1 overflow-hidden">
+      <div className="w-full max-w-[1920px] px-16 max-md:px-5 flex-1">
         {isMobile ? (
-          <div className="flex flex-col w-full gap-[24px] max-md:max-w-full">
-            <main className="min-w-60 w-full py-12 rounded-[32px] max-md:max-w-full">
+          <div className="flex flex-col w-full gap-[24px] max-md:max-w-full h-full">
+            <ScrollArea className="flex-1 w-full py-12">
               <CourseInfo
                 courseCode="SP01-QI"
                 courseTitle="Sozialpolitik I"
@@ -69,7 +70,7 @@ export const EnrolledLearningPlan: React.FC = () => {
                   )}
                 </div>
               </div>
-            </main>
+            </ScrollArea>
             <div className="w-full mb-6">
               <SidebarChat />
             </div>
@@ -80,15 +81,15 @@ export const EnrolledLearningPlan: React.FC = () => {
             className="min-h-[800px] h-full rounded-lg"
           >
             <ResizablePanel defaultSize={70} minSize={50}>
-              <main className="min-w-60 w-full py-12 rounded-[32px] max-md:max-w-full h-full">
+              <ScrollArea className="h-full py-12">
                 <CourseInfo
                   courseCode="SP01-QI"
                   courseTitle="Sozialpolitik I"
                   credits={5}
                   status="Enrolled"
                 />
-                <div className="flex w-full items-stretch flex-wrap mt-8 max-md:max-w-full h-full">
-                  <div className="min-w-60 flex-1 shrink basis-[0%] max-md:max-w-full h-full">
+                <div className="flex w-full items-stretch flex-wrap mt-8 max-md:max-w-full">
+                  <div className="min-w-60 flex-1 shrink basis-[0%] max-md:max-w-full">
                     <TabNavigation
                       activeTab={activeTab}
                       onTabChange={handleTabChange}
@@ -105,13 +106,13 @@ export const EnrolledLearningPlan: React.FC = () => {
                     )}
                   </div>
                 </div>
-              </main>
+              </ScrollArea>
             </ResizablePanel>
             <ResizableHandle withHandle className="mx-6" />
             <ResizablePanel defaultSize={30} minSize={20}>
-              <div className="h-full py-12 pr-0">
+              <ScrollArea className="h-full py-12 pr-0">
                 <SidebarChat />
-              </div>
+              </ScrollArea>
             </ResizablePanel>
           </ResizablePanelGroup>
         )}
