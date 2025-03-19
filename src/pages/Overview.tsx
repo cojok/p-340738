@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Header } from "@/components/learning/Header";
 import { CourseInfo } from "@/components/learning/CourseInfo";
@@ -295,5 +296,82 @@ const Overview = () => {
                       variant="outline" 
                       onClick={handleCurrentWeekPlanClick}
                       className="h-10 flex items-center justify-center gap-2 text-sm font-normal border-[#626293] text-[#626293] dark:border-[#A9A9D2] dark:text-[#A9A9D2] hover:bg-gray-50 dark:hover:bg-[#222233]"
-                   
+                    >
+                      <Calendar className="w-4 h-4" />
+                      <span>current week plan</span>
+                    </Button>
+                  </div>
+                  
+                  {renderCompletionBanner()}
+                  
+                  <div className="flex flex-col gap-4">
+                    <Accordion type="multiple" className="w-full">
+                      {weeks.map((week) => (
+                        <AccordionItem 
+                          key={week.week} 
+                          value={`week-${week.week}`}
+                          className="border-0 mb-4 overflow-hidden"
+                        >
+                          <div className="bg-[#F1F0FB] dark:bg-[#222233] rounded-[24px] overflow-hidden transition-all duration-300">
+                            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                              <div className="flex flex-col w-full">
+                                <div className="flex items-center justify-between w-full">
+                                  <div className="flex items-center gap-2 mb-2">
+                                    <div 
+                                      style={{ backgroundColor: weekColor }}
+                                      className="text-[#303746] px-3 py-1 rounded-full text-sm font-medium dark:bg-[#3F3F5F] dark:text-[#D8D8F2]"
+                                    >
+                                      Week {week.week}
+                                    </div>
+                                  </div>
+                                </div>
+                                <h3 className="text-[#1D1B20] dark:text-white text-lg font-medium text-left mb-1">{week.title}</h3>
+                                <p className="text-[#626293] dark:text-[#A9A9D2] text-sm text-left">{week.dateRange}</p>
+                              </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="px-6 pb-4">
+                              <div className="pt-2 border-t border-[#E8E5F7] dark:border-[#3F3F5F]">
+                                <p className="text-[#626293] dark:text-[#A9A9D2] text-sm mb-4">{week.description}</p>
+                                <div className="mb-4">
+                                  <h4 className="font-medium text-[#1D1B20] dark:text-white mb-2">{week.chapters.join(" and ")}</h4>
+                                  <div className="flex flex-wrap gap-2">
+                                    {week.tags.map((tag, i) => (
+                                      <Badge key={i} variant={tag.variant as any}>
+                                        {tag.text}
+                                      </Badge>
+                                    ))}
+                                  </div>
+                                </div>
+                                <Button 
+                                  variant="secondary"
+                                  onClick={() => handleWeekClick(week.week)}
+                                  className="w-full bg-[#626293] text-white hover:bg-[#4e4e75] dark:bg-[#3F3F5F] dark:hover:bg-[#4e4e75] transition-colors rounded-xl flex items-center justify-center gap-2"
+                                  aria-label={`View details for Week ${week.week}: ${week.title}`}
+                                >
+                                  <span>View Details</span>
+                                  <ArrowRight className="w-4 h-4" />
+                                </Button>
+                              </div>
+                            </AccordionContent>
+                          </div>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </div>
+                </div>
+              </ScrollArea>
+            </ResizablePanel>
+            <ResizableHandle withHandle className="mx-2" />
+            <ResizablePanel defaultSize={30} minSize={20}>
+              <ScrollArea className="h-full py-6 md:py-12">
+                <SidebarChat />
+              </ScrollArea>
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        )}
+      </div>
+    </div>
+  );
+};
 
+export default Overview;
